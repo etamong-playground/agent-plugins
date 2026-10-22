@@ -1,0 +1,33 @@
+{
+  "name": "onul-services",
+  "displayName": "Onul Services",
+  "owner": "Onul",
+  "repository": "https://github.com/etamong-playground/agent-plugins",
+  "plugins": [
+    {
+      "name": "pages",
+      "displayName": "Pages",
+      "version": "0.1.0",
+      "description": "Publish private static sites and reports with Pages.",
+      "homepage": "https://pages.onul.me",
+      "endpoint": "https://pages.onul.me/mcp",
+      "resource": "https://pages.onul.me",
+      "clientId": "pages-native",
+      "scopes": [
+        "pages:read",
+        "pages:write",
+        "offline_access"
+      ],
+      "defaultPrompt": "Publish a private preview of my report with Pages.",
+      "claudeAdapter": {
+        "command": "pages",
+        "args": [
+          "mcp",
+          "proxy"
+        ],
+        "originEnv": "PAGES_URL"
+      }
+    }
+  ],
+  "description": "Authenticated service connections and workflows for Onul services."
+}

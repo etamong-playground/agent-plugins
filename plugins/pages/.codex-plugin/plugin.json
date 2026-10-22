@@ -1,0 +1,26 @@
+{
+  "name": "pages",
+  "version": "0.1.0",
+  "description": "Publish private static sites and reports with Pages.",
+  "author": {
+    "name": "Onul"
+  },
+  "homepage": "https://pages.onul.me",
+  "repository": "https://github.com/etamong-playground/agent-plugins",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.codex.json",
+  "interface": {
+    "displayName": "Pages",
+    "shortDescription": "Publish private static sites and reports with Pages.",
+    "longDescription": "Publish private static sites and reports with Pages.",
+    "developerName": "Onul",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Publish a private preview of my report with Pages."
+    ]
+  }
+}

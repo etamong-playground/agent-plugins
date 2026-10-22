@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "pages": {
+      "type": "stdio",
+      "command": "pages",
+      "args": [
+        "mcp",
+        "proxy"
+      ],
+      "env": {
+        "PAGES_URL": "https://pages.onul.me"
+      }
+    }
+  }
+}
