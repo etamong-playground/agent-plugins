@@ -1,0 +1,20 @@
+{
+  "name": "onul-services",
+  "interface": {
+    "displayName": "Onul Services"
+  },
+  "plugins": [
+    {
+      "name": "pages",
+      "source": {
+        "source": "local",
+        "path": "./plugins/pages"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

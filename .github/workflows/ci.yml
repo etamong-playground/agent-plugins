@@ -1,0 +1,24 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    # Public packages validate independently of private fleet infrastructure.
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 scripts/validate.py
+      - run: python3 -m unittest discover -s tests -p "*_test.py" -v
+      - run: npm install --global @openai/codex@0.153.4 @anthropic-ai/claude-code@2.1.215
+      - run: python3 scripts/client_smoke.py

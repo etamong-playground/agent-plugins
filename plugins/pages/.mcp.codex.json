@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "pages": {
+      "type": "http",
+      "url": "https://pages.onul.me/mcp",
+      "oauth": {
+        "clientId": "pages-native"
+      },
+      "oauth_resource": "https://pages.onul.me",
+      "scopes": [
+        "pages:read",
+        "pages:write",
+        "offline_access"
+      ]
+    }
+  }
+}

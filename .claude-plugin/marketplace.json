@@ -1,0 +1,17 @@
+{
+  "name": "onul-services",
+  "owner": {
+    "name": "Onul"
+  },
+  "metadata": {
+    "description": "Authenticated service connections and workflows for Onul services."
+  },
+  "plugins": [
+    {
+      "name": "pages",
+      "source": "./plugins/pages",
+      "version": "0.1.0",
+      "description": "Publish private static sites and reports with Pages."
+    }
+  ]
+}
