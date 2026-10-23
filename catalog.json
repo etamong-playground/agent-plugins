@@ -27,6 +27,34 @@
         ],
         "originEnv": "PAGES_URL"
       }
+    },
+    {
+      "name": "eventops",
+      "displayName": "EventOps",
+      "version": "0.1.0",
+      "description": "Import and update event schedules while preserving personal plans.",
+      "homepage": "https://eventops.onul.me",
+      "endpoint": "https://eventops.onul.me/mcp",
+      "resource": "https://eventops.onul.me",
+      "clientId": "eventops-native",
+      "scopes": [
+        "openid",
+        "email",
+        "profile",
+        "roles",
+        "eventops:read",
+        "eventops:write",
+        "offline_access"
+      ],
+      "defaultPrompt": "Add an official event schedule to EventOps.",
+      "claudeAdapter": {
+        "command": "eventops",
+        "args": [
+          "mcp",
+          "proxy"
+        ],
+        "originEnv": "EVENTOPS_URL"
+      }
     }
   ],
   "description": "Authenticated service connections and workflows for Onul services."

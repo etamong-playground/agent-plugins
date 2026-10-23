@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "eventops": {
+      "type": "stdio",
+      "command": "eventops",
+      "args": [
+        "mcp",
+        "proxy"
+      ],
+      "env": {
+        "EVENTOPS_URL": "https://eventops.onul.me"
+      }
+    }
+  }
+}
