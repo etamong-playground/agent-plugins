@@ -18,6 +18,12 @@
       "source": "./plugins/jskills",
       "version": "0.3.0",
       "description": "Portable AI product development skills for design, implementation, review and validation."
+    },
+    {
+      "name": "eventops",
+      "source": "./plugins/eventops",
+      "version": "0.1.0",
+      "description": "Import and update event schedules while preserving personal plans."
     }
   ]
 }

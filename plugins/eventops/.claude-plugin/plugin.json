@@ -1,0 +1,10 @@
+{
+  "name": "eventops",
+  "version": "0.1.0",
+  "description": "Import and update event schedules while preserving personal plans.",
+  "author": {
+    "name": "Onul"
+  },
+  "homepage": "https://eventops.onul.me",
+  "repository": "https://github.com/etamong-playground/agent-plugins"
+}
