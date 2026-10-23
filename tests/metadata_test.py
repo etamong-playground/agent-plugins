@@ -74,6 +74,20 @@ class MetadataTest(unittest.TestCase):
                 self.assertNotEqual(result.returncode, 0)
                 self.assertIn('Pages read/write permissions', result.stdout + result.stderr)
 
+    def test_eventops_permissions_required(self):
+        path = self.root / 'catalog.json'
+        original = path.read_text()
+        for scope in ['openid', 'email', 'profile', 'roles', 'eventops:read', 'eventops:write']:
+            with self.subTest(scope=scope):
+                catalog = json.loads(original)
+                service = next(item for item in catalog['plugins'] if item['name'] == 'eventops')
+                service['scopes'].remove(scope)
+                path.write_text(json.dumps(catalog))
+                self.assertEqual(self.command('generate.py').returncode, 0)
+                result = self.command('validate.py')
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn('EventOps identity and read/write permissions', result.stdout + result.stderr)
+
     def test_portable_manifest_shadow(self):
         (self.root / 'plugins/pages/plugin.json').write_text('{}')
         result = self.command('validate.py')
