@@ -12,6 +12,12 @@
       "source": "./plugins/pages",
       "version": "0.1.0",
       "description": "Publish private static sites and reports with Pages."
+    },
+    {
+      "name": "scheduler",
+      "source": "./plugins/scheduler",
+      "version": "0.1.0",
+      "description": "Read your account, active organizations, and personal schedules."
     }
   ]
 }
