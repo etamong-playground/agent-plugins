@@ -82,3 +82,25 @@ The proxy never launches a login itself.
 
 Catalog entries may select a `codexAdapter` for device-only stdio connections; these declare a local executor and do not configure native authorization-code OAuth.
 A local adapter can omit `originEnv` when its CLI pins the service's canonical resource.
+
+
+## Sports Calendar
+
+Sports Calendar uses its standalone `sports` CLI for phone device approval on macOS or Linux.
+Install it on the MCP executor and complete approval before starting the connection:
+
+```sh
+export PATH="$HOME/.local/bin:$PATH"
+curl -fsSL https://sports-calendar.onul.me/install.sh | sh
+sports login
+codex plugin add sports-calendar@onul-services
+claude plugin install sports-calendar@onul-services
+```
+
+Keep the same binary directory on the client's executor `PATH`; `SPORTS_INSTALL_DIR` selects another user-writable installer directory.
+Both clients run the fixed ordinary `sports mcp` adapter.
+The shared `read-sports-calendar` skill reads supported competitions, public events and prepared calendar preferences.
+Setup-required directs the user to the existing calendar UI; an intentionally empty prepared calendar stays empty.
+`sports whoami` reports authorization status and the original seven-day deadline, without a subject, owner key or calendar title as an account identity.
+Refresh and restart do not extend the deadline; reconnect after replacement login or CLI upgrade.
+Plugin installation grants no service access and does not initialize a calendar.

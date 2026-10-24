@@ -1,0 +1,26 @@
+{
+  "name": "sports-calendar",
+  "version": "0.1.0",
+  "description": "Read sports competitions, event schedules, and your prepared calendar preferences.",
+  "author": {
+    "name": "Onul"
+  },
+  "homepage": "https://sports-calendar.onul.me",
+  "repository": "https://github.com/etamong-playground/agent-plugins",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.codex.json",
+  "interface": {
+    "displayName": "Sports Calendar",
+    "shortDescription": "Read sports competitions, event schedules, and your prepared calendar preferences.",
+    "longDescription": "Read sports competitions, event schedules, and your prepared calendar preferences.",
+    "developerName": "Onul",
+    "category": "Productivity",
+    "capabilities": [
+      "Read"
+    ],
+    "defaultPrompt": [
+      "Show my Sports Calendar games for this week."
+    ]
+  },
+  "requires_local_executor": true
+}

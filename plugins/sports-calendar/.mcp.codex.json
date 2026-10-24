@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "sports-calendar": {
+      "type": "stdio",
+      "command": "sports",
+      "args": [
+        "mcp"
+      ]
+    }
+  }
+}
