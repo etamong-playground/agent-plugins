@@ -11,9 +11,7 @@
         "openid",
         "email",
         "profile",
-        "roles",
         "eventops:read",
-        "eventops:write",
         "offline_access"
       ]
     }
