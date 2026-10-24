@@ -60,7 +60,7 @@ Keep credentials and privileged fleet administration workflows outside these pac
 
 ## EventOps
 
-EventOps imports official conference and festival schedules while retaining personal plans.
+EventOps reads published conference and festival schedules.
 Register the Onul Services marketplace using the setup commands above before installing this plugin.
 
 ```sh
@@ -68,7 +68,7 @@ codex plugin add eventops@onul-services
 ```
 
 Complete the EventOps connection's OAuth sign-in.
-Its read/write scopes do not grant administrator access.
+The connection requests published-schedule read access and uses the same capabilities for every account.
 
 For Claude Code, install the dedicated CLI and complete login first:
 
@@ -78,6 +78,6 @@ eventops login
 claude plugin install eventops@onul-services
 ```
 
-The `manage-events` skill covers official source verification, stable occurrence IDs, drafts, revision-checked refreshes and intentional retries.
+The `read-events` skill covers published-event lookup, pagination and schedule details.
 Use `eventops upgrade` to update the CLI.
 For a remote CLI, forward its displayed loopback callback port before approving login.

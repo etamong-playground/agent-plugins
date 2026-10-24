@@ -1,7 +1,7 @@
 {
   "name": "eventops",
   "version": "0.1.0",
-  "description": "Import and update event schedules while preserving personal plans.",
+  "description": "Read published conference and festival schedules with EventOps.",
   "author": {
     "name": "Onul"
   },
@@ -11,16 +11,15 @@
   "mcpServers": "./.mcp.codex.json",
   "interface": {
     "displayName": "EventOps",
-    "shortDescription": "Import and update event schedules while preserving personal plans.",
-    "longDescription": "Import and update event schedules while preserving personal plans.",
+    "shortDescription": "Read published conference and festival schedules with EventOps.",
+    "longDescription": "Read published conference and festival schedules with EventOps.",
     "developerName": "Onul",
     "category": "Productivity",
     "capabilities": [
-      "Read",
-      "Write"
+      "Read"
     ],
     "defaultPrompt": [
-      "Add an official event schedule to EventOps."
+      "Find a published event schedule in EventOps."
     ]
   }
 }

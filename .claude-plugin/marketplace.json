@@ -17,7 +17,7 @@
       "name": "eventops",
       "source": "./plugins/eventops",
       "version": "0.1.0",
-      "description": "Import and update event schedules while preserving personal plans."
+      "description": "Read published conference and festival schedules with EventOps."
     }
   ]
 }
