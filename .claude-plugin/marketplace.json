@@ -12,6 +12,12 @@
       "source": "./plugins/pages",
       "version": "0.1.0",
       "description": "Publish private static sites and reports with Pages."
+    },
+    {
+      "name": "eventops",
+      "source": "./plugins/eventops",
+      "version": "0.1.0",
+      "description": "Read published conference and festival schedules with EventOps."
     }
   ]
 }

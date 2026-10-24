@@ -30,7 +30,7 @@ def generate(root):
         codex_manifest = {**common, 'skills': './skills/', 'mcpServers': './.mcp.codex.json',
                           'interface': {'displayName': service['displayName'], 'shortDescription': service['description'],
                                         'longDescription': service['description'], 'developerName': catalog['owner'],
-                                        'category': 'Productivity', 'capabilities': ['Read', 'Write'],
+                                        'category': 'Productivity', 'capabilities': service.get('capabilities', ['Read', 'Write']),
                                         'defaultPrompt': [service['defaultPrompt']]}}
         base = f'plugins/{name}/'
         files[base + '.codex-plugin/plugin.json'] = codex_manifest

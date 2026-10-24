@@ -57,3 +57,27 @@ Generate client-specific manifests and catalogs with `python3 scripts/generate.p
 Codex's compatibility manifest selects `.mcp.codex.json` explicitly, while Claude uses `.mcp.json`.
 Do not add a portable root manifest that would override the native OAuth adapter.
 Keep credentials and privileged fleet administration workflows outside these packages.
+
+## EventOps
+
+EventOps reads published conference and festival schedules.
+Register the Onul Services marketplace using the setup commands above before installing this plugin.
+
+```sh
+codex plugin add eventops@onul-services
+```
+
+Complete the EventOps connection's OAuth sign-in.
+The connection requests published-schedule read access and uses the same capabilities for every account.
+
+For Claude Code, install the dedicated CLI and complete login first:
+
+```sh
+curl -fsSL https://eventops.onul.me/install.sh | sh
+eventops login
+claude plugin install eventops@onul-services
+```
+
+The `read-events` skill covers published-event lookup, pagination and schedule details.
+Use `eventops upgrade` to update the CLI.
+For a remote CLI, forward its displayed loopback callback port before approving login.

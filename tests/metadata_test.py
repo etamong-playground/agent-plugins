@@ -74,6 +74,33 @@ class MetadataTest(unittest.TestCase):
                 self.assertNotEqual(result.returncode, 0)
                 self.assertIn('Pages read/write permissions', result.stdout + result.stderr)
 
+    def test_eventops_access_is_read_only(self):
+        path = self.root / 'catalog.json'
+        original = path.read_text()
+        for mutation in ['missing-read', 'write-scope', 'roles-scope', 'private-scope', 'write-capability']:
+            with self.subTest(mutation=mutation):
+                catalog = json.loads(original)
+                service = next(item for item in catalog['plugins'] if item['name'] == 'eventops')
+                if mutation == 'missing-read':
+                    service['scopes'].remove('eventops:read')
+                elif mutation == 'write-capability':
+                    service['capabilities'].append('Write')
+                else:
+                    service['scopes'].append({'write-scope': 'eventops:write', 'roles-scope': 'roles', 'private-scope': 'fixture:private:read'}[mutation])
+                path.write_text(json.dumps(catalog))
+                self.assertEqual(self.command('generate.py').returncode, 0)
+                result = self.command('validate.py')
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn('published-schedule read access only', result.stdout + result.stderr)
+
+    def test_generated_eventops_access_is_read_only(self):
+        manifest = json.loads((self.root / 'plugins/eventops/.codex-plugin/plugin.json').read_text())
+        self.assertEqual(manifest['interface']['capabilities'], ['Read'])
+        native = json.loads((self.root / 'plugins/eventops/.mcp.codex.json').read_text())['mcpServers']['eventops']
+        self.assertEqual(set(native['scopes']), {'openid', 'email', 'profile', 'eventops:read', 'offline_access'})
+        self.assertEqual(native['oauth']['clientId'], 'eventops-native')
+        self.assertEqual(native['oauth_resource'], 'https://eventops.onul.me')
+
     def test_portable_manifest_shadow(self):
         (self.root / 'plugins/pages/plugin.json').write_text('{}')
         result = self.command('validate.py')

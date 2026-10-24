@@ -27,6 +27,35 @@
         ],
         "originEnv": "PAGES_URL"
       }
+    },
+    {
+      "name": "eventops",
+      "displayName": "EventOps",
+      "version": "0.1.0",
+      "description": "Read published conference and festival schedules with EventOps.",
+      "homepage": "https://eventops.onul.me",
+      "endpoint": "https://eventops.onul.me/mcp",
+      "resource": "https://eventops.onul.me",
+      "clientId": "eventops-native",
+      "scopes": [
+        "openid",
+        "email",
+        "profile",
+        "eventops:read",
+        "offline_access"
+      ],
+      "defaultPrompt": "Find a published event schedule in EventOps.",
+      "claudeAdapter": {
+        "command": "eventops",
+        "args": [
+          "mcp",
+          "proxy"
+        ],
+        "originEnv": "EVENTOPS_URL"
+      },
+      "capabilities": [
+        "Read"
+      ]
     }
   ],
   "description": "Authenticated service connections and workflows for Onul services."

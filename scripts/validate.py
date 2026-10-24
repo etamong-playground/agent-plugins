@@ -23,7 +23,7 @@ for path in root.rglob('*'):
         def check(value):
             if isinstance(value, dict):
                 for key, item in value.items():
-                    if key.lower().replace('_', '').replace('-', '') in {'clientsecret', 'accesstoken', 'refreshtoken', 'authorization', 'pagestoken'}:
+                    if key.lower().replace('_', '').replace('-', '') in {'clientsecret', 'accesstoken', 'refreshtoken', 'authorization', 'pagestoken', 'eventopstoken'}:
                         raise SystemExit(f'Credential field in {relative}')
                     check(item)
             elif isinstance(value, list):
@@ -52,6 +52,9 @@ for service in catalog['plugins']:
         raise SystemExit('Native OAuth client/resource binding is missing')
     if service['name'] == 'pages' and not {'pages:read', 'pages:write'}.issubset(native['scopes']):
         raise SystemExit('Pages read/write permissions are missing')
+    if service['name'] == 'eventops':
+        if set(native['scopes']) != {'openid', 'email', 'profile', 'eventops:read', 'offline_access'} or manifest['interface']['capabilities'] != ['Read']:
+            raise SystemExit('EventOps requires published-schedule read access only')
     if 'offline_access' not in native['scopes']:
         raise SystemExit('Native OAuth offline access is missing')
     adapter = json.loads((plugin / '.mcp.json').read_text())['mcpServers'][service['name']]
