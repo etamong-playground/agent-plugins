@@ -57,3 +57,28 @@ Generate client-specific manifests and catalogs with `python3 scripts/generate.p
 Codex's compatibility manifest selects `.mcp.codex.json` explicitly, while Claude uses `.mcp.json`.
 Do not add a portable root manifest that would override the native OAuth adapter.
 Keep credentials and privileged fleet administration workflows outside these packages.
+
+## Scheduler
+
+Scheduler uses phone device approval through its local CLI on macOS or Linux.
+Before login, its executor's Nix/agenix configuration must provide the independent `scheduler.key` at `/private/var/lib/onul-credential-keys/<uid>/` on macOS or `/var/lib/onul-credential-keys/<uid>/` on Linux.
+The CLI validates this private key before phone approval and stores grants encrypted; a missing key requires executor provisioning, not a token or key pasted into the plugin.
+Install the CLI into a directory already on the executor's `PATH`, then complete approval before starting the MCP connection:
+
+```sh
+export PATH="$HOME/.local/bin:$PATH"
+curl -fsSL https://scheduler-api.onul.me/install.sh | sh
+scheduler login
+codex plugin add scheduler@onul-services
+claude plugin install scheduler@onul-services
+```
+
+Start the client with the same `PATH` so its executor can find `scheduler`; configure that path in the executor environment when the client runs on another host.
+Both clients use the ordinary `scheduler mcp` stdio adapter.
+The package advertises read access to the caller's account, active organizations, and personal schedules.
+An existing service account and current membership are required.
+Refresh does not extend the original seven-day device authorization; use `scheduler whoami` to inspect its deadline and reconnect after a replacement login.
+The proxy never launches a login itself.
+
+Catalog entries may select a `codexAdapter` for device-only stdio connections; these declare a local executor and do not configure native authorization-code OAuth.
+A local adapter can omit `originEnv` when its CLI pins the service's canonical resource.

@@ -48,13 +48,28 @@ for service in catalog['plugins']:
         if not text.startswith('---\n') or '\nname: ' not in text or '\ndescription: ' not in text:
             raise SystemExit(f'Invalid skill frontmatter: {skill.relative_to(root)}')
     native = json.loads((plugin / '.mcp.codex.json').read_text())['mcpServers'][service['name']]
-    if native['oauth']['clientId'] != service['clientId'] or native['oauth_resource'] != service['resource']:
+    if service.get('codexAdapter'):
+        if native['type'] != 'stdio' or not manifest.get('requires_local_executor'):
+            raise SystemExit('Device connections require a local stdio executor')
+        if any(key in native for key in ['oauth', 'oauth_resource', 'url', 'scopes']):
+            raise SystemExit('Device connections cannot include a native authorization-code adapter')
+    elif native['oauth']['clientId'] != service['clientId'] or native['oauth_resource'] != service['resource']:
         raise SystemExit('Native OAuth client/resource binding is missing')
-    if service['name'] == 'pages' and not {'pages:read', 'pages:write'}.issubset(native['scopes']):
+    if service['name'] == 'pages' and not {'pages:read', 'pages:write'}.issubset(service['scopes']):
         raise SystemExit('Pages read/write permissions are missing')
-    if 'offline_access' not in native['scopes']:
+    if 'offline_access' not in service['scopes']:
         raise SystemExit('Native OAuth offline access is missing')
     adapter = json.loads((plugin / '.mcp.json').read_text())['mcpServers'][service['name']]
-    if adapter['type'] != 'stdio' or adapter['env'] != {service['claudeAdapter']['originEnv']: service['resource']}:
-        raise SystemExit('Claude requires an explicitly origin-bound local adapter')
+    expected_env = {service['claudeAdapter']['originEnv']: service['resource']} if service['claudeAdapter'].get('originEnv') else {}
+    if adapter['type'] != 'stdio' or adapter.get('env', {}) != expected_env:
+        raise SystemExit('Claude requires an explicitly bound local adapter')
+    if service['name'] == 'scheduler':
+        expected_scopes = {'openid', 'profile', 'email', 'offline_access', 'scheduler:read'}
+        if service['resource'] != 'https://scheduler-api.onul.me' or set(service['scopes']) != expected_scopes:
+            raise SystemExit('Scheduler requires its ordinary resource and read-only device scopes')
+        if manifest['interface']['capabilities'] != ['Read']:
+            raise SystemExit('Scheduler advertises read capabilities only')
+        for connection in [native, adapter]:
+            if connection != {'type': 'stdio', 'command': 'scheduler', 'args': ['mcp']}:
+                raise SystemExit('Scheduler requires its fixed ordinary device adapter')
 print('Public metadata, contained component paths, credential exclusions and client bindings validated')

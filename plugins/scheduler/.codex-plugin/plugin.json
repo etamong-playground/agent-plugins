@@ -1,0 +1,26 @@
+{
+  "name": "scheduler",
+  "version": "0.1.0",
+  "description": "Read your account, active organizations, and personal schedules.",
+  "author": {
+    "name": "Onul"
+  },
+  "homepage": "https://scheduler.onul.me",
+  "repository": "https://github.com/etamong-playground/agent-plugins",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.codex.json",
+  "interface": {
+    "displayName": "Scheduler",
+    "shortDescription": "Read your account, active organizations, and personal schedules.",
+    "longDescription": "Read your account, active organizations, and personal schedules.",
+    "developerName": "Onul",
+    "category": "Productivity",
+    "capabilities": [
+      "Read"
+    ],
+    "defaultPrompt": [
+      "Show my Scheduler schedules for this week."
+    ]
+  },
+  "requires_local_executor": true
+}

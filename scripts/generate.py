@@ -5,6 +5,17 @@ import re
 from urllib.parse import urlsplit
 
 
+def stdio_connection(adapter, resource):
+    connection = {'type': 'stdio', 'command': adapter['command'], 'args': adapter['args']}
+    if not isinstance(adapter['command'], str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,63}', adapter['command']):
+        raise ValueError('Local adapter command must be a program name')
+    if not isinstance(adapter['args'], list) or any(not isinstance(arg, str) or '\n' in arg for arg in adapter['args']):
+        raise ValueError('Local adapter arguments must be separate strings')
+    if adapter.get('originEnv'):
+        connection['env'] = {adapter['originEnv']: resource}
+    return connection
+
+
 def generate(root):
     catalog = json.loads((root / 'catalog.json').read_text())
     codex = {'name': catalog['name'], 'interface': {'displayName': catalog['displayName']}, 'plugins': []}
@@ -30,18 +41,19 @@ def generate(root):
         codex_manifest = {**common, 'skills': './skills/', 'mcpServers': './.mcp.codex.json',
                           'interface': {'displayName': service['displayName'], 'shortDescription': service['description'],
                                         'longDescription': service['description'], 'developerName': catalog['owner'],
-                                        'category': 'Productivity', 'capabilities': ['Read', 'Write'],
+                                        'category': 'Productivity', 'capabilities': service.get('capabilities', ['Read', 'Write']),
                                         'defaultPrompt': [service['defaultPrompt']]}}
         base = f'plugins/{name}/'
         files[base + '.codex-plugin/plugin.json'] = codex_manifest
         files[base + '.claude-plugin/plugin.json'] = common
-        files[base + '.mcp.codex.json'] = {'mcpServers': {name: {
-            'type': 'http', 'url': service['endpoint'], 'oauth': {'clientId': service['clientId']},
-            'oauth_resource': service['resource'], 'scopes': service['scopes']}}}
-        adapter = service['claudeAdapter']
-        files[base + '.mcp.json'] = {'mcpServers': {name: {
-            'type': 'stdio', 'command': adapter['command'], 'args': adapter['args'],
-            'env': {adapter['originEnv']: service['resource']}}}}
+        if service.get('codexAdapter'):
+            codex_manifest['requires_local_executor'] = True
+            native = stdio_connection(service['codexAdapter'], service['resource'])
+        else:
+            native = {'type': 'http', 'url': service['endpoint'], 'oauth': {'clientId': service['clientId']},
+                      'oauth_resource': service['resource'], 'scopes': service['scopes']}
+        files[base + '.mcp.codex.json'] = {'mcpServers': {name: native}}
+        files[base + '.mcp.json'] = {'mcpServers': {name: stdio_connection(service['claudeAdapter'], service['resource'])}}
         codex['plugins'].append({'name': name, 'source': {'source': 'local', 'path': './plugins/' + name},
                                  'policy': {'installation': 'AVAILABLE', 'authentication': 'ON_INSTALL'}, 'category': 'Productivity'})
         claude['plugins'].append({'name': name, 'source': './plugins/' + name,

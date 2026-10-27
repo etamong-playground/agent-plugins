@@ -1,0 +1,10 @@
+{
+  "name": "scheduler",
+  "version": "0.1.0",
+  "description": "Read your account, active organizations, and personal schedules.",
+  "author": {
+    "name": "Onul"
+  },
+  "homepage": "https://scheduler.onul.me",
+  "repository": "https://github.com/etamong-playground/agent-plugins"
+}

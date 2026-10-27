@@ -87,6 +87,46 @@ class MetadataTest(unittest.TestCase):
         path.write_text(json.dumps(data))
         self.assertNotEqual(self.command('validate.py').returncode, 0)
 
+    def test_scheduler_uses_fixed_read_only_device_adapters(self):
+        plugin = self.root / 'plugins/scheduler'
+        manifest = json.loads((plugin / '.codex-plugin/plugin.json').read_text())
+        self.assertTrue(manifest['requires_local_executor'])
+        self.assertEqual(manifest['interface']['capabilities'], ['Read'])
+        for filename in ['.mcp.codex.json', '.mcp.json']:
+            connection = json.loads((plugin / filename).read_text())['mcpServers']['scheduler']
+            self.assertEqual(connection, {'type': 'stdio', 'command': 'scheduler', 'args': ['mcp']})
+
+    def test_scheduler_rejects_privileged_catalog_changes(self):
+        path = self.root / 'catalog.json'
+        original = path.read_text()
+        changes = [
+            ('scopes', ['openid', 'profile', 'email', 'offline_access', 'scheduler:admin']),
+            ('capabilities', ['Read', 'Write']),
+            ('resource', 'https://scheduler-operator.example.invalid'),
+            ('codexAdapter', {'command': 'scheduler', 'args': ['admin', 'mcp']}),
+            ('claudeAdapter', {'command': 'scheduler', 'args': ['mcp'], 'originEnv': 'SCHEDULER_URL'}),
+        ]
+        for key, value in changes:
+            with self.subTest(key=key):
+                catalog = json.loads(original)
+                service = next(item for item in catalog['plugins'] if item['name'] == 'scheduler')
+                service[key] = value
+                if key == 'resource':
+                    service['endpoint'] = value + '/mcp'
+                path.write_text(json.dumps(catalog))
+                self.assertEqual(self.command('generate.py').returncode, 0)
+                self.assertNotEqual(self.command('validate.py').returncode, 0)
+
+    def test_scheduler_native_oauth_fallback_is_rejected(self):
+        path = self.root / 'catalog.json'
+        catalog = json.loads(path.read_text())
+        service = next(item for item in catalog['plugins'] if item['name'] == 'scheduler')
+        del service['codexAdapter']
+        service['clientId'] = 'unqualified-browser-client'
+        path.write_text(json.dumps(catalog))
+        self.assertEqual(self.command('generate.py').returncode, 0)
+        self.assertNotEqual(self.command('validate.py').returncode, 0)
+
     def test_service_path_escape(self):
         path = self.root / 'catalog.json'
         catalog = json.loads(path.read_text())

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "scheduler": {
+      "type": "stdio",
+      "command": "scheduler",
+      "args": [
+        "mcp"
+      ]
+    }
+  }
+}

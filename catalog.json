@@ -27,6 +27,38 @@
         ],
         "originEnv": "PAGES_URL"
       }
+    },
+    {
+      "name": "scheduler",
+      "displayName": "Scheduler",
+      "version": "0.1.0",
+      "description": "Read your account, active organizations, and personal schedules.",
+      "homepage": "https://scheduler.onul.me",
+      "endpoint": "https://scheduler-api.onul.me/mcp",
+      "resource": "https://scheduler-api.onul.me",
+      "scopes": [
+        "openid",
+        "profile",
+        "email",
+        "offline_access",
+        "scheduler:read"
+      ],
+      "defaultPrompt": "Show my Scheduler schedules for this week.",
+      "capabilities": [
+        "Read"
+      ],
+      "codexAdapter": {
+        "command": "scheduler",
+        "args": [
+          "mcp"
+        ]
+      },
+      "claudeAdapter": {
+        "command": "scheduler",
+        "args": [
+          "mcp"
+        ]
+      }
     }
   ],
   "description": "Authenticated service connections and workflows for Onul services."
