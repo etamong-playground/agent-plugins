@@ -61,6 +61,8 @@ Keep credentials and privileged fleet administration workflows outside these pac
 ## Scheduler
 
 Scheduler uses phone device approval through its local CLI on macOS or Linux.
+Before login, its executor's Nix/agenix configuration must provide the independent `scheduler.key` at `/private/var/lib/onul-credential-keys/<uid>/` on macOS or `/var/lib/onul-credential-keys/<uid>/` on Linux.
+The CLI validates this private key before phone approval and stores grants encrypted; a missing key requires executor provisioning, not a token or key pasted into the plugin.
 Install the CLI into a directory already on the executor's `PATH`, then complete approval before starting the MCP connection:
 
 ```sh
