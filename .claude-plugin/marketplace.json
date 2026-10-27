@@ -18,6 +18,12 @@
       "source": "./plugins/scheduler",
       "version": "0.1.0",
       "description": "Read your account, active organizations, and personal schedules."
+    },
+    {
+      "name": "sports-calendar",
+      "source": "./plugins/sports-calendar",
+      "version": "0.1.0",
+      "description": "Read sports competitions, event schedules, and your prepared calendar preferences."
     }
   ]
 }

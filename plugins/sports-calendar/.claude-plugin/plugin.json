@@ -1,0 +1,10 @@
+{
+  "name": "sports-calendar",
+  "version": "0.1.0",
+  "description": "Read sports competitions, event schedules, and your prepared calendar preferences.",
+  "author": {
+    "name": "Onul"
+  },
+  "homepage": "https://sports-calendar.onul.me",
+  "repository": "https://github.com/etamong-playground/agent-plugins"
+}

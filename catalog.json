@@ -59,6 +59,38 @@
           "mcp"
         ]
       }
+    },
+    {
+      "name": "sports-calendar",
+      "displayName": "Sports Calendar",
+      "version": "0.1.0",
+      "description": "Read sports competitions, event schedules, and your prepared calendar preferences.",
+      "homepage": "https://sports-calendar.onul.me",
+      "endpoint": "https://sports-calendar.onul.me/mcp",
+      "resource": "https://sports-calendar.onul.me",
+      "scopes": [
+        "openid",
+        "profile",
+        "email",
+        "offline_access",
+        "sports:read"
+      ],
+      "defaultPrompt": "Show my Sports Calendar games for this week.",
+      "capabilities": [
+        "Read"
+      ],
+      "codexAdapter": {
+        "command": "sports",
+        "args": [
+          "mcp"
+        ]
+      },
+      "claudeAdapter": {
+        "command": "sports",
+        "args": [
+          "mcp"
+        ]
+      }
     }
   ],
   "description": "Authenticated service connections and workflows for Onul services."

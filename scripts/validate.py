@@ -63,13 +63,18 @@ for service in catalog['plugins']:
     expected_env = {service['claudeAdapter']['originEnv']: service['resource']} if service['claudeAdapter'].get('originEnv') else {}
     if adapter['type'] != 'stdio' or adapter.get('env', {}) != expected_env:
         raise SystemExit('Claude requires an explicitly bound local adapter')
-    if service['name'] == 'scheduler':
-        expected_scopes = {'openid', 'profile', 'email', 'offline_access', 'scheduler:read'}
-        if service['resource'] != 'https://scheduler-api.onul.me' or set(service['scopes']) != expected_scopes:
-            raise SystemExit('Scheduler requires its ordinary resource and read-only device scopes')
+    ordinary_services = {
+        'scheduler': ('https://scheduler-api.onul.me', 'scheduler', 'scheduler:read'),
+        'sports-calendar': ('https://sports-calendar.onul.me', 'sports', 'sports:read'),
+    }
+    if service['name'] in ordinary_services:
+        resource, command, read_scope = ordinary_services[service['name']]
+        expected_scopes = {'openid', 'profile', 'email', 'offline_access', read_scope}
+        if service['resource'] != resource or set(service['scopes']) != expected_scopes:
+            raise SystemExit('Device services require their ordinary resource and read-only scopes')
         if manifest['interface']['capabilities'] != ['Read']:
-            raise SystemExit('Scheduler advertises read capabilities only')
+            raise SystemExit('Device services advertise read capabilities only')
         for connection in [native, adapter]:
-            if connection != {'type': 'stdio', 'command': 'scheduler', 'args': ['mcp']}:
-                raise SystemExit('Scheduler requires its fixed ordinary device adapter')
+            if connection != {'type': 'stdio', 'command': command, 'args': ['mcp']}:
+                raise SystemExit('Device services require their fixed ordinary adapters')
 print('Public metadata, contained component paths, credential exclusions and client bindings validated')
