@@ -20,6 +20,10 @@ Continue only for the requested result set, preserving the same selections and b
 Summarize useful event titles, dates and status without exposing unrelated identifiers or claiming unconfirmed fixtures are confirmed.
 The connection does not supply private calendar feed credentials.
 
+Connecting requires an existing Sports Calendar account and an executor-specific encryption key provisioned by the owning Nix/agenix configuration.
+The default key is `/private/var/lib/onul-credential-keys/<uid>/sports.key` on macOS or `/var/lib/onul-credential-keys/<uid>/sports.key` on Linux.
+The CLI rejects a missing or unsafe key before starting phone authorization; stop and report the executor provisioning requirement rather than generating, copying or requesting a key in this workflow.
+
 For an explicit request to connect or sign in, install the service-owned CLI if needed:
 
 ```sh
@@ -32,11 +36,10 @@ Keep that directory on the MCP executor's `PATH`, including for a remote executo
 `SPORTS_INSTALL_DIR` can select another user-writable directory already on that executor's `PATH`.
 Show the verification URL and user code to the user for approval on their phone; do not approve on their behalf.
 A denied, expired or failed approval stops the login attempt.
-An existing Sports Calendar account is required.
 
 `sports whoami` reports authorization status and the verified original deadline without an account identifier.
 Authorization ends seven days after the original fresh approval; refresh and restart do not extend it.
 The noninteractive proxy remains bound to its startup grant.
 Reconnect after replacement login or CLI upgrade.
 `sports logout` removes local authorization; `sports upgrade` updates from the service.
-Do not open credential files or copy access, refresh or device credentials into chat, manifests or diagnostics.
+Do not open credential or key files or copy access, refresh or device credentials into chat, manifests or diagnostics.

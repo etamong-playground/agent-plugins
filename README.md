@@ -87,6 +87,8 @@ A local adapter can omit `originEnv` when its CLI pins the service's canonical r
 ## Sports Calendar
 
 Sports Calendar uses its standalone `sports` CLI for phone device approval on macOS or Linux.
+Before login, its executor's Nix/agenix configuration must provide the independent `sports.key` at `/private/var/lib/onul-credential-keys/<uid>/` on macOS or `/var/lib/onul-credential-keys/<uid>/` on Linux.
+The CLI validates this private key before phone approval and stores grants encrypted; a missing key requires executor provisioning, not a token or key pasted into the plugin.
 Install it on the MCP executor and complete approval before starting the connection:
 
 ```sh
