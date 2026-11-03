@@ -23,7 +23,7 @@ def validate_sources():
     actual_names = {path.name for path in (PLUGIN / 'skills').iterdir()}
     if actual_names != expected_names:
         raise ValueError('Skill selection differs from audited source manifest')
-    forbidden = re.compile(r'/Users/[A-Za-z0-9_.-]+/|/home/[A-Za-z0-9_.-]+/|github_pat_|gh[pousr]_[A-Za-z0-9_]{20,}|-----BEGIN .*PRIVATE KEY')
+    forbidden = re.compile(r'/Users/[A-Za-z0-9_.-]+/|/home/[A-Za-z0-9_.-]+/|github_pat_|gh[pousr]_[A-Za-z0-9_]{20,}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----')
     for skill in SOURCE['skills']:
         folder = PLUGIN / 'skills' / skill['name']
         actual = {}
@@ -37,7 +37,7 @@ def validate_sources():
                 actual[str(path.relative_to(folder))] = digest(data)
         if actual != skill['sha256']:
             raise ValueError(f'Original files changed or supporting files missing: {skill["name"]}')
-    expected_files = {'LICENSE', 'sources.json', '.claude-plugin/plugin.json', '.codex-plugin/plugin.json'}
+    expected_files = {'sources.json', '.claude-plugin/plugin.json', '.codex-plugin/plugin.json'} | set(SOURCE['licenses'])
     for skill in SOURCE['skills']:
         expected_files.update('skills/' + skill['name'] + '/' + name for name in skill['sha256'])
     actual_files = set()
@@ -52,8 +52,9 @@ def validate_sources():
                 raise ValueError('Private content indicator in package metadata')
     if actual_files != expected_files:
         raise ValueError('Package contains unexpected or missing files')
-    if digest((PLUGIN / 'LICENSE').read_bytes()) != SOURCE['license_sha256']:
-        raise ValueError('Original MIT notice changed or is missing')
+    for name, expected in SOURCE['licenses'].items():
+        if digest((PLUGIN / name).read_bytes()) != expected:
+            raise ValueError('Original MIT notice changed or is missing')
     return expected_files
 
 
@@ -79,23 +80,37 @@ def build(output):
         name = 'jskills/' + relative
         entries[name] = path.read_bytes()
     archive(downloads / 'jskills.zip', entries, executable_names)
-    license_bytes = (PLUGIN / 'LICENSE').read_bytes()
     links = []
     for skill in SOURCE['skills']:
         name = skill['name']
         prefix = 'jskills/skills/' + name + '/'
         files = {name + '/' + key[len(prefix):]: data for key, data in entries.items() if key.startswith(prefix)}
-        files[name + '/LICENSE'] = license_bytes
+        files[name + '/LICENSE'] = (PLUGIN / skill['license']).read_bytes()
         archive(downloads / (name + '.zip'), files, {name + '/' + key[len(prefix):] for key in executable_names if key.startswith(prefix)})
         links.append(f'<a class="skill-download" href="downloads/{name}.zip" download>{html.escape(name)} <span>ZIP ↓</span></a>')
-    for name in ['LICENSE', 'sources.json']:
+    for name in [*SOURCE['licenses'], 'sources.json']:
         shutil.copyfile(PLUGIN / name, downloads / name)
     checksums = ''.join(f'{digest(path.read_bytes())}  {path.name}\n' for path in sorted(downloads.glob('*.zip')))
     (downloads / 'SHA256SUMS.txt').write_text(checksums)
     guide = (ROOT / 'site/jskills/guide.md').read_text()
-    shutil.copyfile(ROOT / 'site/jskills/guide.md', output / 'guide.md')
+    workflow = json.loads((ROOT / 'site/jskills/workflow.json').read_text())
+    known_skills = {skill['name'] for skill in SOURCE['skills']}
+    nodes = []
+    mermaid = ['flowchart TD']
+    for index, phase in enumerate(workflow, 1):
+        if not set(phase['skills']).issubset(known_skills):
+            raise ValueError('Workflow names an unavailable skill')
+        names = ', '.join(phase['skills'])
+        nodes.append(f'<li><span class="phase-number">{index:02d}</span><h3>{html.escape(phase["title"])}</h3><p>{html.escape(names)}</p></li>')
+        mermaid.append(f'  N{index}["{phase["title"]}<br/>{names}"]')
+        if index > 1:
+            mermaid.append(f'  N{index - 1} --> N{index}')
+    mermaid.extend(['  N5 -- "오류 수정" --> N4', '  N6 -- "확인된 지적 수정" --> N4'])
+    markdown_diagram = '```mermaid\n' + '\n'.join(mermaid) + '\n```'
+    (output / 'guide.md').write_text(guide.replace('<!-- workflow-diagram -->', markdown_diagram))
+    workflow_html = '<div class="workflow" aria-label="제품 개발 단계와 사용하는 스킬"><ol class="workflow-steps">' + ''.join(nodes) + '</ol><p class="workflow-return">검증 또는 리뷰에서 수정할 내용이 확인되면 구현 단계로 돌아가고, 수정 후에는 다시 검증합니다.</p></div>'
     md = markdown.Markdown(extensions=['tables', 'fenced_code', 'toc'], extension_configs={'toc': {'permalink': False}})
-    content = md.convert(guide)
+    content = md.convert(guide).replace('<!-- workflow-diagram -->', workflow_html)
     content = re.sub(r'<h1[^>]*>.*?</h1>', '', content, count=1)
     page = (ROOT / 'site/jskills/template.html').read_text()
     page = page.replace('{{CONTENT}}', content).replace('{{TOC}}', md.toc).replace('{{DOWNLOADS}}', '\n'.join(links))

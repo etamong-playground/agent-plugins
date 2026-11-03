@@ -1,7 +1,7 @@
 {
   "name": "jskills",
-  "version": "0.1.0",
-  "description": "Portable skills for hackathon design, prototyping, testing and debugging.",
+  "version": "0.2.0",
+  "description": "Portable AI product development skills for design, implementation, review and validation.",
   "author": {
     "name": "Onul"
   },

@@ -61,9 +61,9 @@ Keep credentials and privileged fleet administration workflows outside these pac
 
 ## jskills
 
-A hackathon collection of original MIT-licensed Matt Pocock skills: grilling, prototype, tdd, diagnosing-bugs, codebase-design, domain-modeling, teach, and writing-great-skills.
+An AI product development collection with original MIT-licensed public skills, shared local development workflows, and explicitly marked portable editions for planning, Korean prose and UI review.
 The [Korean guide](https://pages.onul.me/jskills/) covers plugin and folder installation, worked prompts, dependencies, and update instructions.
-Original source revisions and file hashes live in [sources.json](plugins/jskills/sources.json); the package preserves its [MIT notice](plugins/jskills/LICENSE).
+Source origins, portable-edition notes, licenses and file hashes live in [sources.json](plugins/jskills/sources.json); the package preserves its [MIT notice](plugins/jskills/LICENSE).
 
 ```sh
 codex plugin marketplace add etamong-playground/agent-plugins
