@@ -1,15 +1,29 @@
 {
-  "repository": "https://github.com/mattpocock/skills",
-  "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
-  "license": "MIT",
-  "modifications": "None; original skill folders preserved byte-for-byte.",
+  "origins": {
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
+      "license": "LICENSE"
+    },
+    "shared-local-skills": {
+      "description": "Locally maintained skill snapshots, shared for this collection with permission.",
+      "license": "LICENSE.jskills"
+    },
+    "portable-editions": {
+      "description": "Sharing editions adapted from local development workflows; personal feedback history, internal repositories and service-specific instructions removed.",
+      "license": "LICENSE.jskills"
+    }
+  },
+  "modifications": "Original folders are unchanged; sharing editions are explicitly identified per skill.",
   "skills": [
     {
       "name": "grilling",
       "path": "skills/productivity/grilling",
       "sha256": {
         "SKILL.md": "fe00af3e1815f97c0a7644605479328a726b5cd95ba6ef56a4be2a92fae6c20f"
-      }
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE"
     },
     {
       "name": "prototype",
@@ -18,7 +32,9 @@
         "LOGIC.md": "da91dc92195c00d5dc33863b8c1a030998025a0f8583ebf2babd770825b7f70c",
         "SKILL.md": "863611f7fb65b78265188466cacdb365cbad129d36844ec57603c708d2026b50",
         "UI.md": "d76d565149ee50456c5ddc5e29c27fec8737637874fe5c37d970db085a200b27"
-      }
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE"
     },
     {
       "name": "tdd",
@@ -28,7 +44,9 @@
         "mocking.md": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef",
         "refactoring.md": "54fced22dd1911b7094c3fe7979b7c1a40d40be307482c4adf7dc0588f27d6cc",
         "tests.md": "e12182f5c4c6a844b7c6ab4b8d2623b642aaaae5460fe58ed087efd4f3d5fb8a"
-      }
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE"
     },
     {
       "name": "diagnosing-bugs",
@@ -36,7 +54,9 @@
       "sha256": {
         "SKILL.md": "7a0779480f323a66d109404646bcc1a14bf0232b45b3e3ea93b652a035718acb",
         "scripts/hitl-loop.template.sh": "b2932630950e5210075bcd6f850e5accf30c101c5367b29eac3a29b4dd8084c8"
-      }
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE"
     },
     {
       "name": "codebase-design",
@@ -45,7 +65,9 @@
         "DEEPENING.md": "125e6b77413ad2bc7cf7a772bc74336d580a50f9e797db2178ed133d62333d06",
         "DESIGN-IT-TWICE.md": "21c3264953bd30ee87b181a3ccaf0e70649f461e5ffd7dc654acee4ba1788b31",
         "SKILL.md": "a8d50abac5a4018f60e1d911d4b6f4e36454ca14d6c390c0695a578c7de65dad"
-      }
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE"
     },
     {
       "name": "domain-modeling",
@@ -54,7 +76,9 @@
         "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2",
         "CONTEXT-FORMAT.md": "b8cc318f2a4285b530e908b6bc43901c3c5cd11100362636bbc4216639bef597",
         "SKILL.md": "152e2c97239affb12a60c5f4a7e74ab546a49ae169688c81f4e2ccc42dafa579"
-      }
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE"
     },
     {
       "name": "teach",
@@ -65,7 +89,9 @@
         "MISSION-FORMAT.md": "8da6d3ac84eb2eb19f17c260b6acf01c560d3ac7a4501c415eea0e985602f4d7",
         "RESOURCES-FORMAT.md": "2bc634a64b0d0daa10904f9222e7aa0d361420dfacabbf092fbe3a72222edc08",
         "SKILL.md": "6d2dbe5e03084cf26fef66b535127b36cd1bcbe9478e26b0626029cd51dc2259"
-      }
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE"
     },
     {
       "name": "writing-great-skills",
@@ -73,9 +99,94 @@
       "sha256": {
         "GLOSSARY.md": "df0d042f2b69b8a952bd4b0e6904e2eb316f0203c1a5f09169da7f75a5575a61",
         "SKILL.md": "7c6ba7ec25bb2c0e173c52cdc2da878aef0b083ec19a9c1799934e480c8833cc"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE"
+    },
+    {
+      "name": "adversarial-review",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "c05c99768bfee5c62b45a75d0795fdf79e09c9f40badf5d3cbba78f019909854"
+      },
+      "modifications": "Sharing edition: removes personal configuration and preference history, and uses supported client-neutral subagents and model selection."
+    },
+    {
+      "name": "compare-spike",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "2deea6a2ac53609ed3d49a515ef14c910610e0605929b8ca4abed6c1e4d27bd9"
+      }
+    },
+    {
+      "name": "refactor-safely",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "LICENSE.oh-my-agent": "beeda13ca6ab2ffa092ca01cc6e07e6ac004e41f5003c43ecd3011b693425a78",
+        "SKILL.md": "d12557e570727885ac87eb0bd3fb6153418d0461fdbd535969b3f0ea040c453b"
+      }
+    },
+    {
+      "name": "prune-comments",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "a4506588bf153288a23a90c1d821dae5e48b8c2cc2ccf9fcf27599bc2a0472fe"
+      }
+    },
+    {
+      "name": "explain-code-change",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "LICENSE.oh-my-agent": "beeda13ca6ab2ffa092ca01cc6e07e6ac004e41f5003c43ecd3011b693425a78",
+        "SKILL.md": "0aabefde4ec801b7ac0baaf55ee5a7c084adbea40d93fa2ed71825243a3dac2f",
+        "scripts/validate_html.py": "915bcfa61bbf87f2cc9ad5a29da72dae197cd510162a7fa6dc747a62be2695f7"
+      }
+    },
+    {
+      "name": "korean-prose",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "Sharing edition: removes private workflow dependencies and personal context; retains the task-specific development guidance.",
+      "sha256": {
+        "SKILL.md": "22059f8742bff1a12de133da40e8bc13e31fac18bef5c80bfe5c3b8ebe3f439b"
+      }
+    },
+    {
+      "name": "feature-planning",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "Sharing edition: removes private workflow dependencies and personal context; retains the task-specific development guidance.",
+      "sha256": {
+        "SKILL.md": "053a865f3aa35b2c70842cab6c4e3d51ec3dc461d1733e0adbb7115cbd6d0271"
+      }
+    },
+    {
+      "name": "platform-plan-doc",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "Sharing edition: removes private workflow dependencies and personal context; retains the task-specific development guidance.",
+      "sha256": {
+        "SKILL.md": "bd9078e46b65fb1492b2e0614a5344f5046803b222315024e5b6ec51e0e5e3e8"
+      }
+    },
+    {
+      "name": "console-ux",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "Sharing edition: removes private workflow dependencies and personal context; retains the task-specific development guidance.",
+      "sha256": {
+        "SKILL.md": "962846b852038e4b58bf9b1e4850874f7d2a5830b6a7ca2c66d9e2d5af55a78c"
       }
     }
   ],
-  "license_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+  "licenses": {
+    "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+    "LICENSE.jskills": "bc894ecab39778d810abcdb96d272a0835758c168e1fd65458207e5af99759c0"
+  },
   "executable_files": []
 }

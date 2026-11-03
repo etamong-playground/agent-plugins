@@ -47,7 +47,7 @@ class JskillsTest(unittest.TestCase):
             self.assertIn('jskills/.codex-plugin/plugin.json', full.namelist())
             for skill in manifest['skills']:
                 with zipfile.ZipFile(output / 'downloads' / (skill['name'] + '.zip')) as single:
-                    self.assertIn('Copyright (c) 2026 Matt Pocock', single.read(skill['name'] + '/LICENSE').decode())
+                    self.assertEqual(single.read(skill['name'] + '/LICENSE'), (builder.PLUGIN / skill['license']).read_bytes())
                     for name, expected in skill['sha256'].items():
                         data = full.read('jskills/skills/' + skill['name'] + '/' + name)
                         self.assertEqual(hashlib.sha256(data).hexdigest(), expected)

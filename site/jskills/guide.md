@@ -1,13 +1,23 @@
 # jskills
 
-해커톤에서 아이디어를 구체화하고, 동작하는 데모를 만들고, 오류를 확인할 때 쓰는 AI coding skill 모음입니다.
+아이디어를 구체화하고, 제품을 구현하고, 오류와 변경 내용을 검증할 때 쓰는 AI coding skill 모음입니다.
 Codex와 Claude Code에서 사용할 수 있습니다.
-SK하이닉스 공식 자료나 공식 플러그인은 아닙니다.
+
+## 개발 워크플로우
+
+요구사항과 완료 조건을 정한 뒤 작은 단위로 구현하고 검증합니다.
+오류나 리뷰 지적이 나오면 구현 단계로 돌아가 수정한 뒤 다시 확인합니다.
+
+<!-- workflow-diagram -->
+
+`platform-plan-doc`은 서비스 전체의 기획서와 설계서를 작성할 때 쓰고, `feature-planning`은 이번에 구현할 작업의 범위와 검증 기준을 정할 때 씁니다.
+`korean-prose`는 기획서, 화면 문구, 변경 설명을 작성하는 동안 함께 사용합니다.
+익숙하지 않은 개념은 `teach`로 학습하고, 반복해서 쓰는 절차는 `writing-great-skills`로 정리할 수 있습니다.
 
 ## 먼저 쓰면 좋은 스킬
 
 처음에는 `grilling`, `prototype`, `tdd`, `diagnosing-bugs`부터 쓰면 됩니다.
-아래 순서는 해커톤 진행을 위한 제안이며, 대회 평가 기준을 설명하지 않습니다.
+프로젝트의 규모와 진행 상태에 맞춰 필요한 단계부터 사용하면 됩니다.
 
 | 단계 | 스킬 | 사용할 때 | 요청 예시 |
 | --- | --- | --- | --- |
@@ -28,6 +38,34 @@ SK하이닉스 공식 자료나 공식 플러그인은 아닙니다.
 | codebase-design | 복잡한 기능을 작은 인터페이스로 나눕니다. | CSV 파싱과 이상 판단을 따로 테스트할 수 있게 인터페이스를 설계해 줘. |
 | writing-great-skills | 반복 작업을 팀의 스킬로 정리할 때 참고합니다. | 데모 전 점검 절차를 반복해서 쓸 수 있는 스킬로 작성해 줘. |
 | teach | 익숙하지 않은 기술을 연습하면서 배웁니다. | 이 프로젝트에서 쓰는 embedding을 작은 예제로 설명하고 연습 문제를 내 줘. |
+
+## 기획과 화면 검토
+
+| 스킬 | 사용할 때 | 요청 예시 |
+| --- | --- | --- |
+| feature-planning | 이번 작업의 범위와 완료 조건을 정합니다. | CSV 업로드 기능의 범위, 작업 순서, 검증 기준을 정리해 줘. |
+| platform-plan-doc | 서비스 기획서와 기능 및 화면 설계서를 작성합니다. | 측정값을 비교하는 서비스의 용어, 기능, 사용자 흐름, 화면 설계를 정리해 줘. |
+| console-ux | 표, 필터, 폼, 상태 표시와 화면 문구를 검토합니다. | 업로드 결과 화면에서 오류 행을 찾기 쉽도록 표와 필터를 검토해 줘. |
+| korean-prose | 한국어 기술 문서와 화면 문구를 다듬습니다. | 이 기획서의 의미와 조건을 유지하면서 자연스러운 한국어로 다듬어 줘. |
+
+기획서나 분석만 요청하면 문서 작업까지만 진행합니다.
+실제 코드 수정까지 원한다면 구현할 범위를 함께 지정합니다.
+
+## 기술 비교와 코드 검토
+
+| 스킬 | 사용할 때 | 요청 예시 |
+| --- | --- | --- |
+| compare-spike | 기술 후보를 같은 시나리오로 구현해 비교합니다. | CSV 처리 라이브러리 두 가지를 같은 입력으로 비교하고 선택 근거를 정리해 줘. |
+| adversarial-review | 여러 관점에서 변경을 비판적으로 검토합니다. | 이 변경을 오류 처리, 요구사항, 보안 관점에서 검토하고 각 지적을 다시 확인해 줘. |
+| refactor-safely | 동작을 유지하면서 코드 구조를 정리합니다. | 현재 동작을 테스트로 확인하고 파싱 로직을 작은 단계로 분리해 줘. |
+| prune-comments | 코드가 이미 설명하는 주석을 정리합니다. | 이번에 바뀐 코드 안에서 불필요한 주석을 검토해 줘. |
+| explain-code-change | 변경 내용을 설명하는 HTML 문서를 만듭니다. | 이 변경의 배경과 동작을 팀원이 읽을 수 있는 HTML로 설명해 줘. |
+
+`adversarial-review`의 결과는 확정된 결함 목록이 아닙니다.
+각 지적이 실제 코드와 요구사항에 맞는지 다시 확인하고, 확인된 지적만 반영합니다.
+여러 에이전트를 쓰는 리뷰는 순차 검토보다 시간과 사용량이 늘어날 수 있으므로 검토 범위를 명시합니다.
+`compare-spike`는 실제 비교 구현을 만들고, `refactor-safely`와 `prune-comments`는 코드를 수정하는 작업입니다.
+검토만 원한다면 파일을 수정하지 말라고 요청합니다.
 
 ## 설치 전 준비
 
@@ -80,10 +118,12 @@ jskills에는 MCP 연결, 로그인 연동, 자동 실행 hook이 없습니다.
 
 ## ZIP으로 직접 설치
 
-[전체 원본 ZIP](https://pages.onul.me/jskills/downloads/jskills.zip)을 내려받아 압축을 풉니다.
+[전체 스킬 ZIP](https://pages.onul.me/jskills/downloads/jskills.zip)을 내려받아 압축을 풉니다.
 압축을 풀면 `jskills/skills/스킬이름/SKILL.md`와 각 스킬의 참고 파일이 보입니다.
 `SKILL.md` 한 파일만 복사하지 말고 스킬 폴더 전체를 복사합니다.
-개별 스킬 ZIP에는 원본 폴더와 MIT license가 들어 있습니다.
+개별 스킬 ZIP에는 스킬 폴더와 해당 스킬에 적용되는 MIT license가 들어 있습니다.
+전체 ZIP에서 스킬 폴더만 복사한다면 `sources.json`의 `license`에 지정된 파일도 해당 폴더에 `LICENSE`라는 이름으로 함께 복사합니다.
+스킬 폴더 안에 이미 있는 추가 license 파일도 함께 보존합니다.
 `tdd`는 계획 단계에서 `codebase-design`을 사용하므로, 개별 ZIP으로 설치할 때는 두 스킬을 함께 설치합니다.
 플러그인과 전체 ZIP에는 두 스킬이 모두 들어 있습니다.
 
@@ -97,7 +137,8 @@ Windows에서는 `~` 대신 사용자 홈 폴더를 사용합니다.
 같은 이름의 스킬이 있으면 덮어쓰지 말고 먼저 기존 내용을 확인합니다.
 플러그인 설치와 직접 설치 중 하나를 선택하면 중복 표시를 피할 수 있습니다.
 
-macOS 또는 Linux에서 처음 설치한다면, 압축을 푼 상위 폴더에서 다음 명령으로 `grilling`만 설치할 수 있습니다.
+macOS 또는 Linux에서는 `grilling.zip`을 내려받아 압축을 푼 상위 폴더에서 다음 명령으로 설치할 수 있습니다.
+이 개별 ZIP에는 `grilling/LICENSE`가 포함되어 있습니다.
 기존 대상 폴더가 있으면 명령은 복사를 중단합니다.
 
 Codex:
@@ -105,8 +146,7 @@ Codex:
 ```sh
 mkdir -p "$HOME/.agents/skills"
 test ! -e "$HOME/.agents/skills/grilling" && {
-  cp -R ./jskills/skills/grilling "$HOME/.agents/skills/" &&
-  cp ./jskills/LICENSE "$HOME/.agents/skills/grilling/LICENSE"
+  cp -R ./grilling "$HOME/.agents/skills/"
 }
 ```
 
@@ -115,12 +155,11 @@ Claude Code:
 ```sh
 mkdir -p "$HOME/.claude/skills"
 test ! -e "$HOME/.claude/skills/grilling" && {
-  cp -R ./jskills/skills/grilling "$HOME/.claude/skills/" &&
-  cp ./jskills/LICENSE "$HOME/.claude/skills/grilling/LICENSE"
+  cp -R ./grilling "$HOME/.claude/skills/"
 }
 ```
 
-다른 스킬을 설치할 때는 위 명령의 `grilling`을 원하는 스킬 이름으로 바꿉니다.
+다른 스킬은 해당 개별 ZIP을 받은 뒤 위 명령의 `grilling`을 그 스킬 이름으로 바꿉니다.
 새 세션에서 Codex는 `$grilling`, Claude Code는 `/grilling`으로 직접 설치한 스킬을 실행합니다.
 
 ## 두 도구에서 사용할 때의 차이
@@ -128,10 +167,13 @@ test ! -e "$HOME/.claude/skills/grilling" && {
 원본 파일은 영어로 작성되어 있습니다.
 대화에서 "설명과 결과는 한국어로 작성해 줘"라고 덧붙일 수 있습니다.
 `prototype`, `teach`, `writing-great-skills`는 직접 호출해서 사용합니다.
+다른 스킬도 대화에서 이름을 명시하면 사용할 절차를 분명하게 지정할 수 있습니다.
 
 원본 본문에 있는 `/codebase-design` 같은 이름은 다른 스킬을 가리킵니다.
 Claude Code 플러그인으로 설치했다면 `/jskills:codebase-design`을 선택하고, Codex에서는 스킬 선택 목록에서 `codebase-design`을 고르거나 해당 스킬을 사용하라고 요청합니다.
-클라이언트가 원본에 나오는 도구 이름이나 subagent 기능을 지원하지 않으면, 에이전트에게 가능한 방식으로 진행하고 생략한 단계를 알려 달라고 요청합니다.
+원본의 `Agent`, `Workflow`, 모델 이름은 작성 당시의 도구를 가리킬 수 있습니다.
+현재 클라이언트가 지원하는 도구와 모델만 사용하도록 요청합니다.
+subagent 기능이 없으면 독립적인 병렬 리뷰를 수행했다고 볼 수 없으므로, 가능한 검토와 생략한 단계를 구분해 달라고 요청합니다.
 
 `diagnosing-bugs`의 마지막에 나오는 `improve-codebase-architecture`는 별도 후속 스킬이며 이 모음에 포함되어 있지 않습니다.
 디버깅을 마친 뒤 구조 개선이 필요할 때만 원본 저장소에서 확인하면 됩니다.
@@ -228,15 +270,19 @@ claude plugin update jskills@onul-services
 
 ## 원본과 공개 범위
 
-Matt Pocock의 공개 skills에서 선택한 파일을 수정 없이 제공합니다.
-참고 문서와 스크립트도 함께 보존하고, MIT license를 포함합니다.
+Matt Pocock의 공개 skills와 로컬에서 관리하던 개발 스킬을 함께 제공합니다.
+개인정보와 내부 설정이 없는 원본은 참고 문서와 스크립트까지 수정 없이 보존합니다.
+`adversarial-review`, `korean-prose`, `feature-planning`, `console-ux`, `platform-plan-doc`은 내부 경로와 개인 피드백 이력을 제외한 외부 공유용 수정본입니다.
+출처 파일에 원본과 수정본을 구분하고 각 파일의 해시를 기록합니다.
+원본의 MIT notice와 공유 스킬의 MIT license를 함께 포함합니다.
 공개 묶음에는 개인 작업 기록, 계정 정보, 사내 설정, 개인 인프라 운영 스킬을 넣지 않았습니다.
 다만 스킬을 실행하면 에이전트가 현재 프로젝트를 읽거나 수정할 수 있으므로, 공유할 수 있는 데이터만 작업 폴더에 둡니다.
 
 - [공개 원본 저장소](https://github.com/mattpocock/skills)
 - [이 묶음의 원본 revision](https://github.com/mattpocock/skills/tree/6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461)
 - [파일별 SHA-256과 출처](https://pages.onul.me/jskills/downloads/sources.json)
-- [MIT license](https://pages.onul.me/jskills/downloads/LICENSE)
+- [Matt Pocock 원본 MIT license](https://pages.onul.me/jskills/downloads/LICENSE)
+- [공유 스킬 MIT license](https://pages.onul.me/jskills/downloads/LICENSE.jskills)
 - [전체 ZIP과 개별 ZIP의 SHA-256](https://pages.onul.me/jskills/downloads/SHA256SUMS.txt)
 
 ## 공식 사용 설명서
