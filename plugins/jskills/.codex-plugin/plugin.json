@@ -1,0 +1,10 @@
+{
+  "name": "jskills",
+  "version": "0.1.0",
+  "description": "Portable skills for hackathon design, prototyping, testing and debugging.",
+  "author": {
+    "name": "Onul"
+  },
+  "license": "MIT",
+  "skills": "./skills/"
+}

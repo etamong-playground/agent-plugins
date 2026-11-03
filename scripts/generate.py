@@ -18,6 +18,19 @@ def generate(root):
         seen.add(name)
         if not re.fullmatch(r'\d+\.\d+\.\d+', service['version']):
             raise ValueError('Service versions must use major.minor.patch')
+        if service.get('kind') == 'skills':
+            base = f'plugins/{name}/'
+            if not (root / base / 'skills').is_dir():
+                raise ValueError('Plugin skill tree is missing')
+            common = {'name': name, 'version': service['version'], 'description': service['description'],
+                      'author': {'name': catalog['owner']}, 'license': service['license']}
+            files[base + '.codex-plugin/plugin.json'] = {**common, 'skills': './skills/'}
+            files[base + '.claude-plugin/plugin.json'] = common
+            codex['plugins'].append({'name': name, 'source': {'source': 'local', 'path': './plugins/' + name},
+                                     'policy': {'installation': 'AVAILABLE'}, 'category': 'Productivity'})
+            claude['plugins'].append({'name': name, 'source': './plugins/' + name,
+                                     'version': service['version'], 'description': service['description']})
+            continue
         resource = urlsplit(service['resource'])
         if resource.scheme != 'https' or not resource.netloc or resource.username or resource.password or resource.path or resource.query or resource.fragment:
             raise ValueError('Service resources must be canonical HTTPS origins')

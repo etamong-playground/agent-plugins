@@ -27,6 +27,14 @@
         ],
         "originEnv": "PAGES_URL"
       }
+    },
+    {
+      "name": "jskills",
+      "kind": "skills",
+      "displayName": "jskills",
+      "version": "0.1.0",
+      "description": "Portable skills for hackathon design, prototyping, testing and debugging.",
+      "license": "MIT"
     }
   ],
   "description": "Authenticated service connections and workflows for Onul services."

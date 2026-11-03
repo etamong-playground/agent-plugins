@@ -12,6 +12,12 @@
       "source": "./plugins/pages",
       "version": "0.1.0",
       "description": "Publish private static sites and reports with Pages."
+    },
+    {
+      "name": "jskills",
+      "source": "./plugins/jskills",
+      "version": "0.1.0",
+      "description": "Portable skills for hackathon design, prototyping, testing and debugging."
     }
   ]
 }

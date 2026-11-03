@@ -1,7 +1,8 @@
 # Onul Services
 
 Service connections and workflows for Codex and Claude Code.
-Plugins are public; each service requires its own sign-in and account permissions.
+Plugins are public; service plugins require their own sign-in and account permissions.
+The jskills plugin bundles portable development skills and requires no service connection.
 Pages publishes static sites and reports, with private previews as the default workflow.
 
 ## Codex
@@ -57,3 +58,30 @@ Generate client-specific manifests and catalogs with `python3 scripts/generate.p
 Codex's compatibility manifest selects `.mcp.codex.json` explicitly, while Claude uses `.mcp.json`.
 Do not add a portable root manifest that would override the native OAuth adapter.
 Keep credentials and privileged fleet administration workflows outside these packages.
+
+## jskills
+
+A hackathon collection of original MIT-licensed Matt Pocock skills: grilling, prototype, tdd, diagnosing-bugs, codebase-design, domain-modeling, teach, and writing-great-skills.
+The [Korean guide](https://pages.onul.me/jskills/) covers plugin and folder installation, worked prompts, dependencies, and update instructions.
+Original source revisions and file hashes live in [sources.json](plugins/jskills/sources.json); the package preserves its [MIT notice](plugins/jskills/LICENSE).
+
+```sh
+codex plugin marketplace add etamong-playground/agent-plugins
+codex plugin add jskills@onul-services
+claude plugin marketplace add etamong-playground/agent-plugins
+claude plugin install jskills@onul-services
+```
+
+Build the static guide and complete/individual ZIP downloads into a new output directory:
+
+```sh
+python3 -m venv .tmp/venv
+.tmp/venv/bin/pip install -r requirements.txt
+.tmp/venv/bin/python scripts/build_jskills.py --output .tmp/jskills-site
+```
+
+The builder refuses to overwrite an existing output directory and rejects changed or missing original files before creating downloads.
+Use a fresh output directory for each build.
+Skill-only catalog entries use `kind: skills` and carry no MCP or authentication configuration.
+
+PR titles and bodies are written in English; the repository owner reviews changes.
