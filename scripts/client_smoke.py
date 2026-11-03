@@ -69,7 +69,7 @@ with tempfile.TemporaryDirectory(prefix='client-smoke-', dir=root / '.tmp') as w
                 selector = service['name'] + '@' + catalog['name']
                 entry = next(item for item in installed if item.get('pluginId', item.get('id')) == selector)
                 assert entry['enabled'] and entry['version'] == service['version'], (client, selector)
-                if client == 'claude':
+                if client == 'claude' and service.get('kind') != 'skills':
                     connection = entry['mcpServers'][service['name']]
                     assert connection['type'] == 'stdio' and connection['command'] == service['claudeAdapter']['command']
                     assert connection['env'][service['claudeAdapter']['originEnv']] == service['resource']

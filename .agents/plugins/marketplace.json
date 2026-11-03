@@ -15,6 +15,17 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "jskills",
+      "source": {
+        "source": "local",
+        "path": "./plugins/jskills"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
     }
   ]
 }

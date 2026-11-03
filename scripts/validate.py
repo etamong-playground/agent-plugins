@@ -36,7 +36,8 @@ for service in catalog['plugins']:
     if (plugin / 'plugin.json').exists() or (plugin / 'mcp.json').exists():
         raise SystemExit('Portable root metadata would shadow the qualified Codex OAuth adapter')
     manifest = json.loads((plugin / '.codex-plugin/plugin.json').read_text())
-    for field in ['skills', 'mcpServers']:
+    fields = ['skills'] if service.get('kind') == 'skills' else ['skills', 'mcpServers']
+    for field in fields:
         target = (plugin / manifest[field]).resolve()
         if not target.is_relative_to(plugin.resolve()) or not target.exists():
             raise SystemExit(f'Plugin component path escapes or is missing: {service["name"]}/{field}')
@@ -47,6 +48,10 @@ for service in catalog['plugins']:
         text = skill.read_text()
         if not text.startswith('---\n') or '\nname: ' not in text or '\ndescription: ' not in text:
             raise SystemExit(f'Invalid skill frontmatter: {skill.relative_to(root)}')
+    if service.get('kind') == 'skills':
+        if 'mcpServers' in manifest or any(plugin.glob('.mcp*.json')):
+            raise SystemExit('Skill-only plugins must not configure service connections')
+        continue
     native = json.loads((plugin / '.mcp.codex.json').read_text())['mcpServers'][service['name']]
     if native['oauth']['clientId'] != service['clientId'] or native['oauth_resource'] != service['resource']:
         raise SystemExit('Native OAuth client/resource binding is missing')
