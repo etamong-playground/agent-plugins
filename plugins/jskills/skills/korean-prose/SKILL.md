@@ -6,7 +6,6 @@ description: Write and edit natural Korean technical prose, guides, planning doc
 # Korean technical prose
 
 Write for the reader's task and keep terminology consistent with the project.
-This sharing edition contains writing rules, without personal correction history or internal examples.
 
 ## Preserve meaning
 

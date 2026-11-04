@@ -6,6 +6,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import unittest
+from urllib.parse import urlsplit
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -66,7 +67,28 @@ class JskillsTest(unittest.TestCase):
             if link.startswith('#'):
                 self.assertTrue(link == '#' or link[1:] in links.ids, link)
             elif not link.startswith('https://'):
-                self.assertTrue((output / link).is_file(), link)
+                self.assertTrue((output / urlsplit(link).path).is_file(), link)
+
+    def test_asset_update_changes_its_public_cache_key(self):
+        fixture = self.work / 'fixture'
+        shutil.copytree(ROOT / 'site', fixture / 'site')
+        old_root = builder.ROOT
+        self.addCleanup(setattr, builder, 'ROOT', old_root)
+        builder.ROOT = fixture
+        first, second = self.work / 'first', self.work / 'second'
+        builder.build(first)
+        css = fixture / 'site/jskills/style.css'
+        css.write_text(css.read_text() + '\nbody { outline: none; }\n')
+        builder.build(second)
+        urls = []
+        for output in [first, second]:
+            links = Links()
+            links.feed((output / 'index.html').read_text())
+            url = next(link for link in links.links if urlsplit(link).path == 'style.css')
+            self.assertTrue(urlsplit(url).query)
+            self.assertEqual((output / urlsplit(url).path).read_bytes(), (output / 'style.css').read_bytes())
+            urls.append(url)
+        self.assertNotEqual(*urls)
 
     def test_build_is_reproducible_and_refuses_overwrite(self):
         first, second = self.work / 'first', self.work / 'second'

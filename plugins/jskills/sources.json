@@ -6,11 +6,11 @@
       "license": "LICENSE"
     },
     "shared-local-skills": {
-      "description": "Locally maintained skill snapshots, shared for this collection with permission.",
+      "description": "Development workflow skills.",
       "license": "LICENSE.jskills"
     },
     "portable-editions": {
-      "description": "Sharing editions adapted from local development workflows; personal feedback history, internal repositories and service-specific instructions removed.",
+      "description": "General-purpose workflow editions.",
       "license": "LICENSE.jskills"
     }
   },
@@ -110,7 +110,7 @@
       "sha256": {
         "SKILL.md": "c05c99768bfee5c62b45a75d0795fdf79e09c9f40badf5d3cbba78f019909854"
       },
-      "modifications": "Sharing edition: removes personal configuration and preference history, and uses supported client-neutral subagents and model selection."
+      "modifications": "General-purpose workflow and client-neutral tool references."
     },
     {
       "name": "compare-spike",
@@ -151,25 +151,25 @@
       "name": "korean-prose",
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
-      "modifications": "Sharing edition: removes private workflow dependencies and personal context; retains the task-specific development guidance.",
+      "modifications": "General-purpose workflow and client-neutral tool references.",
       "sha256": {
-        "SKILL.md": "22059f8742bff1a12de133da40e8bc13e31fac18bef5c80bfe5c3b8ebe3f439b"
+        "SKILL.md": "b2c6b0144036756ab384982a46285404ecd3d999f5022d60b992020b13dadbfb"
       }
     },
     {
       "name": "feature-planning",
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
-      "modifications": "Sharing edition: removes private workflow dependencies and personal context; retains the task-specific development guidance.",
+      "modifications": "General-purpose workflow and client-neutral tool references.",
       "sha256": {
-        "SKILL.md": "053a865f3aa35b2c70842cab6c4e3d51ec3dc461d1733e0adbb7115cbd6d0271"
+        "SKILL.md": "70ed01908a928ff66bbf2d9e69a6930a1a32107ba1a2001ee5f9939813c75ffc"
       }
     },
     {
       "name": "platform-plan-doc",
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
-      "modifications": "Sharing edition: removes private workflow dependencies and personal context; retains the task-specific development guidance.",
+      "modifications": "General-purpose workflow and client-neutral tool references.",
       "sha256": {
         "SKILL.md": "bd9078e46b65fb1492b2e0614a5344f5046803b222315024e5b6ec51e0e5e3e8"
       }
@@ -178,9 +178,42 @@
       "name": "console-ux",
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
-      "modifications": "Sharing edition: removes private workflow dependencies and personal context; retains the task-specific development guidance.",
+      "modifications": "General-purpose workflow and client-neutral tool references.",
       "sha256": {
-        "SKILL.md": "962846b852038e4b58bf9b1e4850874f7d2a5830b6a7ca2c66d9e2d5af55a78c"
+        "SKILL.md": "32ca605b0e97350fa8227f4d0b6b592e8364b7735691985aa6e4acfac5ac4239"
+      }
+    },
+    {
+      "name": "audience-review",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "e91e459a1675f0118628559af8206ca81a2de96a5661b4c3bbfb83442527e0bc"
+      }
+    },
+    {
+      "name": "memory-maintenance",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "5c1a87ee3c7aab8a574eab21970e894670031214df9cc1fafebfb6c0cb852030"
+      }
+    },
+    {
+      "name": "optimize-memory",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "a63320b2b7a1b3761420da9a05ac0987e53d5bfd86395226d0faf1b4ce6f4a73"
+      }
+    },
+    {
+      "name": "update-agent-guidance",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "General-purpose workflow and client-neutral tool references.",
+      "sha256": {
+        "SKILL.md": "e2db4e73ea8fe1a79a1a8261582b6fd0c0486711aa029bad787a2344fcfea788"
       }
     }
   ],

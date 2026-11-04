@@ -68,6 +68,18 @@ def archive(path, entries, executable_names=()):
             bundle.writestr(entry, data)
 
 
+def version_assets(text, output):
+    for path in sorted(output.rglob('*')):
+        if not path.is_file():
+            continue
+        relative = str(path.relative_to(output))
+        version = digest(path.read_bytes())[:12]
+        for url in [relative, 'https://pages.onul.me/jskills/' + relative]:
+            text = text.replace(f'href="{url}"', f'href="{url}?v={version}"')
+            text = text.replace(f']({url})', f']({url}?v={version})')
+    return text
+
+
 def build(output):
     allowed_files = validate_sources()
     output.mkdir(parents=True, exist_ok=False)
@@ -107,15 +119,15 @@ def build(output):
             mermaid.append(f'  N{index - 1} --> N{index}')
     mermaid.extend(['  N5 -- "오류 수정" --> N4', '  N6 -- "확인된 지적 수정" --> N4'])
     markdown_diagram = '```mermaid\n' + '\n'.join(mermaid) + '\n```'
-    (output / 'guide.md').write_text(guide.replace('<!-- workflow-diagram -->', markdown_diagram))
+    shutil.copyfile(ROOT / 'site/jskills/style.css', output / 'style.css')
+    (output / 'guide.md').write_text(version_assets(guide.replace('<!-- workflow-diagram -->', markdown_diagram), output))
     workflow_html = '<div class="workflow" aria-label="제품 개발 단계와 사용하는 스킬"><ol class="workflow-steps">' + ''.join(nodes) + '</ol><p class="workflow-return">검증 또는 리뷰에서 수정할 내용이 확인되면 구현 단계로 돌아가고, 수정 후에는 다시 검증합니다.</p></div>'
     md = markdown.Markdown(extensions=['tables', 'fenced_code', 'toc'], extension_configs={'toc': {'permalink': False}})
     content = md.convert(guide).replace('<!-- workflow-diagram -->', workflow_html)
     content = re.sub(r'<h1[^>]*>.*?</h1>', '', content, count=1)
     page = (ROOT / 'site/jskills/template.html').read_text()
     page = page.replace('{{CONTENT}}', content).replace('{{TOC}}', md.toc).replace('{{DOWNLOADS}}', '\n'.join(links))
-    (output / 'index.html').write_text(page)
-    shutil.copyfile(ROOT / 'site/jskills/style.css', output / 'style.css')
+    (output / 'index.html').write_text(version_assets(page, output))
     print(f'Built {output}: guide, full bundle, {len(SOURCE["skills"])} individual archives, source hashes and license')
 
 
