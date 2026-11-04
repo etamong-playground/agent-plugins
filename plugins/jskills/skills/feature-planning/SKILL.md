@@ -6,7 +6,6 @@ description: Plan a feature, fix, or implementation task from repository evidenc
 # Feature planning
 
 Use the repository's existing plan, tracker, and review conventions.
-This sharing edition has no organization-specific tracker, credentials, issue claims, or publication rules.
 
 ## Establish scope
 

@@ -12,6 +12,7 @@ Codex와 Claude Code에서 사용할 수 있습니다.
 
 `platform-plan-doc`은 서비스 전체의 기획서와 설계서를 작성할 때 쓰고, `feature-planning`은 이번에 구현할 작업의 범위와 검증 기준을 정할 때 씁니다.
 `korean-prose`는 기획서, 화면 문구, 변경 설명을 작성하는 동안 함께 사용합니다.
+`audience-review`로 문서를 읽을 사람과 그 사람이 해야 할 일을 정하고, 작성한 내용이 독자에게 필요한지 확인합니다.
 익숙하지 않은 개념은 `teach`로 학습하고, 반복해서 쓰는 절차는 `writing-great-skills`로 정리할 수 있습니다.
 
 ## 먼저 쓰면 좋은 스킬
@@ -67,13 +68,25 @@ Codex와 Claude Code에서 사용할 수 있습니다.
 `compare-spike`는 실제 비교 구현을 만들고, `refactor-safely`와 `prune-comments`는 코드를 수정하는 작업입니다.
 검토만 원한다면 파일을 수정하지 말라고 요청합니다.
 
+## 문서와 에이전트 작업 관리
+
+| 스킬 | 사용할 때 | 요청 예시 |
+| --- | --- | --- |
+| audience-review | 독자에게 필요한 내용으로 문서를 작성하고 검토합니다. | 처음 설치하는 개발자가 이 가이드만 보고 실행할 수 있는지 검토해 줘. |
+| update-agent-guidance | 반복되는 작업 규칙을 적절한 범위의 지침으로 정리합니다. | 이 수정 원칙을 이 프로젝트의 기존 지침에 반영하고 중복 규칙을 정리해 줘. |
+| memory-maintenance | 에이전트의 메모리와 프로젝트 기록을 정리합니다. | 유효한 결정과 다음 작업은 남기고 중복된 기록과 끊어진 링크를 정리해 줘. |
+| optimize-memory | 개발한 프로그램의 메모리 사용량을 측정하고 줄입니다. | 같은 입력에서 메모리 사용량과 할당 경로를 측정하고 개선 전후를 비교해 줘. |
+
+`memory-maintenance`는 에이전트의 기록을 정리하고, `optimize-memory`는 프로그램을 프로파일링합니다.
+프로그램 메모리를 줄일 때는 처리 결과와 지원하는 입력 범위를 유지하는지 함께 확인합니다.
+
 ## 설치 전 준비
 
 Codex 또는 Claude Code를 설치하고, 본인 계정으로 로그인한 상태에서 시작합니다.
 플러그인 설치 명령은 터미널에서 실행하고, 스킬 사용 예시는 에이전트 대화창에 입력합니다.
 스킬은 작업 절차를 설명하는 파일입니다.
 모델 이용권, API key, Python, Node.js, Playwright 같은 실행 도구는 별도로 준비해야 합니다.
-해커톤에서 허용한 도구와 데이터 범위를 먼저 확인하고, 회사 자료 대신 공개 데이터나 가상 데이터로 예제를 실행합니다.
+사용할 도구와 데이터의 이용 범위를 확인하고, 예제에는 공개 데이터나 가상 데이터를 사용합니다.
 
 ## 플러그인으로 설치
 
@@ -87,7 +100,7 @@ codex plugin add jskills@onul-services
 codex plugin list --json
 ```
 
-설치 후 새 세션을 열고 스킬 선택 목록에서 `grilling`을 선택합니다.
+설치 후 작업할 프로젝트 폴더에서 Codex를 시작하고 스킬 선택 목록에서 `grilling`을 선택합니다.
 대화창에서는 다음처럼 요청할 수 있습니다.
 
 ```text
@@ -104,7 +117,7 @@ claude plugin install jskills@onul-services
 claude plugin list
 ```
 
-새 세션의 대화창에서 실행합니다.
+작업할 프로젝트 폴더에서 Claude Code를 시작한 뒤 대화창에 입력합니다.
 
 ```text
 /jskills:grilling 설비 이상 알림 아이디어의 사용자와 데모 범위를 하나씩 질문해 줘.
@@ -112,9 +125,6 @@ claude plugin list
 /jskills:tdd CSV 입력의 정상 값과 누락 값부터 테스트해 줘.
 /jskills:diagnosing-bugs CSV 업로드 오류를 재현하고 원인을 검증해 줘.
 ```
-
-jskills에는 MCP 연결, 로그인 연동, 자동 실행 hook이 없습니다.
-같은 marketplace에 있는 다른 플러그인은 이 가이드에서 설치하지 않습니다.
 
 ## ZIP으로 직접 설치
 
@@ -132,6 +142,8 @@ jskills에는 MCP 연결, 로그인 연동, 자동 실행 hook이 없습니다.
 | Codex | `~/.agents/skills/스킬이름/` | `.agents/skills/스킬이름/` |
 | Claude Code | `~/.claude/skills/스킬이름/` | `.claude/skills/스킬이름/` |
 
+프로젝트용 설치 위치는 작업할 프로젝트의 루트를 기준으로 합니다.
+개인용 `~` 설치 위치에 둔 스킬은 여러 프로젝트에서 사용할 수 있습니다.
 Windows에서는 `~` 대신 사용자 홈 폴더를 사용합니다.
 탐색기로 위 위치에 폴더 전체를 복사해도 됩니다.
 같은 이름의 스킬이 있으면 덮어쓰지 말고 먼저 기존 내용을 확인합니다.
@@ -162,6 +174,27 @@ test ! -e "$HOME/.claude/skills/grilling" && {
 다른 스킬은 해당 개별 ZIP을 받은 뒤 위 명령의 `grilling`을 그 스킬 이름으로 바꿉니다.
 새 세션에서 Codex는 `$grilling`, Claude Code는 `/grilling`으로 직접 설치한 스킬을 실행합니다.
 
+## 프로젝트에서 시작하기
+
+스킬을 설치한 뒤에는 작업할 프로젝트 폴더로 이동해서 에이전트를 실행합니다.
+아래 `/path/to/project`를 실제 프로젝트 경로로 바꿉니다.
+
+Codex:
+
+```sh
+cd /path/to/project
+codex
+```
+
+Claude Code:
+
+```sh
+cd /path/to/project
+claude
+```
+
+설치가 끝나면 프로젝트의 목적과 실행 명령을 알려 주고, 원하는 스킬을 대화에서 명시합니다.
+
 ## 두 도구에서 사용할 때의 차이
 
 원본 파일은 영어로 작성되어 있습니다.
@@ -171,9 +204,8 @@ test ! -e "$HOME/.claude/skills/grilling" && {
 
 원본 본문에 있는 `/codebase-design` 같은 이름은 다른 스킬을 가리킵니다.
 Claude Code 플러그인으로 설치했다면 `/jskills:codebase-design`을 선택하고, Codex에서는 스킬 선택 목록에서 `codebase-design`을 고르거나 해당 스킬을 사용하라고 요청합니다.
-원본의 `Agent`, `Workflow`, 모델 이름은 작성 당시의 도구를 가리킬 수 있습니다.
-현재 클라이언트가 지원하는 도구와 모델만 사용하도록 요청합니다.
-subagent 기능이 없으면 독립적인 병렬 리뷰를 수행했다고 볼 수 없으므로, 가능한 검토와 생략한 단계를 구분해 달라고 요청합니다.
+일부 스킬은 병렬 에이전트를 사용하므로 현재 클라이언트가 지원하는 도구와 모델을 사용하도록 요청합니다.
+병렬 에이전트를 지원하지 않는 환경에서는 수행한 검토와 생략한 단계를 구분해서 확인합니다.
 
 `diagnosing-bugs`의 마지막에 나오는 `improve-codebase-architecture`는 별도 후속 스킬이며 이 모음에 포함되어 있지 않습니다.
 디버깅을 마친 뒤 구조 개선이 필요할 때만 원본 저장소에서 확인하면 됩니다.
@@ -223,9 +255,13 @@ subagent 기능이 없으면 독립적인 병렬 리뷰를 수행했다고 볼 �
 git status --short
 git diff --stat
 git diff
+git diff --cached --stat
+git diff --cached
 ```
 
-실행 명령으로 데모를 직접 열고, 정상 입력뿐 아니라 오류 입력도 넣어 봅니다.
+`git diff`는 아직 stage하지 않은 변경을, `git diff --cached`는 stage한 변경을 보여 줍니다.
+`git status --short`에 `??`로 표시되는 새 파일은 내용을 직접 열어 확인합니다.
+실행 명령으로 제품을 직접 열고, 정상 입력뿐 아니라 오류 입력도 넣어 봅니다.
 스킬 설치나 테스트 통과가 서비스 배포와 실제 동작까지 보장하지는 않습니다.
 
 ### API key와 회사 자료는 공유 범위를 확인합니다
@@ -242,6 +278,70 @@ README에 설치 명령, 실행 명령, 필요한 환경 변수 이름, 예제 �
 데모에 사용할 정상 입력과 오류 입력을 저장해 두고 처음부터 다시 실행해 봅니다.
 외부 API를 쓰면 응답 지연, 요청 제한, 네트워크 오류가 났을 때 화면에 어떤 내용을 보여 줄지도 확인합니다.
 가상 응답으로 시연할 경우에는 시연 중에도 가상 응답임을 알 수 있게 표시합니다.
+
+## 에이전트와 작업하는 방법
+
+### 조사와 수정을 구분해서 요청합니다
+
+원인이나 수정 범위를 먼저 확인하고 싶다면 그 범위를 명시합니다.
+
+```text
+파일은 수정하지 말고 원인을 조사해 줘.
+직접 확인한 사실과 추정을 구분하고, 관련 파일과 검증 방법을 알려 줘.
+```
+
+수정을 맡길 때는 바꿔도 되는 범위와 유지해야 할 동작을 함께 적습니다.
+계획을 검토한 뒤 구현을 맡기면, 잘못 이해한 범위가 코드로 반영되기 전에 바로잡을 수 있습니다.
+
+### 확인할 수 있는 크기로 나눠 맡깁니다
+
+화면, API, 저장 방식을 한 번에 바꾸기보다 동작 하나를 구현하고 실행해서 확인합니다.
+예를 들어 CSV 업로드는 파일 선택, 형식 검증, 결과 표시 순서로 나눌 수 있습니다.
+각 단계에서 완료한 동작과 남은 작업을 확인하고 다음 단계로 넘어갑니다.
+서로 다른 에이전트가 같은 파일을 동시에 수정한다면 작업 범위를 나누거나 변경 순서를 정합니다.
+
+### 오류가 발생한 조건을 전달합니다
+
+실행한 명령, 입력, 기대한 결과, 실제 오류를 함께 전달합니다.
+재현에 필요한 최소 입력과 실행 환경의 버전도 있으면 도움이 됩니다.
+에러 메시지를 전달할 때는 token, 계정 정보, 개인정보를 지웁니다.
+
+```text
+실행 명령: npm run test
+입력: value 열이 비어 있는 CSV
+기대 결과: 해당 행의 검증 오류가 표시되어야 함
+실제 결과: 업로드 화면이 멈춤
+이 증상을 재현하는 검사부터 만들고 원인 후보를 검증해 줘.
+```
+
+### 긴 작업은 다음 세션이 이어받을 수 있게 남깁니다
+
+목표, 결정한 내용, 수정한 파일, 검증 결과, 남은 문제, 다음 작업을 기존 작업 기록에 남깁니다.
+다음 세션에서는 기록을 읽고 실제 파일 상태와 일치하는지 확인한 뒤 이어서 작업합니다.
+긴 로그나 저장소 전체를 반복해서 전달하기보다, 지금 확인할 파일과 오류 구간을 지정합니다.
+에이전트 메모리에는 다시 사용할 사실과 결정을 남기고, 일시적인 출력은 필요한 위치에 따로 보관합니다.
+Codex의 메모리는 `/memories`, Claude Code의 메모리는 `/memory`에서 확인할 수 있습니다.
+
+### 병렬 작업과 외부 호출의 범위를 정합니다
+
+병렬 에이전트는 서로 다른 파일의 구현이나 독립적인 리뷰처럼 작업을 나눌 수 있을 때 사용합니다.
+짧은 수정까지 여러 에이전트에 중복해서 맡기면 같은 맥락을 다시 전달하고 결과를 확인하는 일이 늘어납니다.
+외부 API를 사용하는 작업에는 요청 횟수, 실행 시간, 테스트할 데이터 범위를 정합니다.
+호출이 실패했다면 같은 요청이 이미 처리되었는지 확인한 뒤 재시도합니다.
+
+## 프로그램 메모리를 최적화할 때
+
+처리할 입력과 동시 실행 수를 고정하고, 개선 전후를 같은 조건에서 비교합니다.
+RSS, heap, 할당량은 서로 다른 지표이므로 어떤 값을 줄이려는지 먼저 정합니다.
+메모리 사용량과 함께 처리 결과, 응답 시간, 처리량도 확인합니다.
+
+```text
+이 프로그램의 메모리 사용량을 줄이고 싶어.
+기존 벤치마크나 프로파일링 도구부터 확인해 줘.
+같은 입력과 동시 실행 수에서 RSS와 heap을 측정하고,
+객체가 유지되는 경로나 불필요한 할당을 근거로 개선해 줘.
+처리 결과와 지원하는 입력 범위는 유지하고, 개선 전후 수치를 비교해 줘.
+```
 
 ## 설치 확인과 업데이트
 
@@ -268,21 +368,15 @@ claude plugin update jskills@onul-services
 삭제할 때는 직접 설치한 스킬 폴더만 제거합니다.
 플러그인은 각 도구의 플러그인 관리 화면에서 제거할 수 있습니다.
 
-## 원본과 공개 범위
+## 라이선스와 출처
 
-Matt Pocock의 공개 skills와 로컬에서 관리하던 개발 스킬을 함께 제공합니다.
-개인정보와 내부 설정이 없는 원본은 참고 문서와 스크립트까지 수정 없이 보존합니다.
-`adversarial-review`, `korean-prose`, `feature-planning`, `console-ux`, `platform-plan-doc`은 내부 경로와 개인 피드백 이력을 제외한 외부 공유용 수정본입니다.
-출처 파일에 원본과 수정본을 구분하고 각 파일의 해시를 기록합니다.
-원본의 MIT notice와 공유 스킬의 MIT license를 함께 포함합니다.
-공개 묶음에는 개인 작업 기록, 계정 정보, 사내 설정, 개인 인프라 운영 스킬을 넣지 않았습니다.
-다만 스킬을 실행하면 에이전트가 현재 프로젝트를 읽거나 수정할 수 있으므로, 공유할 수 있는 데이터만 작업 폴더에 둡니다.
+스킬을 복사하거나 재배포할 때는 해당 ZIP의 `LICENSE`와 추가 저작권 표시를 함께 보관합니다.
+파일의 출처와 적용되는 라이선스는 아래에서 확인할 수 있습니다.
 
 - [공개 원본 저장소](https://github.com/mattpocock/skills)
-- [이 묶음의 원본 revision](https://github.com/mattpocock/skills/tree/6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461)
-- [파일별 SHA-256과 출처](https://pages.onul.me/jskills/downloads/sources.json)
+- [스킬별 출처와 라이선스](https://pages.onul.me/jskills/downloads/sources.json)
 - [Matt Pocock 원본 MIT license](https://pages.onul.me/jskills/downloads/LICENSE)
-- [공유 스킬 MIT license](https://pages.onul.me/jskills/downloads/LICENSE.jskills)
+- [개발 워크플로우 스킬 MIT license](https://pages.onul.me/jskills/downloads/LICENSE.jskills)
 - [전체 ZIP과 개별 ZIP의 SHA-256](https://pages.onul.me/jskills/downloads/SHA256SUMS.txt)
 
 ## 공식 사용 설명서
@@ -292,3 +386,6 @@ Matt Pocock의 공개 skills와 로컬에서 관리하던 개발 스킬을 함�
 - [Codex skills](https://learn.chatgpt.com/docs/build-skills)
 - [Claude Code skills](https://code.claude.com/docs/en/skills)
 - [Claude Code marketplace](https://code.claude.com/docs/en/plugin-marketplaces)
+
+- [Codex 메모리 관리](https://learn.chatgpt.com/docs/customization/memories)
+- [Claude Code 메모리 관리](https://code.claude.com/docs/en/memory)

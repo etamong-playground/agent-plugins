@@ -6,7 +6,7 @@ description: Review or improve admin consoles and tabular report pages, includin
 # Console and report-page UX
 
 Use the repository's design contract and existing components first.
-This sharing edition supplements the target repository's own UI contracts without assuming an organization-specific component system.
+Follow the target repository's UI contracts and component conventions.
 
 ## Tables and controls
 

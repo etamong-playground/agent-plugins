@@ -61,7 +61,7 @@ Keep credentials and privileged fleet administration workflows outside these pac
 
 ## jskills
 
-An AI product development collection with original MIT-licensed public skills, shared local development workflows, and explicitly marked portable editions for planning, Korean prose and UI review.
+Skills and practical guidance for AI product development: planning, implementation, review, writing, and memory optimization.
 The [Korean guide](https://pages.onul.me/jskills/) covers plugin and folder installation, worked prompts, dependencies, and update instructions.
 Source origins, portable-edition notes, licenses and file hashes live in [sources.json](plugins/jskills/sources.json); the package preserves its [MIT notice](plugins/jskills/LICENSE).
 

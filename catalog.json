@@ -32,7 +32,7 @@
       "name": "jskills",
       "kind": "skills",
       "displayName": "jskills",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "description": "Portable AI product development skills for design, implementation, review and validation.",
       "license": "MIT"
     }
