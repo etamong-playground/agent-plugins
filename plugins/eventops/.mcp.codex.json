@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "eventops": {
+      "type": "http",
+      "url": "https://eventops.onul.me/mcp",
+      "oauth": {
+        "clientId": "eventops-native"
+      },
+      "oauth_resource": "https://eventops.onul.me",
+      "scopes": [
+        "openid",
+        "email",
+        "profile",
+        "eventops:read",
+        "offline_access"
+      ]
+    }
+  }
+}
