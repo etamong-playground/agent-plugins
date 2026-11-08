@@ -106,7 +106,7 @@ class JskillsTest(unittest.TestCase):
         builder.build(output)
         links = Links()
         links.feed((output / 'index.html').read_text())
-        for fragment, purpose in {'_1': 'product', '_7': 'installation', 'codex': 'installation', 'jskills': 'product'}.items():
+        for fragment, purpose in {'_1': 'product', '_7': 'installation', 'codex': 'installation', 'jskills': 'product', 'mac-첫-앱의-범위-정하기': 'mac', 'mac-실시간-기능과-배포로-확장하기': 'mac'}.items():
             self.assertEqual(links.id_panels[fragment], purpose)
         self.assertTrue(all(count == 1 for count in links.id_counts.values()))
 

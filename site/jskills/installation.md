@@ -1,7 +1,7 @@
 # 설치와 스킬
 
 Codex 또는 Claude Code에 플러그인을 설치하거나 필요한 스킬 폴더를 직접 복사합니다.
-Mac 앱 개발 예제는 [macOS 오디오 앱](#purpose-mac), 일반적인 개발 절차는 [제품 개발](#purpose-product)에서 확인할 수 있습니다.
+Mac 앱 개발 예제는 [macOS 앱](#purpose-mac), 일반적인 개발 절차는 [제품 개발](#purpose-product)에서 확인할 수 있습니다.
 
 <!-- skill-downloads -->
 
@@ -46,9 +46,9 @@ claude plugin list
 
 ```text
 /jskills:grilling 만들 앱의 사용자와 첫 버전 범위를 하나씩 질문해 줘.
-/jskills:prototype 파일 검사 결과를 보여 주는 화면 구성을 비교해 줘.
-/jskills:tdd sample peak 계산의 정상 값과 무음부터 테스트해 줘.
-/jskills:diagnosing-bugs 오디오 파일 열기 오류를 재현하고 원인을 검증해 줘.
+/jskills:prototype 확정한 사용자 작업에 맞는 화면 구성을 비교해 줘.
+/jskills:tdd 확정한 핵심 동작의 정상 입력과 실패 조건부터 테스트해 줘.
+/jskills:diagnosing-bugs 현재 발생하는 오류를 재현하고 원인을 검증해 줘.
 ```
 
 ## ZIP으로 직접 설치

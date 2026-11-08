@@ -1,6 +1,6 @@
 [
   {
-    "title": "작업과 요구사항 정리",
+    "title": "사용자 작업과 요구사항 정리",
     "skills": [
       "grilling",
       "requirements-feedback"
@@ -10,11 +10,11 @@
     "title": "기획서와 Mac 앱 설계",
     "skills": [
       "platform-plan-doc",
-      "macos-audio-app"
+      "macos-app-development"
     ]
   },
   {
-    "title": "화면과 핵심 로직 비교",
+    "title": "화면과 핵심 동작 비교",
     "skills": [
       "prototype",
       "codebase-design"
@@ -27,24 +27,23 @@
     ]
   },
   {
-    "title": "오디오와 Native UI 검증",
+    "title": "앱 동작과 UI 검증",
     "skills": [
-      "audio-validation",
-      "macos-ui-review",
-      "diagnosing-bugs"
+      "diagnosing-bugs",
+      "macos-ui-review"
     ]
   },
   {
-    "title": "근거를 확인하는 리뷰",
+    "title": "요구사항과 구현 리뷰",
     "skills": [
       "adversarial-review",
       "requirements-feedback"
     ]
   },
   {
-    "title": "설치와 실제 작업 확인",
+    "title": "설치와 사용자 작업 확인",
     "skills": [
-      "macos-audio-app",
+      "macos-app-development",
       "audience-review"
     ]
   }

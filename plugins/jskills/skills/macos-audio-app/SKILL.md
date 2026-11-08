@@ -1,11 +1,13 @@
 ---
 name: macos-audio-app
-description: Plan or implement a macOS audio app with explicit file, device and real-time boundaries. Use for an audio engineer building a native audio tool or Audio Unit; pair with audio-validation for measurement evidence.
+description: Implement explicitly requested macOS audio processing, capture/playback or Audio Unit features with defined file, device and real-time boundaries. Use after audio requirements are confirmed; a sound-engineering role alone does not select this workflow.
 ---
 
 # macOS audio app development
 
-Start from the engineer's task: input, operation, expected output and how they judge it.
+First verify that the user has requested audio processing, I/O or a plug-in feature.
+If only the user's profession or an unspecified Mac app is known, establish the app task before selecting this specialized workflow.
+Start from the confirmed audio task: input, operation, expected output and how the user judges it.
 Do not assume that an audio tool needs live capture, an Audio Unit, AI inference or cloud storage.
 Reuse the project's language, build system and supported hardware instead of replacing them by default.
 
@@ -13,7 +15,7 @@ Reuse the project's language, build system and supported hardware instead of rep
 
 Establish the minimum macOS version, CPU architectures, Xcode/SDK, distribution channel and required audio formats/devices.
 Inspect existing project targets and test schemes before suggesting commands.
-For an initial tool, offer a file-only vertical slice when it satisfies the user's task; live monitoring and plug-in hosting are different scopes.
+Choose a vertical slice from the confirmed task; do not replace a live-I/O requirement with file analysis or add live I/O to a file-only task.
 Ask only unresolved questions that change behavior, compatibility or the verification method.
 Record units and meaning: sample rate in Hz, frames versus samples, channel layout, sample peak dBFS versus true peak or LUFS, and latency measurement endpoints.
 Never invent a delivery loudness target or label sample peak as true peak.

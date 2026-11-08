@@ -8,6 +8,7 @@ description: Turn user interviews and feedback on an existing feature or specifi
 Anchor feedback to the intended user, their task, the observed problem and the current specification or behavior.
 Preserve supplied wording when the requester asks to keep it; distinguish a quotation, an observation and an interpretation.
 Do not treat every requested UI change as proof of the underlying problem.
+Do not infer features from the stakeholder's profession; confirm the actual task and requested change.
 
 ## Resolve what changes
 
@@ -20,7 +21,7 @@ An interview request authorizes analysis and a proposed specification, not imple
 
 Make vague feedback observable.
 For example, replace an inferred "make it fast" requirement with a question about the input size, user action, acceptable wait and measurement environment; do not invent the threshold.
-For an audio tool, clarify whether "peak" means sample peak or true peak, which channels contribute and which units the user expects.
+Clarify task-specific words such as "ready" or "automatic" before turning them into behavior or acceptance conditions.
 If a requirement is deferred, record the reason and the condition for reconsideration rather than leaving a hidden TODO in product copy.
 
 ## Update and validate
