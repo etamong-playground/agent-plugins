@@ -33,9 +33,9 @@
       "name": "domain-modeling",
       "path": "skills/engineering/domain-modeling",
       "sha256": {
-        "SKILL.md": "b06779e9d437f1a847ba6b964d6e6a9154515a280684692ca9be5213826f8de2",
+        "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2",
         "CONTEXT-FORMAT.md": "b8cc318f2a4285b530e908b6bc43901c3c5cd11100362636bbc4216639bef597",
-        "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2"
+        "SKILL.md": "b06779e9d437f1a847ba6b964d6e6a9154515a280684692ca9be5213826f8de2"
       },
       "origin": "mattpocock-skills",
       "license": "LICENSE",

@@ -63,11 +63,21 @@ class ExplainerValidator(HTMLParser):
         self.script_depth = 0
         self.style_depth = 0
         self.quiz_scripts = 0
+        self.in_head = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         tag = tag.lower()
+        names = [name.lower() for name, _ in attrs]
+        if len(names) != len(set(names)):
+            self.errors.append(f"line {self.getpos()[0]}: duplicate HTML attributes are forbidden")
         values = {name.lower(): value or "" for name, value in attrs}
         line, _ = self.getpos()
+        if tag == "head":
+            self.in_head = True
+        elif tag == "body":
+            self.in_head = False
+        if not self.csp_values and tag not in {"html", "head", "meta", "title"}:
+            self.errors.append(f"line {line}: CSP must precede active content")
 
         if tag in BANNED_ELEMENTS:
             self.errors.append(f"line {line}: forbidden <{tag}> element")
@@ -77,6 +87,8 @@ class ExplainerValidator(HTMLParser):
             self.sections[element_id] += 1
 
         if tag == "meta" and values.get("http-equiv", "").lower() == "content-security-policy":
+            if not self.in_head:
+                self.errors.append(f"line {line}: CSP must be inside head")
             self.csp_values.append(values.get("content", ""))
         elif tag == "meta" and values.get("http-equiv", "").lower() == "refresh":
             self.errors.append(f"line {line}: meta refresh is forbidden")
@@ -112,6 +124,8 @@ class ExplainerValidator(HTMLParser):
             self.style_depth -= 1
 
     def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "head":
+            self.in_head = False
         if tag.lower() == "script" and self.script_depth:
             self.script_depth -= 1
         elif tag.lower() == "style" and self.style_depth:

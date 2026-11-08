@@ -31,7 +31,7 @@ def editions(root):
         entries = {}
         if folder.is_symlink():
             raise ValueError('Canonical skill must not be a symlink')
-        for p in folder.rglob('*'):
+        for p in sorted(folder.rglob('*')):
             if p.is_symlink():
                 raise ValueError('Canonical resources must not be symlinks')
             if p.is_file():
@@ -100,12 +100,20 @@ def sync(root, check=False):
         for path in folder.rglob('*') if folder.exists() else []:
             if path.is_symlink():
                 raise ValueError('Generated package must not contain symlinks')
-            if path.is_file() and path.relative_to(folder).parts[0] not in {'.claude-plugin', '.codex-plugin'}:
+            if path.is_file() and path.relative_to(folder).as_posix() not in {'.claude-plugin/plugin.json', '.codex-plugin/plugin.json'}:
                 relative = path.relative_to(root).as_posix()
                 if relative not in expected:
                     if check:
                         raise ValueError('Stale generated resource: ' + relative)
                     path.unlink()
+        allowed_files = {p for p in expected if Path(p).parts[1] == name}
+        allowed_files.update('plugins/' + name + '/' + p for p in ['.claude-plugin/plugin.json', '.codex-plugin/plugin.json'])
+        allowed_directories = {parent for p in allowed_files for parent in Path(p).parents if parent != Path('.')}
+        for path in sorted(folder.rglob('*'), key=lambda p: len(p.parts), reverse=True):
+            if path.is_dir() and path.relative_to(root) not in allowed_directories:
+                if check:
+                    raise ValueError('Stale generated directory: ' + path.relative_to(root).as_posix())
+                path.rmdir()
     for relative, data in expected.items():
         path = root / relative
         if check:

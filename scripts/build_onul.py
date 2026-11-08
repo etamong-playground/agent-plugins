@@ -100,13 +100,22 @@ def build(output):
     catalog = json.loads((DISTRIBUTION_ROOT / 'catalog.json').read_text())
     from skill_packages import sync
     sync(DISTRIBUTION_ROOT, check=True)
+    from generate import generate
+    for relative, expected in generate(DISTRIBUTION_ROOT).items():
+        if not (DISTRIBUTION_ROOT / relative).is_file() or (DISTRIBUTION_ROOT / relative).read_text() != expected:
+            raise ValueError('Generated metadata differs: ' + relative)
     for package in catalog['plugins']:
         if package.get('kind') != 'skills' or package['name'] == 'onul':
             continue
         folder = DISTRIBUTION_ROOT / 'plugins' / package['name']
         inventory = json.loads((folder / 'sources.json').read_text())
-        files = {package['name'] + '/' + p.relative_to(folder).as_posix(): p.read_bytes()
-                 for p in folder.rglob('*') if p.is_file()}
+        allowed = {'sources.json', '.claude-plugin/plugin.json', '.codex-plugin/plugin.json'} | set(inventory['licenses'])
+        for item in inventory['skills']:
+            allowed.update('skills/' + item['name'] + '/' + relative for relative in item['sha256'])
+        actual = {p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_file()}
+        if actual != allowed:
+            raise ValueError('Unexpected or missing package resource: ' + package['name'])
+        files = {package['name'] + '/' + relative: (folder / relative).read_bytes() for relative in allowed}
         executable = {package['name'] + '/' + p for p in inventory['executable_files']}
         archive(downloads / (package['name'] + '.zip'), files, executable)
         if package['name'] != 'jskills':

@@ -77,6 +77,8 @@ End with the source ref, generation time, and excluded files.
 ## Validate and deliver
 
 Run the bundled `scripts/validate_html.py` against the finished file.
+Place the exact CSP in the document head before scripts, styles or other active content; a later policy cannot protect earlier execution.
+The validator is a bounded structural and pattern check, not proof that arbitrary JavaScript is safe.
 It rejects loading-capable elements and attributes even across multiline tags, unsafe DOM insertion APIs, network-capable JavaScript, missing sections, and any Content Security Policy that differs from the exact contract above.
 
 Set `explainer_html` to the finished file's path, then run the secret checks:
