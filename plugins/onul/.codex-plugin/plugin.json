@@ -1,0 +1,10 @@
+{
+  "name": "onul",
+  "version": "0.7.0",
+  "description": "Portable development, debugging and operations skills for requirements-driven macOS apps and software products.",
+  "author": {
+    "name": "Onul"
+  },
+  "license": "MIT",
+  "skills": "./skills/"
+}

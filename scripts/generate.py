@@ -4,6 +4,8 @@ from pathlib import Path
 import re
 from urllib.parse import urlsplit
 
+from skill_packages import sync
+
 
 def generate(root):
     catalog = json.loads((root / 'catalog.json').read_text())
@@ -69,6 +71,7 @@ def main():
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
+    sync(root, check=args.check)
     for relative, content in generate(root).items():
         path = root / relative
         if args.check:

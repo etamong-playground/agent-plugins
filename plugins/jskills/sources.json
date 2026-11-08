@@ -18,7 +18,7 @@
       "license": "LICENSE.jskills"
     }
   },
-  "modifications": "Original folders are unchanged; sharing editions are explicitly identified per skill.",
+  "modifications": "Canonical public workflows; upstream adaptations are identified per skill. Category and compatibility packages are generated from this tree.",
   "skills": [
     {
       "name": "grilling",
@@ -33,96 +33,104 @@
       "name": "prototype",
       "path": "skills/engineering/prototype",
       "sha256": {
-        "LOGIC.md": "da91dc92195c00d5dc33863b8c1a030998025a0f8583ebf2babd770825b7f70c",
         "SKILL.md": "863611f7fb65b78265188466cacdb365cbad129d36844ec57603c708d2026b50",
-        "UI.md": "d76d565149ee50456c5ddc5e29c27fec8737637874fe5c37d970db085a200b27"
+        "LOGIC.md": "f0f49aa1120eb81152d024f20a3eee051ca9109e0f9a60cf214ed0080e6baf21",
+        "UI.md": "37b54fb91b50a23f0bc2810ed3409e6cdc2a9ca882c11bb7c1b87f7b1a973833"
       },
       "origin": "mattpocock-skills",
-      "license": "LICENSE"
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "tdd",
       "path": "skills/engineering/tdd",
       "sha256": {
-        "SKILL.md": "13722957277ed4960061a2d254a0ed7d86f95693e88b40d1c68307e7fdc98287",
         "mocking.md": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef",
-        "refactoring.md": "54fced22dd1911b7094c3fe7979b7c1a40d40be307482c4adf7dc0588f27d6cc",
-        "tests.md": "e12182f5c4c6a844b7c6ab4b8d2623b642aaaae5460fe58ed087efd4f3d5fb8a"
+        "tests.md": "e12182f5c4c6a844b7c6ab4b8d2623b642aaaae5460fe58ed087efd4f3d5fb8a",
+        "SKILL.md": "7f3830316fe2f00037f637e2139e9f6cd809488c152ed162726373eed11f7959",
+        "refactoring.md": "54fced22dd1911b7094c3fe7979b7c1a40d40be307482c4adf7dc0588f27d6cc"
       },
       "origin": "mattpocock-skills",
-      "license": "LICENSE"
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "diagnosing-bugs",
       "path": "skills/engineering/diagnosing-bugs",
       "sha256": {
-        "SKILL.md": "7a0779480f323a66d109404646bcc1a14bf0232b45b3e3ea93b652a035718acb",
+        "SKILL.md": "3dc4f72aef876e61c01d7ac6e085556204dc3cdf4aa7c2cdc44acf39075f8401",
         "scripts/hitl-loop.template.sh": "b2932630950e5210075bcd6f850e5accf30c101c5367b29eac3a29b4dd8084c8"
       },
       "origin": "mattpocock-skills",
-      "license": "LICENSE"
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "codebase-design",
       "path": "skills/engineering/codebase-design",
       "sha256": {
-        "DEEPENING.md": "125e6b77413ad2bc7cf7a772bc74336d580a50f9e797db2178ed133d62333d06",
-        "DESIGN-IT-TWICE.md": "21c3264953bd30ee87b181a3ccaf0e70649f461e5ffd7dc654acee4ba1788b31",
-        "SKILL.md": "a8d50abac5a4018f60e1d911d4b6f4e36454ca14d6c390c0695a578c7de65dad"
+        "DESIGN-IT-TWICE.md": "0da19a7556f3618caf272759077b7c007c74789faa38f4c8bfa8c9db8c012dbe",
+        "SKILL.md": "a8d50abac5a4018f60e1d911d4b6f4e36454ca14d6c390c0695a578c7de65dad",
+        "DEEPENING.md": "16c9a92402588527901bb9fb87a3bd66f64a13b7f5b50fd810386136e4a7413d"
       },
       "origin": "mattpocock-skills",
-      "license": "LICENSE"
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "domain-modeling",
       "path": "skills/engineering/domain-modeling",
       "sha256": {
-        "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2",
+        "SKILL.md": "b06779e9d437f1a847ba6b964d6e6a9154515a280684692ca9be5213826f8de2",
         "CONTEXT-FORMAT.md": "b8cc318f2a4285b530e908b6bc43901c3c5cd11100362636bbc4216639bef597",
-        "SKILL.md": "152e2c97239affb12a60c5f4a7e74ab546a49ae169688c81f4e2ccc42dafa579"
+        "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2"
       },
       "origin": "mattpocock-skills",
-      "license": "LICENSE"
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "teach",
       "path": "skills/productivity/teach",
       "sha256": {
-        "GLOSSARY-FORMAT.md": "d177def491519d97873291f2e860d8f1d60ead78feecb82eee022177958069c6",
-        "LEARNING-RECORD-FORMAT.md": "855f81017625256584bbf62bd5edb9b0c86605c4cc1139c56acc36b802595d17",
         "MISSION-FORMAT.md": "8da6d3ac84eb2eb19f17c260b6acf01c560d3ac7a4501c415eea0e985602f4d7",
         "RESOURCES-FORMAT.md": "2bc634a64b0d0daa10904f9222e7aa0d361420dfacabbf092fbe3a72222edc08",
-        "SKILL.md": "6d2dbe5e03084cf26fef66b535127b36cd1bcbe9478e26b0626029cd51dc2259"
+        "LEARNING-RECORD-FORMAT.md": "855f81017625256584bbf62bd5edb9b0c86605c4cc1139c56acc36b802595d17",
+        "GLOSSARY-FORMAT.md": "d177def491519d97873291f2e860d8f1d60ead78feecb82eee022177958069c6",
+        "SKILL.md": "f21b0fa050e725cb422a3fab41866aeceec143cc3961f8a6702df5f40e58fa98"
       },
       "origin": "mattpocock-skills",
-      "license": "LICENSE"
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "writing-great-skills",
       "path": "skills/productivity/writing-great-skills",
       "sha256": {
-        "GLOSSARY.md": "df0d042f2b69b8a952bd4b0e6904e2eb316f0203c1a5f09169da7f75a5575a61",
-        "SKILL.md": "7c6ba7ec25bb2c0e173c52cdc2da878aef0b083ec19a9c1799934e480c8833cc"
+        "GLOSSARY.md": "fd9f5cdb6f63703c64c5ccb295223171ce0438e69e34b0c0d202aa9573eaa281",
+        "SKILL.md": "20f00b115708f3b6c6b747d42060d3bc78db26dc18abfe9deccde552e5c4d343"
       },
       "origin": "mattpocock-skills",
-      "license": "LICENSE"
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "adversarial-review",
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
       "sha256": {
-        "SKILL.md": "c05c99768bfee5c62b45a75d0795fdf79e09c9f40badf5d3cbba78f019909854"
+        "SKILL.md": "84ddd7cf33e857fe56b86ba571055e5c68ae69faae33ff33fb6a6d426cbf100e"
       },
-      "modifications": "General-purpose workflow and client-neutral tool references."
+      "modifications": "General-purpose workflow and client-neutral tool references. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "compare-spike",
       "origin": "shared-local-skills",
       "license": "LICENSE.jskills",
       "sha256": {
-        "SKILL.md": "2deea6a2ac53609ed3d49a515ef14c910610e0605929b8ca4abed6c1e4d27bd9"
-      }
+        "SKILL.md": "6408bf1fb674a265e10ddd95728fcf9572abc37b5d851aea018fee3d095057ed"
+      },
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "refactor-safely",
@@ -138,8 +146,9 @@
       "origin": "shared-local-skills",
       "license": "LICENSE.jskills",
       "sha256": {
-        "SKILL.md": "a4506588bf153288a23a90c1d821dae5e48b8c2cc2ccf9fcf27599bc2a0472fe"
-      }
+        "SKILL.md": "ba6eae974e3f6066e7a050284961763326e9c71f1a3c383c6f45599d1d70eabe"
+      },
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "explain-code-change",
@@ -147,17 +156,18 @@
       "license": "LICENSE.jskills",
       "sha256": {
         "LICENSE.oh-my-agent": "beeda13ca6ab2ffa092ca01cc6e07e6ac004e41f5003c43ecd3011b693425a78",
-        "SKILL.md": "0aabefde4ec801b7ac0baaf55ee5a7c084adbea40d93fa2ed71825243a3dac2f",
+        "SKILL.md": "bb498ea16306822489b18273d142a393a7a77a45c52e52f5a86f023693682c7f",
         "scripts/validate_html.py": "915bcfa61bbf87f2cc9ad5a29da72dae197cd510162a7fa6dc747a62be2695f7"
-      }
+      },
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
     {
       "name": "korean-prose",
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
-      "modifications": "General-purpose workflow and client-neutral tool references.",
+      "modifications": "General-purpose workflow and client-neutral tool references. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy.",
       "sha256": {
-        "SKILL.md": "c8dacfce5d2dd1ec5bd598ec14bdb8e9b2110d1d43136096794b1585ff6720fa",
+        "SKILL.md": "767e48962e227beb7c2e7c775988e668c7f9b7a6aeaa954668f448b5ee626b42",
         "references/technical-writing.md": "a3c4464f945053564c4418e7790b860810577a17f62a9b8b84507de8a1d2d9af"
       }
     },
@@ -165,9 +175,9 @@
       "name": "feature-planning",
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
-      "modifications": "General-purpose workflow and client-neutral tool references.",
+      "modifications": "Public planning workflow exported as planning in Onul packages. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy.",
       "sha256": {
-        "SKILL.md": "70ed01908a928ff66bbf2d9e69a6930a1a32107ba1a2001ee5f9939813c75ffc"
+        "SKILL.md": "9a03993d612bade99ca40a12046d8a6482c4677b87ffe8ea5a598e829e1d874a"
       }
     },
     {
@@ -183,9 +193,9 @@
       "name": "console-ux",
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
-      "modifications": "General-purpose workflow and client-neutral tool references.",
+      "modifications": "General-purpose workflow and client-neutral tool references. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy.",
       "sha256": {
-        "SKILL.md": "32ca605b0e97350fa8227f4d0b6b592e8364b7735691985aa6e4acfac5ac4239"
+        "SKILL.md": "7086485205508337b7addb0d7c092ce4af8c76f2b8c3a07e5d5f610f90ec9112"
       }
     },
     {

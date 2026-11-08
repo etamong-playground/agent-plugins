@@ -1,0 +1,57 @@
+{
+  "origins": {
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
+      "license": "LICENSE"
+    },
+    "shared-local-skills": {
+      "description": "Development workflow skills.",
+      "license": "LICENSE.jskills"
+    },
+    "portable-editions": {
+      "description": "General-purpose workflow editions.",
+      "license": "LICENSE.jskills"
+    },
+    "jskills": {
+      "description": "Purpose-specific development workflows authored for jskills.",
+      "license": "LICENSE.jskills"
+    }
+  },
+  "modifications": "Canonical public workflows; upstream adaptations are identified per skill. Category and compatibility packages are generated from this tree.",
+  "skills": [
+    {
+      "name": "memory-maintenance",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "5c1a87ee3c7aab8a574eab21970e894670031214df9cc1fafebfb6c0cb852030"
+      }
+    },
+    {
+      "name": "update-agent-guidance",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "General-purpose workflow and client-neutral tool references.",
+      "sha256": {
+        "SKILL.md": "e2db4e73ea8fe1a79a1a8261582b6fd0c0486711aa029bad787a2344fcfea788"
+      }
+    },
+    {
+      "name": "writing-great-skills",
+      "path": "skills/productivity/writing-great-skills",
+      "sha256": {
+        "GLOSSARY.md": "fd9f5cdb6f63703c64c5ccb295223171ce0438e69e34b0c0d202aa9573eaa281",
+        "SKILL.md": "20f00b115708f3b6c6b747d42060d3bc78db26dc18abfe9deccde552e5c4d343"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    }
+  ],
+  "licenses": {
+    "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+    "LICENSE.jskills": "bc894ecab39778d810abcdb96d272a0835758c168e1fd65458207e5af99759c0"
+  },
+  "executable_files": []
+}

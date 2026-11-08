@@ -6,12 +6,12 @@ description: Audit the comments in the regions a branch changed, or in a whole f
 # Prune Comments
 
 Find comments that carry nothing the code does not already say, and delete them.
-The rule this enforces is the global Comment Rule: a comment must carry the **why** — hidden constraints, non-obvious invariants, workarounds for specific bugs.
+The working criterion is: a comment must carry the **why** — hidden constraints, non-obvious invariants, workarounds for specific bugs.
 Everything else is noise a reader has to check against the code.
 
 ## STEP 1 — Fix the scope before reading anything
 
-Ask which one applies if the request does not say:
+Use changed hunks by default; ask only when the requested scope is materially ambiguous:
 
 - **Changed hunks** — the comments inside the regions the current branch changed, including ones that predate the branch. **The default.**
 - **Added lines only** — just the comments the branch introduced. Narrower still; use it when a changed region carries old comments the branch has no mandate to clean.
@@ -69,4 +69,4 @@ Delete in place. Two things to watch:
 - `git diff` shows deletions only. Any changed code line is either the STEP 3 rewrite case or a mistake.
 - Report the ambiguous ones you kept, so the user can decide.
 
-Commit as its own change, in the repo's own language and scope vocabulary, never mixed into a behavior change.
+Deliver within the user's authorization and repository commit policy. Keep a wider sweep separately reviewable; do not create a commit or PR merely because a review-only request used this skill.

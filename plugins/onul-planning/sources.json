@@ -1,0 +1,76 @@
+{
+  "origins": {
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
+      "license": "LICENSE"
+    },
+    "shared-local-skills": {
+      "description": "Development workflow skills.",
+      "license": "LICENSE.jskills"
+    },
+    "portable-editions": {
+      "description": "General-purpose workflow editions.",
+      "license": "LICENSE.jskills"
+    },
+    "jskills": {
+      "description": "Purpose-specific development workflows authored for jskills.",
+      "license": "LICENSE.jskills"
+    }
+  },
+  "modifications": "Canonical public workflows; upstream adaptations are identified per skill. Category and compatibility packages are generated from this tree.",
+  "skills": [
+    {
+      "name": "grilling",
+      "path": "skills/productivity/grilling",
+      "sha256": {
+        "SKILL.md": "fe00af3e1815f97c0a7644605479328a726b5cd95ba6ef56a4be2a92fae6c20f"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE"
+    },
+    {
+      "name": "domain-modeling",
+      "path": "skills/engineering/domain-modeling",
+      "sha256": {
+        "SKILL.md": "b06779e9d437f1a847ba6b964d6e6a9154515a280684692ca9be5213826f8de2",
+        "CONTEXT-FORMAT.md": "b8cc318f2a4285b530e908b6bc43901c3c5cd11100362636bbc4216639bef597",
+        "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "planning",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "Public planning workflow exported as planning in Onul packages. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy.",
+      "sha256": {
+        "SKILL.md": "6308b2ab9bbd1241d8bc749fdd66a5080698d675a37c127de37e9a32032ca50d"
+      }
+    },
+    {
+      "name": "platform-plan-doc",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "General-purpose workflow and client-neutral tool references.",
+      "sha256": {
+        "SKILL.md": "bd9078e46b65fb1492b2e0614a5344f5046803b222315024e5b6ec51e0e5e3e8"
+      }
+    },
+    {
+      "name": "requirements-feedback",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "a0b77fde45e7573804d6e659f894c72a258bd00511f76f2dd195df45cd00d277"
+      }
+    }
+  ],
+  "licenses": {
+    "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+    "LICENSE.jskills": "bc894ecab39778d810abcdb96d272a0835758c168e1fd65458207e5af99759c0"
+  },
+  "executable_files": []
+}

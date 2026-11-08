@@ -37,7 +37,7 @@ If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The ma
 │       └── docs/adr/
 ```
 
-Create files lazily — only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed.
+Discover the repository's existing glossary, context and ADR locations and ownership before writing. Discussion-only requests authorize no files or tracker changes. For authorized durable documentation, reuse established locations; use these example paths and bundled formats only when no convention exists. Create a file only when there is a concrete resolved term or decision to record.
 
 ## During the session
 

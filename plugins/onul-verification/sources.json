@@ -1,0 +1,83 @@
+{
+  "origins": {
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
+      "license": "LICENSE"
+    },
+    "shared-local-skills": {
+      "description": "Development workflow skills.",
+      "license": "LICENSE.jskills"
+    },
+    "portable-editions": {
+      "description": "General-purpose workflow editions.",
+      "license": "LICENSE.jskills"
+    },
+    "jskills": {
+      "description": "Purpose-specific development workflows authored for jskills.",
+      "license": "LICENSE.jskills"
+    }
+  },
+  "modifications": "Canonical public workflows; upstream adaptations are identified per skill. Category and compatibility packages are generated from this tree.",
+  "skills": [
+    {
+      "name": "adversarial-review",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "84ddd7cf33e857fe56b86ba571055e5c68ae69faae33ff33fb6a6d426cbf100e"
+      },
+      "modifications": "General-purpose workflow and client-neutral tool references. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "convention-review",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "9bf2d1ffd6df90320ac49ec4f98f243e82ade96a23e1f860719e6bf10c70dee5"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "console-ux",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "General-purpose workflow and client-neutral tool references. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy.",
+      "sha256": {
+        "SKILL.md": "7086485205508337b7addb0d7c092ce4af8c76f2b8c3a07e5d5f610f90ec9112"
+      }
+    },
+    {
+      "name": "frontend-rum-privacy",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "9d94af9647c0d8589ac15436ac7dfb573aeb85f5e587ac4710c99e40b3b623c2"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "nextjs-playwright-e2e",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "fe79465cf326da1a9a5c23bd5115d60656595acc03d6f7c8ce61b1884dfc2d39"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "repo-ci-baseline",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "9aafeed7ba699bde862664a9ad8cf1303f1b5c6532cbf9198c63c2c99f6e778b"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    }
+  ],
+  "licenses": {
+    "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+    "LICENSE.jskills": "bc894ecab39778d810abcdb96d272a0835758c168e1fd65458207e5af99759c0"
+  },
+  "executable_files": []
+}

@@ -1,0 +1,10 @@
+{
+  "name": "onul-macos",
+  "version": "0.7.0",
+  "description": "Portable macos workflows from Onul Skills.",
+  "author": {
+    "name": "Onul"
+  },
+  "license": "MIT",
+  "skills": "./skills/"
+}

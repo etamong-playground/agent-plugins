@@ -5,11 +5,11 @@ disable-model-invocation: true
 argument-hint: "What would you like to learn about?"
 ---
 
-The user has asked you to teach them something. This is a stateful request - they intend to learn the topic over multiple sessions.
+Establish whether the request is a one-off explanation or an ongoing course. A one-off explanation needs no persistent workspace files. Reuse an explicitly authorized course workspace and its conventions for multi-session learning; do not assume the current repository is that workspace.
 
 ## Teaching Workspace
 
-Treat the current directory as a teaching workspace. The state of their learning is captured in this directory in several files:
+For an authorized ongoing course, use the selected teaching workspace. The state of their learning is captured in this directory in several files:
 
 - `MISSION.md`: A document capturing the _reason_ the user is interested in the topic. This should be used to ground all teaching. Use the format in [MISSION-FORMAT.md](./MISSION-FORMAT.md).
 - `./reference/*.html`: A directory of reference materials. These are the compressed learnings from the lessons - cheat sheets, reference algorithms, syntax, yoga poses, glossaries. They are the raw units of learning. They should be beautiful documents which print out well, and are designed for quick reference.
@@ -138,3 +138,7 @@ Glossaries, in particular, are an essential reference. Once one is created, it s
 ## `NOTES.md`
 
 The user will sometimes express preferences of how they want to be taught, or things you should keep in mind. This is the place to record those preferences, so you can refer back to them when designing lessons or working with the user.
+
+## Artifact verification
+
+For an authorized HTML teaching artifact, inspect its rendered layout, keyboard navigation, text alternatives and reference links. Report inaccessible or untested resources instead of presenting them as verified.

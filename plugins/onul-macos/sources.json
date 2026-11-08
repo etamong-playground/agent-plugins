@@ -1,0 +1,45 @@
+{
+  "origins": {
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
+      "license": "LICENSE"
+    },
+    "shared-local-skills": {
+      "description": "Development workflow skills.",
+      "license": "LICENSE.jskills"
+    },
+    "portable-editions": {
+      "description": "General-purpose workflow editions.",
+      "license": "LICENSE.jskills"
+    },
+    "jskills": {
+      "description": "Purpose-specific development workflows authored for jskills.",
+      "license": "LICENSE.jskills"
+    }
+  },
+  "modifications": "Canonical public workflows; upstream adaptations are identified per skill. Category and compatibility packages are generated from this tree.",
+  "skills": [
+    {
+      "name": "macos-app-development",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "fce70657f128ce9be9a9e59d970548f8858e80ae5a64f1e09538f586884a4094"
+      }
+    },
+    {
+      "name": "macos-ui-review",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "c42ca8ea6c713256f2cd2c0f686c410582ae39d340a82617b394b6527aafcdb1"
+      }
+    }
+  ],
+  "licenses": {
+    "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+    "LICENSE.jskills": "bc894ecab39778d810abcdb96d272a0835758c168e1fd65458207e5af99759c0"
+  },
+  "executable_files": []
+}

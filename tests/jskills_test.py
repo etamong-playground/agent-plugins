@@ -4,13 +4,15 @@ import importlib.util
 import json
 from pathlib import Path
 import shutil
+import sys
 import tempfile
 import unittest
 from urllib.parse import urlsplit
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('build_jskills', ROOT / 'scripts/build_jskills.py')
+sys.path.insert(0, str(ROOT / 'scripts'))
+spec = importlib.util.spec_from_file_location('build_onul', ROOT / 'scripts/build_onul.py')
 builder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(builder)
 
@@ -82,25 +84,25 @@ class JskillsTest(unittest.TestCase):
         page = VersionText()
         page.feed((output / 'index.html').read_text())
         self.assertEqual(page.text, ['v9.8.7'])
-        with zipfile.ZipFile(output / 'downloads/jskills.zip') as bundle:
-            manifest = json.loads(bundle.read('jskills/.claude-plugin/plugin.json'))
+        with zipfile.ZipFile(output / 'downloads/onul.zip') as bundle:
+            manifest = json.loads(bundle.read('onul/.claude-plugin/plugin.json'))
             self.assertEqual(manifest['version'], '9.8.7')
 
     def test_downloads_preserve_originals_and_licenses(self):
         output = self.work / 'site'
         builder.build(output)
         manifest = builder.SOURCE
-        with zipfile.ZipFile(output / 'downloads/jskills.zip') as full:
-            self.assertIn('jskills/.claude-plugin/plugin.json', full.namelist())
-            self.assertIn('jskills/.codex-plugin/plugin.json', full.namelist())
+        with zipfile.ZipFile(output / 'downloads/onul.zip') as full:
+            self.assertIn('onul/.claude-plugin/plugin.json', full.namelist())
+            self.assertIn('onul/.codex-plugin/plugin.json', full.namelist())
             for skill in manifest['skills']:
                 with zipfile.ZipFile(output / 'downloads' / (skill['name'] + '.zip')) as single:
                     self.assertEqual(single.read(skill['name'] + '/LICENSE'), (builder.PLUGIN / skill['license']).read_bytes())
                     for name, expected in skill['sha256'].items():
-                        data = full.read('jskills/skills/' + skill['name'] + '/' + name)
+                        data = full.read('onul/skills/' + skill['name'] + '/' + name)
                         self.assertEqual(hashlib.sha256(data).hexdigest(), expected)
                         self.assertEqual(single.read(skill['name'] + '/' + name), data)
-            script = 'jskills/skills/diagnosing-bugs/scripts/hitl-loop.template.sh'
+            script = 'onul/skills/diagnosing-bugs/scripts/hitl-loop.template.sh'
             self.assertFalse((full.getinfo(script).external_attr >> 16) & 0o111)
             with zipfile.ZipFile(output / 'downloads/diagnosing-bugs.zip') as single:
                 self.assertFalse((single.getinfo('diagnosing-bugs/scripts/hitl-loop.template.sh').external_attr >> 16) & 0o111)
@@ -124,7 +126,7 @@ class JskillsTest(unittest.TestCase):
         builder.ROOT = fixture
         first, second = self.work / 'first', self.work / 'second'
         builder.build(first)
-        css = fixture / 'site/jskills/style.css'
+        css = fixture / 'site/onul/style.css'
         css.write_text(css.read_text() + '\nbody { outline: none; }\n')
         builder.build(second)
         urls = []
@@ -154,7 +156,7 @@ class JskillsTest(unittest.TestCase):
         builder.ROOT = fixture
         first, second = self.work / 'first', self.work / 'second'
         builder.build(first)
-        script = fixture / 'site/jskills/tabs.js'
+        script = fixture / 'site/onul/tabs.js'
         script.write_text(script.read_text() + '\nvoid 0;\n')
         builder.build(second)
         urls = []
@@ -173,7 +175,7 @@ class JskillsTest(unittest.TestCase):
         shutil.copytree(self.original_plugin, builder.PLUGIN)
         (builder.PLUGIN / 'skills/diagnosing-bugs/scripts/hitl-loop.template.sh').chmod(0o755)
         builder.build(second)
-        self.assertEqual((first / 'downloads/jskills.zip').read_bytes(), (second / 'downloads/jskills.zip').read_bytes())
+        self.assertEqual((first / 'downloads/onul.zip').read_bytes(), (second / 'downloads/onul.zip').read_bytes())
         with self.assertRaises(FileExistsError):
             builder.build(first)
 

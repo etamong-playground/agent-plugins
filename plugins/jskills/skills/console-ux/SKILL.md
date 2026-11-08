@@ -36,7 +36,7 @@ Follow the target repository's UI contracts and component conventions.
 
 - Let headings, labels, and structure explain the interface; remove prose that repeats a control's visible behavior.
 - Keep labels as noun phrases and necessary helper text brief.
-- Write Korean copy through [korean-prose](../korean-prose/SKILL.md), preserving the interface's established language.
+- Preserve the interface's established language and terminology. Use installed Korean writing guidance when available; otherwise check meaning, register and natural sentence structure directly.
 - Populate local samples for changed states, including empty data, inherited and overridden values, multiple membership, and limits when relevant.
 - Keep screenshot feedback as a checklist and account for every requested item in the result.
 - Follow the repository's browser-validation workflow and verify long content at the supported viewport sizes.
