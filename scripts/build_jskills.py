@@ -115,7 +115,7 @@ def build(output):
     restored_fragments = set()
     guide_parts = []
     purposes = [
-        ('mac', 'macos.md', 'macos-workflow.json', 'macOS 오디오 앱 개발', '음향 작업에 필요한 Mac 앱을 기획하고 구현하는 절차입니다. 인터뷰, TDD, 오디오 검증과 Native UI 리뷰를 함께 다룹니다.'),
+        ('mac', 'macos.md', 'macos-workflow.json', 'macOS 앱 개발', '만들 앱의 목적과 요구사항부터 정하고 기획, TDD, UI와 검증을 연결합니다. 분야별 기능은 필요가 확인된 뒤 선택합니다.'),
         ('product', 'guide.md', 'workflow.json', 'AI 기반 제품 개발 가이드', '기획, 구현, 리뷰와 검증에 필요한 스킬을 작업 단계에 맞춰 사용합니다.'),
         ('installation', 'installation.md', None, '설치와 스킬', 'Codex와 Claude Code에서 사용할 플러그인과 스킬 ZIP, 설치 방법을 확인합니다.'),
     ]

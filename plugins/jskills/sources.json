@@ -225,7 +225,7 @@
       "origin": "jskills",
       "license": "LICENSE.jskills",
       "sha256": {
-        "SKILL.md": "dc541e09d6116195e9e130fa6a2b843c1cc064818dfbf5fc7cc2fffef6f902e5"
+        "SKILL.md": "c456e26d3f646964de3d866aee43be86adbd31d5a7510a9f87895aee67c6646a"
       }
     },
     {
@@ -242,7 +242,7 @@
       "origin": "jskills",
       "license": "LICENSE.jskills",
       "sha256": {
-        "SKILL.md": "bd06d07c75d61947abba62fe8edb2d7d143b11249b0669b459b81d5157c9bf04"
+        "SKILL.md": "c42ca8ea6c713256f2cd2c0f686c410582ae39d340a82617b394b6527aafcdb1"
       }
     },
     {
@@ -250,7 +250,15 @@
       "origin": "jskills",
       "license": "LICENSE.jskills",
       "sha256": {
-        "SKILL.md": "1819382bc8dd89551bc3835f43659b5cdbb3ff095de62ae476a2215098928e03"
+        "SKILL.md": "a0b77fde45e7573804d6e659f894c72a258bd00511f76f2dd195df45cd00d277"
+      }
+    },
+    {
+      "name": "macos-app-development",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "fce70657f128ce9be9a9e59d970548f8858e80ae5a64f1e09538f586884a4094"
       }
     }
   ],
