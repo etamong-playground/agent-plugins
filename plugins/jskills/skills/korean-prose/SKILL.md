@@ -35,6 +35,9 @@ Keep proposals visibly provisional instead of writing them as completed decision
 
 ## Technical instructions
 
+For API documentation, technical references and operational procedures, read [Technical writing checks](references/technical-writing.md) before drafting.
+Apply checks relevant to the document; do not invent product guarantees or add an approval process merely to fill a checklist.
+
 Name the target and the operation explicitly when a pronoun could be ambiguous.
 Mark examples and placeholder values as examples; do not present them as measured facts.
 Put code in fenced blocks with the correct language.
