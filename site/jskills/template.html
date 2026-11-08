@@ -3,27 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="제품 개발에 쓰는 AI coding skills와 Codex, Claude Code 설치 및 사용 가이드입니다.">
+<meta name="description" content="음향 엔지니어를 위한 macOS 앱 개발과 AI 제품 개발 가이드입니다. 기획, TDD, 오디오 검증과 Native UI 스킬을 Codex와 Claude Code에서 사용합니다.">
 <title>jskills | AI 기반 제품 개발 가이드</title>
 <link rel="stylesheet" href="style.css">
+<script src="tabs.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#guide">가이드 본문으로 이동</a>
-<header><a class="brand" href="#">j<span>skills</span><b aria-hidden="true">↗</b></a><nav aria-label="주요 메뉴"><a href="#downloads">다운로드</a><a href="#guide">설치 가이드</a></nav></header>
-<section class="hero">
-<div class="eyebrow">CODEX / CLAUDE CODE</div>
-<h1 id="jskills">AI 기반 제품 개발<br>가이드</h1>
-<p>기획, 구현, 리뷰, 검증에 쓰는 스킬과 사용 방법을 모았습니다.<br>Codex와 Claude Code에서 사용할 수 있습니다.</p>
-<div class="actions"><a class="primary" href="downloads/jskills.zip" download>전체 스킬 ZIP 받기 <span aria-hidden="true">↓</span></a><a class="secondary" href="#guide">설치 가이드 보기 →</a></div>
-<p class="small">플러그인으로 설치하거나 필요한 스킬의 ZIP을 받을 수 있습니다.</p>
-</section>
-<section id="downloads" aria-labelledby="download-title">
-<div class="section-head"><h2 id="download-title">스킬 다운로드</h2><a href="downloads/SHA256SUMS.txt">SHA-256 확인</a></div>
-<p>처음에는 grilling, prototype, tdd, diagnosing-bugs부터 쓰면 됩니다.</p>
-<div class="downloads">{{DOWNLOADS}}</div>
-<div class="download-notes"><a href="guide.md" download>가이드 Markdown 받기</a><a href="downloads/sources.json">원본 revision과 파일 해시</a><a href="downloads/LICENSE">MIT license</a></div>
-</section>
-<div class="guide-layout"><aside aria-label="가이드 목차"><span class="eyebrow">GUIDE</span>{{TOC}}</aside><main id="guide" tabindex="-1">{{CONTENT}}</main></div>
+<header><a class="brand" href="#purpose-mac">j<span>skills</span><b aria-hidden="true">↗</b></a><nav aria-label="바로 가기"><a href="#downloads">다운로드</a><a href="#purpose-installation">설치 방법</a></nav></header>
+<nav class="purpose-tabs" aria-label="개발 목적 선택">
+<a id="tab-mac" href="#purpose-mac" data-tab="mac">macOS 오디오 앱</a>
+<a id="tab-product" href="#purpose-product" data-tab="product">제품 개발</a>
+<a id="tab-installation" href="#purpose-installation" data-tab="installation">설치와 스킬</a>
+</nav>
+<main id="guide" tabindex="-1">{{PANELS}}</main>
 <footer>jskills / AI 기반 제품 개발 가이드</footer>
 </body>
 </html>

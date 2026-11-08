@@ -32,8 +32,8 @@
       "name": "jskills",
       "kind": "skills",
       "displayName": "jskills",
-      "version": "0.3.0",
-      "description": "Portable AI product development skills for design, implementation, review and validation.",
+      "version": "0.4.0",
+      "description": "Portable skills for macOS audio apps and AI product development, from requirements and TDD to UI review and audio validation.",
       "license": "MIT"
     }
   ],
