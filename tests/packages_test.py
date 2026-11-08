@@ -6,6 +6,10 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+import skill_packages
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -86,3 +90,20 @@ class CategoryPackagesTest(unittest.TestCase):
         self.assertNotEqual(self.run_script('generate.py', '--check').returncode, 0)
         self.assertEqual(self.run_script('generate.py').returncode, 0)
         self.assertFalse(stale.exists())
+        self.assertFalse(stale.parent.exists())
+        self.assertEqual(self.run_script('generate.py', '--check').returncode, 0)
+
+    def test_unreviewed_metadata_resource_is_rejected(self):
+        path = self.root / 'plugins/onul-writing/.claude-plugin/private-notes.md'
+        path.write_text('unreviewed synthetic notes')
+        result = self.run_script('generate.py', '--check')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('Stale generated resource', result.stderr)
+
+    def test_editions_do_not_depend_on_filesystem_enumeration_order(self):
+        baseline = skill_packages.editions(self.root)
+        original = Path.rglob
+        def reversed_entries(path, pattern):
+            return iter(reversed(list(original(path, pattern))))
+        with patch.object(Path, 'rglob', reversed_entries):
+            self.assertEqual(skill_packages.editions(self.root), baseline)

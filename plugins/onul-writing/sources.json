@@ -44,8 +44,8 @@
       "license": "LICENSE.jskills",
       "sha256": {
         "LICENSE.oh-my-agent": "beeda13ca6ab2ffa092ca01cc6e07e6ac004e41f5003c43ecd3011b693425a78",
-        "SKILL.md": "bb498ea16306822489b18273d142a393a7a77a45c52e52f5a86f023693682c7f",
-        "scripts/validate_html.py": "915bcfa61bbf87f2cc9ad5a29da72dae197cd510162a7fa6dc747a62be2695f7"
+        "SKILL.md": "2bdbba0181e51f7bf395436425276424f653612623c538801ce234a8f8e0401e",
+        "scripts/validate_html.py": "95ff39f9e7a8084af70650cc70fda05a1191fac956ff42af0a09bdd9eac3b59b"
       },
       "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },
@@ -71,10 +71,10 @@
       "name": "teach",
       "path": "skills/productivity/teach",
       "sha256": {
+        "GLOSSARY-FORMAT.md": "d177def491519d97873291f2e860d8f1d60ead78feecb82eee022177958069c6",
+        "LEARNING-RECORD-FORMAT.md": "855f81017625256584bbf62bd5edb9b0c86605c4cc1139c56acc36b802595d17",
         "MISSION-FORMAT.md": "8da6d3ac84eb2eb19f17c260b6acf01c560d3ac7a4501c415eea0e985602f4d7",
         "RESOURCES-FORMAT.md": "2bc634a64b0d0daa10904f9222e7aa0d361420dfacabbf092fbe3a72222edc08",
-        "LEARNING-RECORD-FORMAT.md": "855f81017625256584bbf62bd5edb9b0c86605c4cc1139c56acc36b802595d17",
-        "GLOSSARY-FORMAT.md": "d177def491519d97873291f2e860d8f1d60ead78feecb82eee022177958069c6",
         "SKILL.md": "f21b0fa050e725cb422a3fab41866aeceec143cc3961f8a6702df5f40e58fa98"
       },
       "origin": "mattpocock-skills",

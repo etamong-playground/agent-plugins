@@ -22,5 +22,5 @@ jobs:
       - run: python3 scripts/validate.py
       - run: python3 scripts/build_onul.py
       - run: python3 -m unittest discover -s tests -p "*_test.py" -v
-      - run: npm install --global @openai/codex@0.153.4 @anthropic-ai/claude-code@2.1.215
+      - run: npm install --global @openai/codex@0.153.4 @anthropic-ai/claude-code@2.1.318
       - run: python3 scripts/client_smoke.py

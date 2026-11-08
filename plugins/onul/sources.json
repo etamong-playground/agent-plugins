@@ -156,8 +156,8 @@
       "license": "LICENSE.jskills",
       "sha256": {
         "LICENSE.oh-my-agent": "beeda13ca6ab2ffa092ca01cc6e07e6ac004e41f5003c43ecd3011b693425a78",
-        "SKILL.md": "bb498ea16306822489b18273d142a393a7a77a45c52e52f5a86f023693682c7f",
-        "scripts/validate_html.py": "915bcfa61bbf87f2cc9ad5a29da72dae197cd510162a7fa6dc747a62be2695f7"
+        "SKILL.md": "2bdbba0181e51f7bf395436425276424f653612623c538801ce234a8f8e0401e",
+        "scripts/validate_html.py": "95ff39f9e7a8084af70650cc70fda05a1191fac956ff42af0a09bdd9eac3b59b"
       },
       "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },

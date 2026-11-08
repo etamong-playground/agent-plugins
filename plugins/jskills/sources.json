@@ -33,8 +33,8 @@
       "name": "prototype",
       "path": "skills/engineering/prototype",
       "sha256": {
-        "SKILL.md": "863611f7fb65b78265188466cacdb365cbad129d36844ec57603c708d2026b50",
         "LOGIC.md": "f0f49aa1120eb81152d024f20a3eee051ca9109e0f9a60cf214ed0080e6baf21",
+        "SKILL.md": "863611f7fb65b78265188466cacdb365cbad129d36844ec57603c708d2026b50",
         "UI.md": "37b54fb91b50a23f0bc2810ed3409e6cdc2a9ca882c11bb7c1b87f7b1a973833"
       },
       "origin": "mattpocock-skills",
@@ -45,10 +45,10 @@
       "name": "tdd",
       "path": "skills/engineering/tdd",
       "sha256": {
-        "mocking.md": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef",
-        "tests.md": "e12182f5c4c6a844b7c6ab4b8d2623b642aaaae5460fe58ed087efd4f3d5fb8a",
         "SKILL.md": "7f3830316fe2f00037f637e2139e9f6cd809488c152ed162726373eed11f7959",
-        "refactoring.md": "54fced22dd1911b7094c3fe7979b7c1a40d40be307482c4adf7dc0588f27d6cc"
+        "mocking.md": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef",
+        "refactoring.md": "54fced22dd1911b7094c3fe7979b7c1a40d40be307482c4adf7dc0588f27d6cc",
+        "tests.md": "e12182f5c4c6a844b7c6ab4b8d2623b642aaaae5460fe58ed087efd4f3d5fb8a"
       },
       "origin": "mattpocock-skills",
       "license": "LICENSE",
@@ -69,9 +69,9 @@
       "name": "codebase-design",
       "path": "skills/engineering/codebase-design",
       "sha256": {
+        "DEEPENING.md": "16c9a92402588527901bb9fb87a3bd66f64a13b7f5b50fd810386136e4a7413d",
         "DESIGN-IT-TWICE.md": "0da19a7556f3618caf272759077b7c007c74789faa38f4c8bfa8c9db8c012dbe",
-        "SKILL.md": "a8d50abac5a4018f60e1d911d4b6f4e36454ca14d6c390c0695a578c7de65dad",
-        "DEEPENING.md": "16c9a92402588527901bb9fb87a3bd66f64a13b7f5b50fd810386136e4a7413d"
+        "SKILL.md": "a8d50abac5a4018f60e1d911d4b6f4e36454ca14d6c390c0695a578c7de65dad"
       },
       "origin": "mattpocock-skills",
       "license": "LICENSE",
@@ -81,9 +81,9 @@
       "name": "domain-modeling",
       "path": "skills/engineering/domain-modeling",
       "sha256": {
-        "SKILL.md": "b06779e9d437f1a847ba6b964d6e6a9154515a280684692ca9be5213826f8de2",
+        "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2",
         "CONTEXT-FORMAT.md": "b8cc318f2a4285b530e908b6bc43901c3c5cd11100362636bbc4216639bef597",
-        "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2"
+        "SKILL.md": "b06779e9d437f1a847ba6b964d6e6a9154515a280684692ca9be5213826f8de2"
       },
       "origin": "mattpocock-skills",
       "license": "LICENSE",
@@ -93,10 +93,10 @@
       "name": "teach",
       "path": "skills/productivity/teach",
       "sha256": {
+        "GLOSSARY-FORMAT.md": "d177def491519d97873291f2e860d8f1d60ead78feecb82eee022177958069c6",
+        "LEARNING-RECORD-FORMAT.md": "855f81017625256584bbf62bd5edb9b0c86605c4cc1139c56acc36b802595d17",
         "MISSION-FORMAT.md": "8da6d3ac84eb2eb19f17c260b6acf01c560d3ac7a4501c415eea0e985602f4d7",
         "RESOURCES-FORMAT.md": "2bc634a64b0d0daa10904f9222e7aa0d361420dfacabbf092fbe3a72222edc08",
-        "LEARNING-RECORD-FORMAT.md": "855f81017625256584bbf62bd5edb9b0c86605c4cc1139c56acc36b802595d17",
-        "GLOSSARY-FORMAT.md": "d177def491519d97873291f2e860d8f1d60ead78feecb82eee022177958069c6",
         "SKILL.md": "f21b0fa050e725cb422a3fab41866aeceec143cc3961f8a6702df5f40e58fa98"
       },
       "origin": "mattpocock-skills",
@@ -156,8 +156,8 @@
       "license": "LICENSE.jskills",
       "sha256": {
         "LICENSE.oh-my-agent": "beeda13ca6ab2ffa092ca01cc6e07e6ac004e41f5003c43ecd3011b693425a78",
-        "SKILL.md": "bb498ea16306822489b18273d142a393a7a77a45c52e52f5a86f023693682c7f",
-        "scripts/validate_html.py": "915bcfa61bbf87f2cc9ad5a29da72dae197cd510162a7fa6dc747a62be2695f7"
+        "SKILL.md": "2bdbba0181e51f7bf395436425276424f653612623c538801ce234a8f8e0401e",
+        "scripts/validate_html.py": "95ff39f9e7a8084af70650cc70fda05a1191fac956ff42af0a09bdd9eac3b59b"
       },
       "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
     },

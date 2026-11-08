@@ -5,6 +5,9 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import queue
+import re
+import threading
 
 root = Path(__file__).resolve().parents[1]
 (root / '.tmp').mkdir(exist_ok=True)
@@ -48,6 +51,43 @@ with tempfile.TemporaryDirectory(prefix='client-smoke-', dir=root / '.tmp') as w
     run('codex', ['plugin', 'marketplace', 'add', remote, '--json'])
     run('claude', ['plugin', 'validate', str(source)])
     run('claude', ['plugin', 'marketplace', 'add', remote, '--scope', 'user'])
+    def discovered_codex():
+        profile, env = clients['codex']
+        messages = [
+            {'jsonrpc': '2.0', 'id': 1, 'method': 'initialize', 'params': {'clientInfo': {'name': 'skill-qualification', 'version': '1'}}},
+            {'jsonrpc': '2.0', 'method': 'initialized'},
+            {'jsonrpc': '2.0', 'id': 2, 'method': 'skills/list', 'params': {'cwds': [str(profile)], 'forceReload': True}},
+        ]
+        process = subprocess.Popen(['codex', 'app-server'], env=env, cwd=profile,
+                                   stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+        lines = queue.Queue()
+        def read_stdout():
+            for line in process.stdout:
+                lines.put(line)
+        threading.Thread(target=read_stdout, daemon=True).start()
+        def send(message):
+            process.stdin.write(json.dumps(message) + '\n')
+            process.stdin.flush()
+        def receive(identifier):
+            while True:
+                value = json.loads(lines.get(timeout=30))
+                if value.get('id') == identifier:
+                    if 'error' in value:
+                        raise RuntimeError(value['error'])
+                    return value
+        try:
+            send(messages[0])
+            receive(1)
+            send(messages[1])
+            send(messages[2])
+            reply = receive(2)
+        finally:
+            process.terminate()
+            process.wait(timeout=5)
+        data = reply['result']['data']
+        assert all(not entry.get('errors') for entry in data), data
+        return [s for entry in data for s in entry['skills'] if str(profile) in s['path']]
+
     for upgrading in [False, True]:
         if upgrading:
             for service in catalog['plugins']:
@@ -73,5 +113,52 @@ with tempfile.TemporaryDirectory(prefix='client-smoke-', dir=root / '.tmp') as w
                     connection = entry['mcpServers'][service['name']]
                     assert connection['type'] == 'stdio' and connection['command'] == service['claudeAdapter']['command']
                     assert connection['env'][service['claudeAdapter']['originEnv']] == service['resource']
+            if client == 'codex':
+                discovered = discovered_codex()
+                expected = {p['name'] + ':' + skill.name for p in catalog['plugins'] if p.get('kind') == 'skills' for skill in (source / 'plugins' / p['name'] / 'skills').iterdir()}
+                assert expected.issubset({s['name'] for s in discovered}), 'Missing discovered plugin skills'
+            if client == 'claude':
+                details = run('claude', ['plugin', 'details', 'onul@' + catalog['name']])
+                assert 'planning' in details and 'Skills (38)' in details
             print(client + (' upgrade' if upgrading else ' installation') + ' verified')
+    skill_packages = [p for p in catalog['plugins'] if p.get('kind') == 'skills']
+    active = {p['name'] for p in skill_packages}
+
+    def select_packages(names):
+        global active
+        for name in sorted(active - set(names)):
+            selector = name + '@' + catalog['name']
+            run('codex', ['plugin', 'remove', selector, '--json'])
+            run('claude', ['plugin', 'uninstall', selector, '--scope', 'user'])
+        for name in sorted(set(names) - active):
+            selector = name + '@' + catalog['name']
+            run('codex', ['plugin', 'add', selector, '--json'])
+            run('claude', ['plugin', 'install', selector, '--scope', 'user'])
+        active = set(names)
+        expected = {name + ':' + folder.name for name in names
+                    for folder in (source / 'plugins' / name / 'skills').iterdir()}
+        actual = {s['name'] for s in discovered_codex()}
+        family = {p['name'] for p in skill_packages}
+        actual = {n for n in actual if n.split(':')[0] in family}
+        assert actual == expected, (sorted(expected - actual), sorted(actual - expected))
+        for name in names:
+            details = run('claude', ['plugin', 'details', name + '@' + catalog['name']])
+            match = re.search(r'Skills \(\d+\)  ([^\n]+)', details)
+            assert match, details
+            found = set(match.group(1).split(', '))
+            wanted = {folder.name for folder in (source / 'plugins' / name / 'skills').iterdir()}
+            assert found == wanted, (name, found, wanted)
+        for client in clients:
+            listed = json.loads(run(client, ['plugin', 'list', '--json']))
+            entries = listed['installed'] if client == 'codex' else listed
+            installed = {entry.get('pluginId', entry.get('id')).split('@')[0] for entry in entries if entry['enabled']}
+            assert installed.intersection(family) == set(names), (client, installed, names)
+        print('Client discovery and inventories verified:', ', '.join(names))
+
+    for name in catalog['skillPackages']['categories']:
+        select_packages([name])
+    select_packages(list(catalog['skillPackages']['categories']))
+    select_packages(['jskills'])
+    select_packages(['onul'])
+    select_packages(['onul-planning', 'onul-development'])
 print('Client smoke checks passed without user OAuth grants or model calls')
