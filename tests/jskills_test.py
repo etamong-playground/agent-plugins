@@ -50,6 +50,42 @@ class JskillsTest(unittest.TestCase):
         self.original_plugin = builder.PLUGIN
         self.addCleanup(setattr, builder, 'PLUGIN', self.original_plugin)
 
+    def test_page_displays_the_version_of_its_downloaded_package(self):
+        builder.PLUGIN = self.work / 'plugin'
+        shutil.copytree(self.original_plugin, builder.PLUGIN)
+        for name in ['.claude-plugin/plugin.json', '.codex-plugin/plugin.json']:
+            path = builder.PLUGIN / name
+            data = json.loads(path.read_text())
+            data['version'] = '9.8.7'
+            path.write_text(json.dumps(data))
+        output = self.work / 'site'
+        builder.build(output)
+
+        class VersionText(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.active = False
+                self.text = []
+
+            def handle_starttag(self, tag, attrs):
+                if tag == 'span' and 'release-version' in dict(attrs).get('class', '').split():
+                    self.active = True
+
+            def handle_data(self, text):
+                if self.active:
+                    self.text.append(text)
+
+            def handle_endtag(self, tag):
+                if tag == 'span':
+                    self.active = False
+
+        page = VersionText()
+        page.feed((output / 'index.html').read_text())
+        self.assertEqual(page.text, ['v9.8.7'])
+        with zipfile.ZipFile(output / 'downloads/jskills.zip') as bundle:
+            manifest = json.loads(bundle.read('jskills/.claude-plugin/plugin.json'))
+            self.assertEqual(manifest['version'], '9.8.7')
+
     def test_downloads_preserve_originals_and_licenses(self):
         output = self.work / 'site'
         builder.build(output)
