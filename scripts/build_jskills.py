@@ -8,6 +8,7 @@ import shutil
 import zipfile
 
 import markdown
+from markdown.extensions.toc import slugify_unicode
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / 'plugins/jskills'
@@ -75,7 +76,8 @@ def version_assets(text, output):
         relative = str(path.relative_to(output))
         version = digest(path.read_bytes())[:12]
         for url in [relative, 'https://pages.onul.me/jskills/' + relative]:
-            text = text.replace(f'href="{url}"', f'href="{url}?v={version}"')
+            for attribute in ['href', 'src']:
+                text = text.replace(f'{attribute}="{url}"', f'{attribute}="{url}?v={version}"')
             text = text.replace(f']({url})', f']({url}?v={version})')
     return text
 
@@ -104,29 +106,54 @@ def build(output):
         shutil.copyfile(PLUGIN / name, downloads / name)
     checksums = ''.join(f'{digest(path.read_bytes())}  {path.name}\n' for path in sorted(downloads.glob('*.zip')))
     (downloads / 'SHA256SUMS.txt').write_text(checksums)
-    guide = (ROOT / 'site/jskills/guide.md').read_text()
-    workflow = json.loads((ROOT / 'site/jskills/workflow.json').read_text())
     known_skills = {skill['name'] for skill in SOURCE['skills']}
-    nodes = []
-    mermaid = ['flowchart TD']
-    for index, phase in enumerate(workflow, 1):
-        if not set(phase['skills']).issubset(known_skills):
-            raise ValueError('Workflow names an unavailable skill')
-        names = ', '.join(phase['skills'])
-        nodes.append(f'<li><span class="phase-number">{index:02d}</span><h3>{html.escape(phase["title"])}</h3><p>{html.escape(names)}</p></li>')
-        mermaid.append(f'  N{index}["{phase["title"]}<br/>{names}"]')
-        if index > 1:
-            mermaid.append(f'  N{index - 1} --> N{index}')
-    mermaid.extend(['  N5 -- "오류 수정" --> N4', '  N6 -- "확인된 지적 수정" --> N4'])
-    markdown_diagram = '```mermaid\n' + '\n'.join(mermaid) + '\n```'
     shutil.copyfile(ROOT / 'site/jskills/style.css', output / 'style.css')
-    (output / 'guide.md').write_text(version_assets(guide.replace('<!-- workflow-diagram -->', markdown_diagram), output))
-    workflow_html = '<div class="workflow" aria-label="제품 개발 단계와 사용하는 스킬"><ol class="workflow-steps">' + ''.join(nodes) + '</ol><p class="workflow-return">검증 또는 리뷰에서 수정할 내용이 확인되면 구현 단계로 돌아가고, 수정 후에는 다시 검증합니다.</p></div>'
-    md = markdown.Markdown(extensions=['tables', 'fenced_code', 'toc'], extension_configs={'toc': {'permalink': False}})
-    content = md.convert(guide).replace('<!-- workflow-diagram -->', workflow_html)
-    content = re.sub(r'<h1[^>]*>.*?</h1>', '', content, count=1)
-    page = (ROOT / 'site/jskills/template.html').read_text()
-    page = page.replace('{{CONTENT}}', content).replace('{{TOC}}', md.toc).replace('{{DOWNLOADS}}', '\n'.join(links))
+    shutil.copyfile(ROOT / 'site/jskills/tabs.js', output / 'tabs.js')
+    download_html = '<section id="downloads" aria-labelledby="download-title"><div class="section-head"><h2 id="download-title">스킬 다운로드</h2><a href="downloads/SHA256SUMS.txt">SHA-256 확인</a></div><p>전체 ZIP 또는 필요한 스킬을 선택합니다.</p><div class="downloads">' + '\n'.join(links) + '</div><div class="download-notes"><a href="guide.md" download>가이드 Markdown 받기</a><a href="downloads/sources.json">출처와 파일 해시</a><a href="downloads/LICENSE">MIT license</a></div></section>'
+    panels = []
+    legacy = json.loads((ROOT / 'site/jskills/legacy-fragments.json').read_text())
+    restored_fragments = set()
+    guide_parts = []
+    purposes = [
+        ('mac', 'macos.md', 'macos-workflow.json', 'macOS 오디오 앱 개발', '음향 작업에 필요한 Mac 앱을 기획하고 구현하는 절차입니다. 인터뷰, TDD, 오디오 검증과 Native UI 리뷰를 함께 다룹니다.'),
+        ('product', 'guide.md', 'workflow.json', 'AI 기반 제품 개발 가이드', '기획, 구현, 리뷰와 검증에 필요한 스킬을 작업 단계에 맞춰 사용합니다.'),
+        ('installation', 'installation.md', None, '설치와 스킬', 'Codex와 Claude Code에서 사용할 플러그인과 스킬 ZIP, 설치 방법을 확인합니다.'),
+    ]
+    for purpose, filename, workflow_file, title, description in purposes:
+        guide = (ROOT / 'site/jskills' / filename).read_text()
+        diagram_html, diagram_md = '', ''
+        if workflow_file:
+            workflow = json.loads((ROOT / 'site/jskills' / workflow_file).read_text())
+            nodes, mermaid = [], ['flowchart TD']
+            for index, phase in enumerate(workflow, 1):
+                if not set(phase['skills']).issubset(known_skills):
+                    raise ValueError('Workflow names an unavailable skill')
+                names = ', '.join(phase['skills'])
+                nodes.append(f'<li><span class="phase-number">{index:02d}</span><h3>{html.escape(phase["title"])}</h3><p>{html.escape(names)}</p></li>')
+                mermaid.append(f'  N{index}["{phase["title"]}<br/>{names}"]')
+                if index > 1:
+                    mermaid.append(f'  N{index - 1} --> N{index}')
+            mermaid.extend(['  N5 -- "오류 수정" --> N4', '  N6 -- "확인된 지적 수정" --> N4'])
+            diagram_md = '```mermaid\n' + '\n'.join(mermaid) + '\n```'
+            diagram_html = '<div class="workflow" aria-label="개발 단계와 사용하는 스킬"><ol class="workflow-steps">' + ''.join(nodes) + '</ol><p class="workflow-return">검증이나 리뷰에서 확인한 문제를 수정한 뒤 다시 검증합니다.</p></div>'
+        md = markdown.Markdown(extensions=['tables', 'fenced_code', 'toc'], extension_configs={'toc': {'permalink': False, 'slugify': lambda value, separator, prefix=purpose: prefix + '-' + slugify_unicode(value, separator)}})
+        content = md.convert(guide).replace('<!-- workflow-diagram -->', diagram_html).replace('<!-- skill-downloads -->', download_html)
+        content = re.sub(r'<h1[^>]*>.*?</h1>', '', content, count=1)
+        for alias, target in legacy.items():
+            marker = f'<h([2-6]) id="{re.escape(target)}"'
+            content, count = re.subn(marker, lambda match: f'<span id="{html.escape(alias, quote=True)}" class="fragment-alias" aria-hidden="true"></span>' + match.group(0), content, count=1)
+            if count:
+                restored_fragments.add(alias)
+        toc = re.sub(r'<li><a href="#[^"]+">[^<]+</a>\s*<ul>', '<li><ul>', md.toc, count=1)
+        hero_id = ' id="jskills"' if purpose == 'product' else ''
+        panels.append(f'<section id="purpose-{purpose}" data-purpose="{purpose}" aria-labelledby="tab-{purpose}"><div class="hero"><div class="eyebrow">CODEX / CLAUDE CODE</div><h1{hero_id}>{title}</h1><p>{description}</p><div class="actions"><a class="primary" href="downloads/jskills.zip" download>전체 스킬 ZIP 받기 <span aria-hidden="true">↓</span></a><a class="secondary" href="#purpose-installation">설치 방법 보기 →</a></div></div><div class="guide-layout"><aside aria-label="{title} 목차">{toc}</aside><article>{content}</article></div></section>')
+        portable = guide.replace('<!-- workflow-diagram -->', diagram_md).replace('<!-- skill-downloads -->', '[전체 스킬 ZIP](https://pages.onul.me/jskills/downloads/jskills.zip)')
+        portable = re.sub(r'\[([^]]+)\]\(#purpose-(?:mac|product|installation)\)', r'\1', portable)
+        guide_parts.append(portable)
+    if restored_fragments != set(legacy):
+        raise ValueError('A published guide fragment has no destination')
+    (output / 'guide.md').write_text(version_assets('\n\n'.join(guide_parts), output))
+    page = (ROOT / 'site/jskills/template.html').read_text().replace('{{PANELS}}', '\n'.join(panels))
     (output / 'index.html').write_text(version_assets(page, output))
     print(f'Built {output}: guide, full bundle, {len(SOURCE["skills"])} individual archives, source hashes and license')
 

@@ -61,8 +61,8 @@ Keep credentials and privileged fleet administration workflows outside these pac
 
 ## jskills
 
-Skills and practical guidance for AI product development: planning, implementation, review, writing, and memory optimization.
-The [Korean guide](https://pages.onul.me/jskills/) covers plugin and folder installation, worked prompts, dependencies, and update instructions.
+Skills and practical guidance for macOS audio apps and AI product development: requirements interviews and feedback, TDD, audio validation, native UI review, debugging, writing, and memory optimization.
+The [Korean guide](https://pages.onul.me/jskills/) starts with an audio-engineering Mac app workflow and separates general product development and shared installation into purpose tabs. It includes worked prompts, verification boundaries, downloads and update instructions.
 Source origins, portable-edition notes, licenses and file hashes live in [sources.json](plugins/jskills/sources.json); the package preserves its [MIT notice](plugins/jskills/LICENSE).
 
 ```sh

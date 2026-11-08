@@ -20,14 +20,25 @@ class Links(HTMLParser):
         super().__init__()
         self.links = []
         self.ids = set()
+        self.id_counts = {}
+        self.id_panels = {}
+        self.sections = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'section':
+            self.sections.append(attrs.get('data-purpose', self.sections[-1] if self.sections else None))
         if 'id' in attrs:
             self.ids.add(attrs['id'])
+            self.id_counts[attrs['id']] = self.id_counts.get(attrs['id'], 0) + 1
+            self.id_panels[attrs['id']] = self.sections[-1] if self.sections else None
         for key in ['href', 'src']:
             if key in attrs:
                 self.links.append(attrs[key])
+
+    def handle_endtag(self, tag):
+        if tag == 'section':
+            self.sections.pop()
 
 
 class JskillsTest(unittest.TestCase):
@@ -87,6 +98,35 @@ class JskillsTest(unittest.TestCase):
             url = next(link for link in links.links if urlsplit(link).path == 'style.css')
             self.assertTrue(urlsplit(url).query)
             self.assertEqual((output / urlsplit(url).path).read_bytes(), (output / 'style.css').read_bytes())
+            urls.append(url)
+        self.assertNotEqual(*urls)
+
+    def test_published_fragments_still_resolve_in_the_correct_purpose(self):
+        output = self.work / 'site'
+        builder.build(output)
+        links = Links()
+        links.feed((output / 'index.html').read_text())
+        for fragment, purpose in {'_1': 'product', '_7': 'installation', 'codex': 'installation', 'jskills': 'product'}.items():
+            self.assertEqual(links.id_panels[fragment], purpose)
+        self.assertTrue(all(count == 1 for count in links.id_counts.values()))
+
+    def test_navigation_script_changes_its_public_cache_key(self):
+        fixture = self.work / 'fixture'
+        shutil.copytree(ROOT / 'site', fixture / 'site')
+        old_root = builder.ROOT
+        self.addCleanup(setattr, builder, 'ROOT', old_root)
+        builder.ROOT = fixture
+        first, second = self.work / 'first', self.work / 'second'
+        builder.build(first)
+        script = fixture / 'site/jskills/tabs.js'
+        script.write_text(script.read_text() + '\nvoid 0;\n')
+        builder.build(second)
+        urls = []
+        for output in [first, second]:
+            links = Links()
+            links.feed((output / 'index.html').read_text())
+            url = next(link for link in links.links if urlsplit(link).path == 'tabs.js')
+            self.assertTrue(urlsplit(url).query)
             urls.append(url)
         self.assertNotEqual(*urls)
 

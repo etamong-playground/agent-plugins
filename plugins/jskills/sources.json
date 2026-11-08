@@ -12,6 +12,10 @@
     "portable-editions": {
       "description": "General-purpose workflow editions.",
       "license": "LICENSE.jskills"
+    },
+    "jskills": {
+      "description": "Purpose-specific development workflows authored for jskills.",
+      "license": "LICENSE.jskills"
     }
   },
   "modifications": "Original folders are unchanged; sharing editions are explicitly identified per skill.",
@@ -214,6 +218,39 @@
       "modifications": "General-purpose workflow and client-neutral tool references.",
       "sha256": {
         "SKILL.md": "e2db4e73ea8fe1a79a1a8261582b6fd0c0486711aa029bad787a2344fcfea788"
+      }
+    },
+    {
+      "name": "macos-audio-app",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "dc541e09d6116195e9e130fa6a2b843c1cc064818dfbf5fc7cc2fffef6f902e5"
+      }
+    },
+    {
+      "name": "audio-validation",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "8c47ddab5524374333f74a0af92f66c8856f420ed9838aeaaa45f629dde94418",
+        "references/validation-matrix.md": "cf1a47cc2bbc84b3d9a430fce53dbe20057f6f9940889bf74c3e68bad8837547"
+      }
+    },
+    {
+      "name": "macos-ui-review",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "bd06d07c75d61947abba62fe8edb2d7d143b11249b0669b459b81d5157c9bf04"
+      }
+    },
+    {
+      "name": "requirements-feedback",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "1819382bc8dd89551bc3835f43659b5cdbb3ff095de62ae476a2215098928e03"
       }
     }
   ],
