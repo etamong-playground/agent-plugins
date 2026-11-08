@@ -1,11 +1,11 @@
-import importlib.util
+import types
 from pathlib import Path
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('explainer_validator', ROOT / 'plugins/onul/skills/explain-code-change/scripts/validate_html.py')
-validator = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(validator)
+source = ROOT / 'plugins/onul/skills/explain-code-change/scripts/validate_html.py'
+validator = types.ModuleType('explainer_validator')
+exec(compile(source.read_text(), str(source), 'exec'), validator.__dict__)
 CSP = "; ".join(key + ' ' + ' '.join(values) for key, values in validator.EXPECTED_CSP.items())
 META = '<meta http-equiv="Content-Security-Policy" content="' + CSP + '">'
 SECTIONS = ''.join('<section id="' + name + '"></section>' for name in sorted(validator.REQUIRED_SECTIONS))
