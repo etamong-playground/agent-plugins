@@ -84,6 +84,7 @@ def version_assets(text, output):
 
 def build(output):
     allowed_files = validate_sources()
+    package_version = json.loads((PLUGIN / '.claude-plugin/plugin.json').read_text())['version']
     output.mkdir(parents=True, exist_ok=False)
     downloads = output / 'downloads'
     downloads.mkdir()
@@ -153,7 +154,7 @@ def build(output):
     if restored_fragments != set(legacy):
         raise ValueError('A published guide fragment has no destination')
     (output / 'guide.md').write_text(version_assets('\n\n'.join(guide_parts), output))
-    page = (ROOT / 'site/jskills/template.html').read_text().replace('{{PANELS}}', '\n'.join(panels))
+    page = (ROOT / 'site/jskills/template.html').read_text().replace('{{PANELS}}', '\n'.join(panels)).replace('{{VERSION}}', html.escape(package_version))
     (output / 'index.html').write_text(version_assets(page, output))
     print(f'Built {output}: guide, full bundle, {len(SOURCE["skills"])} individual archives, source hashes and license')
 

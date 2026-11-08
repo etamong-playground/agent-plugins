@@ -63,6 +63,7 @@ Keep credentials and privileged fleet administration workflows outside these pac
 
 Skills and practical guidance for macOS apps and software products: requirements interviews and feedback, TDD, UI review, debugging, memory optimization and service operations. Domain workflows such as audio processing are optional and follow explicit requirements.
 The [Korean guide](https://pages.onul.me/jskills/) starts with a requirements-driven Mac app workflow and separates general product development and shared installation into purpose tabs. It includes worked prompts, verification boundaries, downloads and update instructions.
+Its header shows the version of the bundled jskills package.
 Source origins, portable-edition notes, licenses and file hashes live in [sources.json](plugins/jskills/sources.json); the package preserves its [MIT notice](plugins/jskills/LICENSE).
 
 ```sh
