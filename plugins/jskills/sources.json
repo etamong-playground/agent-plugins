@@ -157,7 +157,8 @@
       "license": "LICENSE.jskills",
       "modifications": "General-purpose workflow and client-neutral tool references.",
       "sha256": {
-        "SKILL.md": "b2c6b0144036756ab384982a46285404ecd3d999f5022d60b992020b13dadbfb"
+        "SKILL.md": "c8dacfce5d2dd1ec5bd598ec14bdb8e9b2110d1d43136096794b1585ff6720fa",
+        "references/technical-writing.md": "a3c4464f945053564c4418e7790b860810577a17f62a9b8b84507de8a1d2d9af"
       }
     },
     {

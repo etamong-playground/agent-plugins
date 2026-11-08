@@ -16,7 +16,7 @@
     {
       "name": "jskills",
       "source": "./plugins/jskills",
-      "version": "0.6.0",
+      "version": "0.6.1",
       "description": "Portable development, debugging and operations skills for requirements-driven macOS apps and software products."
     }
   ]
