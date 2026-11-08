@@ -1,7 +1,7 @@
 {
   "name": "jskills",
-  "version": "0.6.1",
-  "description": "Portable development, debugging and operations skills for requirements-driven macOS apps and software products.",
+  "version": "0.7.0",
+  "description": "Compatibility package for existing jskills users. Choose onul or category plugins for new installs.",
   "author": {
     "name": "Onul"
   },

@@ -27,7 +27,7 @@ Diversity beats redundancy: N critics with N *different* lenses find more than N
 
 ### 0. Establish scope and assemble the review packet
 Determine exactly what is under review and gather it into a self-contained packet (diff, the
-changed files in full, the requirement/spec or task that motivated it, relevant CLAUDE.md rules).
+changed files in full, the requirement/spec or task that motivated it, applicable loaded agent and repository rules).
 Each critic gets this packet quarantined in its prompt — they must not have to go hunting, and you
 must not pull their raw exploration back into your context.
 
@@ -75,10 +75,10 @@ context, and flag non-issues:
 - Verdict each finding: **CONFIRMED** (real, accept) or **REJECTED** (with a one-line reason).
 
 ### 5. Accept = apply the confirmed fixes
-Apply confirmed fixes to the working tree (in the worktree, if the work lives in one), following the
-repo's CLAUDE.md (comment rule, commit policy, conventions). Guardrails:
-- Do **not** auto-apply changes that alter public behavior/API, expand scope, or are destructive —
-  surface those to the user with the rationale and let them decide.
+Apply confirmed fixes to the working tree (in the worktree, if the work lives in one), following applicable
+repository guidance (comment rule, commit policy, conventions). Guardrails:
+- Apply in-scope fixes under existing implementation authority, including already agreed behavior changes.
+  A finding that expands scope, changes an unresolved contract or needs destructive authority requires the relevant user decision.
 - If a confirmed finding is a design flaw rather than a line fix, record it as an open item rather
   than forcing a patch.
 
@@ -105,4 +105,4 @@ Summarize per round, compactly:
   critiques. A confidently-wrong critique that gets auto-applied is worse than no review.
 - **Efficiency:** critics on the cheapest capable model, dispatched in parallel, context quarantined;
   judgment stays in the main session. Scale critic count and rounds to the stakes of the work.
-- Respect the active repo's CLAUDE.md for commit/push/PR policy when applying or proposing fixes.
+- Respect applicable repository guidance for commit/push/PR policy when applying or proposing fixes.

@@ -17,6 +17,105 @@
       "category": "Productivity"
     },
     {
+      "name": "onul",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onul"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "onul-planning",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onul-planning"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "onul-development",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onul-development"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "onul-verification",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onul-verification"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "onul-writing",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onul-writing"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "onul-agent-tools",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onul-agent-tools"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "onul-operations",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onul-operations"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "onul-macos",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onul-macos"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "onul-audio",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onul-audio"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "jskills",
       "source": {
         "source": "local",

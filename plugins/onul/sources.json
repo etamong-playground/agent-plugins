@@ -1,0 +1,389 @@
+{
+  "origins": {
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
+      "license": "LICENSE"
+    },
+    "shared-local-skills": {
+      "description": "Development workflow skills.",
+      "license": "LICENSE.jskills"
+    },
+    "portable-editions": {
+      "description": "General-purpose workflow editions.",
+      "license": "LICENSE.jskills"
+    },
+    "jskills": {
+      "description": "Purpose-specific development workflows authored for jskills.",
+      "license": "LICENSE.jskills"
+    }
+  },
+  "modifications": "Canonical public workflows; upstream adaptations are identified per skill. Category and compatibility packages are generated from this tree.",
+  "skills": [
+    {
+      "name": "grilling",
+      "path": "skills/productivity/grilling",
+      "sha256": {
+        "SKILL.md": "fe00af3e1815f97c0a7644605479328a726b5cd95ba6ef56a4be2a92fae6c20f"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE"
+    },
+    {
+      "name": "prototype",
+      "path": "skills/engineering/prototype",
+      "sha256": {
+        "LOGIC.md": "f0f49aa1120eb81152d024f20a3eee051ca9109e0f9a60cf214ed0080e6baf21",
+        "SKILL.md": "863611f7fb65b78265188466cacdb365cbad129d36844ec57603c708d2026b50",
+        "UI.md": "37b54fb91b50a23f0bc2810ed3409e6cdc2a9ca882c11bb7c1b87f7b1a973833"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "tdd",
+      "path": "skills/engineering/tdd",
+      "sha256": {
+        "SKILL.md": "7f3830316fe2f00037f637e2139e9f6cd809488c152ed162726373eed11f7959",
+        "mocking.md": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef",
+        "refactoring.md": "54fced22dd1911b7094c3fe7979b7c1a40d40be307482c4adf7dc0588f27d6cc",
+        "tests.md": "e12182f5c4c6a844b7c6ab4b8d2623b642aaaae5460fe58ed087efd4f3d5fb8a"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "diagnosing-bugs",
+      "path": "skills/engineering/diagnosing-bugs",
+      "sha256": {
+        "SKILL.md": "3dc4f72aef876e61c01d7ac6e085556204dc3cdf4aa7c2cdc44acf39075f8401",
+        "scripts/hitl-loop.template.sh": "b2932630950e5210075bcd6f850e5accf30c101c5367b29eac3a29b4dd8084c8"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "codebase-design",
+      "path": "skills/engineering/codebase-design",
+      "sha256": {
+        "DEEPENING.md": "16c9a92402588527901bb9fb87a3bd66f64a13b7f5b50fd810386136e4a7413d",
+        "DESIGN-IT-TWICE.md": "0da19a7556f3618caf272759077b7c007c74789faa38f4c8bfa8c9db8c012dbe",
+        "SKILL.md": "a8d50abac5a4018f60e1d911d4b6f4e36454ca14d6c390c0695a578c7de65dad"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "domain-modeling",
+      "path": "skills/engineering/domain-modeling",
+      "sha256": {
+        "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2",
+        "CONTEXT-FORMAT.md": "b8cc318f2a4285b530e908b6bc43901c3c5cd11100362636bbc4216639bef597",
+        "SKILL.md": "b06779e9d437f1a847ba6b964d6e6a9154515a280684692ca9be5213826f8de2"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "teach",
+      "path": "skills/productivity/teach",
+      "sha256": {
+        "GLOSSARY-FORMAT.md": "d177def491519d97873291f2e860d8f1d60ead78feecb82eee022177958069c6",
+        "LEARNING-RECORD-FORMAT.md": "855f81017625256584bbf62bd5edb9b0c86605c4cc1139c56acc36b802595d17",
+        "MISSION-FORMAT.md": "8da6d3ac84eb2eb19f17c260b6acf01c560d3ac7a4501c415eea0e985602f4d7",
+        "RESOURCES-FORMAT.md": "2bc634a64b0d0daa10904f9222e7aa0d361420dfacabbf092fbe3a72222edc08",
+        "SKILL.md": "f21b0fa050e725cb422a3fab41866aeceec143cc3961f8a6702df5f40e58fa98"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "writing-great-skills",
+      "path": "skills/productivity/writing-great-skills",
+      "sha256": {
+        "GLOSSARY.md": "fd9f5cdb6f63703c64c5ccb295223171ce0438e69e34b0c0d202aa9573eaa281",
+        "SKILL.md": "20f00b115708f3b6c6b747d42060d3bc78db26dc18abfe9deccde552e5c4d343"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "adversarial-review",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "84ddd7cf33e857fe56b86ba571055e5c68ae69faae33ff33fb6a6d426cbf100e"
+      },
+      "modifications": "General-purpose workflow and client-neutral tool references. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "compare-spike",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "6408bf1fb674a265e10ddd95728fcf9572abc37b5d851aea018fee3d095057ed"
+      },
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "refactor-safely",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "LICENSE.oh-my-agent": "beeda13ca6ab2ffa092ca01cc6e07e6ac004e41f5003c43ecd3011b693425a78",
+        "SKILL.md": "d12557e570727885ac87eb0bd3fb6153418d0461fdbd535969b3f0ea040c453b"
+      }
+    },
+    {
+      "name": "prune-comments",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "ba6eae974e3f6066e7a050284961763326e9c71f1a3c383c6f45599d1d70eabe"
+      },
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "explain-code-change",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "LICENSE.oh-my-agent": "beeda13ca6ab2ffa092ca01cc6e07e6ac004e41f5003c43ecd3011b693425a78",
+        "SKILL.md": "bb498ea16306822489b18273d142a393a7a77a45c52e52f5a86f023693682c7f",
+        "scripts/validate_html.py": "915bcfa61bbf87f2cc9ad5a29da72dae197cd510162a7fa6dc747a62be2695f7"
+      },
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "korean-prose",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "General-purpose workflow and client-neutral tool references. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy.",
+      "sha256": {
+        "SKILL.md": "767e48962e227beb7c2e7c775988e668c7f9b7a6aeaa954668f448b5ee626b42",
+        "references/technical-writing.md": "a3c4464f945053564c4418e7790b860810577a17f62a9b8b84507de8a1d2d9af"
+      }
+    },
+    {
+      "name": "planning",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "Public planning workflow exported as planning in Onul packages. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy.",
+      "sha256": {
+        "SKILL.md": "6308b2ab9bbd1241d8bc749fdd66a5080698d675a37c127de37e9a32032ca50d"
+      }
+    },
+    {
+      "name": "platform-plan-doc",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "General-purpose workflow and client-neutral tool references.",
+      "sha256": {
+        "SKILL.md": "bd9078e46b65fb1492b2e0614a5344f5046803b222315024e5b6ec51e0e5e3e8"
+      }
+    },
+    {
+      "name": "console-ux",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "General-purpose workflow and client-neutral tool references. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy.",
+      "sha256": {
+        "SKILL.md": "7086485205508337b7addb0d7c092ce4af8c76f2b8c3a07e5d5f610f90ec9112"
+      }
+    },
+    {
+      "name": "audience-review",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "e91e459a1675f0118628559af8206ca81a2de96a5661b4c3bbfb83442527e0bc"
+      }
+    },
+    {
+      "name": "memory-maintenance",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "5c1a87ee3c7aab8a574eab21970e894670031214df9cc1fafebfb6c0cb852030"
+      }
+    },
+    {
+      "name": "optimize-memory",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "a63320b2b7a1b3761420da9a05ac0987e53d5bfd86395226d0faf1b4ce6f4a73"
+      }
+    },
+    {
+      "name": "update-agent-guidance",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "General-purpose workflow and client-neutral tool references.",
+      "sha256": {
+        "SKILL.md": "e2db4e73ea8fe1a79a1a8261582b6fd0c0486711aa029bad787a2344fcfea788"
+      }
+    },
+    {
+      "name": "macos-audio-app",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "c456e26d3f646964de3d866aee43be86adbd31d5a7510a9f87895aee67c6646a"
+      }
+    },
+    {
+      "name": "audio-validation",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "8c47ddab5524374333f74a0af92f66c8856f420ed9838aeaaa45f629dde94418",
+        "references/validation-matrix.md": "cf1a47cc2bbc84b3d9a430fce53dbe20057f6f9940889bf74c3e68bad8837547"
+      }
+    },
+    {
+      "name": "macos-ui-review",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "c42ca8ea6c713256f2cd2c0f686c410582ae39d340a82617b394b6527aafcdb1"
+      }
+    },
+    {
+      "name": "requirements-feedback",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "a0b77fde45e7573804d6e659f894c72a258bd00511f76f2dd195df45cd00d277"
+      }
+    },
+    {
+      "name": "macos-app-development",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "fce70657f128ce9be9a9e59d970548f8858e80ae5a64f1e09538f586884a4094"
+      }
+    },
+    {
+      "name": "adopt-dependency",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "26dc280ec349cfe98b6f258c362ceebaa1e54ce5b6e01c6f3f7d2a0cda500d23"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "commit-cleanup",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "170e9cfb0a29ef30bd89e627bbe8b4af14e5d4bb6be4fc40159d267b0bb22da7"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "cleanup-orphan-worktrees",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "6647723e160c19fb6c91ac1ee325ba8e4616bfe052bab4e742ceb99fd9a75efa"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "convention-review",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "9bf2d1ffd6df90320ac49ec4f98f243e82ade96a23e1f860719e6bf10c70dee5"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "curate-links",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "e151c81cb25bc3adebe5f3e06b804d8a3ea4e5e7c7ce932f900c82c0bf0cc5b8"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "github-permalink",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "579c6dbd6b1b459a34cead12db3965e0de4ed0e712f8e1e2c9d341d1d7458edc"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "frontend-rum-privacy",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "9d94af9647c0d8589ac15436ac7dfb573aeb85f5e587ac4710c99e40b3b623c2"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "nextjs-playwright-e2e",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "fe79465cf326da1a9a5c23bd5115d60656595acc03d6f7c8ce61b1884dfc2d39"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "repo-ci-baseline",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "9aafeed7ba699bde862664a9ad8cf1303f1b5c6532cbf9198c63c2c99f6e778b"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "bump-selfhosted-app",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "0549186736aef088ca17a32a590f944e63ef0a88904e0fc27283e21cf92025c3"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "incident-triage",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "15be705b4bd5fc0b105cb983de81406047a15ec3b834e0f9f7cf1724f01b1615"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "observability-onboarding",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "8b133f4b3d1e62bd906fe29419fe5dee75959ad9e87a4c13e41e17781a3d498a"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    }
+  ],
+  "licenses": {
+    "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+    "LICENSE.jskills": "bc894ecab39778d810abcdb96d272a0835758c168e1fd65458207e5af99759c0"
+  },
+  "executable_files": []
+}

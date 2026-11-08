@@ -19,7 +19,7 @@ Do not create or update an issue without the user's authorization or an applicab
 Inspect the code path and affected examples before proposing changes.
 Separate known behavior, user requirements, assumptions, and unresolved choices.
 Ask only questions whose answers change scope or approach; continue independent authorized work.
-Use domain-modeling for ambiguous terms and compare-spike only when an implementation comparison is authorized.
+Use installed domain-modeling guidance for ambiguous terms and compare-spike only when an implementation comparison is authorized. If either is unavailable, resolve the terms or comparison criteria directly; do not install another package implicitly.
 Reuse accepted decisions rather than reopening them without new evidence.
 
 ## Write the plan

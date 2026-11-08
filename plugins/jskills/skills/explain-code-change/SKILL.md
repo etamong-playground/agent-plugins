@@ -82,11 +82,11 @@ It rejects loading-capable elements and attributes even across multiline tags, u
 Set `explainer_html` to the finished file's path, then run the secret checks:
 
 ```bash
-grep -E -i -- '-----BEGIN [A-Z ]*PRIVATE KEY-----|authorization[[:space:]]*[:=]|bearer[[:space:]]+[A-Za-z0-9._~+/-]+|[a-z]+://[^/@[:space:]]+:[^/@[:space:]]+@|AKIA[0-9A-Z]{16}' "$explainer_html"
-grep -E -i '(api_key|api-key|secret|password|token|private[-_]key|connection[-_]string)[[:space:]]*[=:][[:space:]]*[^[:space:]]{8,}' "$explainer_html"
+grep -q -E -i -- '-----BEGIN [A-Z ]*PRIVATE KEY-----|authorization[[:space:]]*[:=]|bearer[[:space:]]+[A-Za-z0-9._~+/-]+|[a-z]+://[^/@[:space:]]+:[^/@[:space:]]+@|AKIA[0-9A-Z]{16}' "$explainer_html"
+grep -q -E -i '(api_key|api-key|secret|password|token|private[-_]key|connection[-_]string)[[:space:]]*[=:][[:space:]]*[^[:space:]]{8,}' "$explainer_html"
 ```
 
-The secret scans must produce no unreviewed match, and the bundled validator must pass.
+Each grep check is nonprinting: exit 0 means a possible match requiring local review, exit 1 means no match, and another exit code means the check failed. Report only redacted locations, never matching values. Resolve possible matches before delivery; the bundled validator must also pass.
 When using the default output path, the basename must match `^[0-9]{4}-[0-9]{2}-[0-9]{2}-.+\.html$`; honor an explicitly chosen filename instead of applying the default naming rule.
 Also verify that the document has four top-level content sections with the IDs `background`, `intuition`, `code`, and `quiz`; the provenance footer sits outside that count.
 Verify a quiz script, keyboard focus states, responsive diagram wrappers, and no clipped content.

@@ -1,0 +1,46 @@
+{
+  "origins": {
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
+      "license": "LICENSE"
+    },
+    "shared-local-skills": {
+      "description": "Development workflow skills.",
+      "license": "LICENSE.jskills"
+    },
+    "portable-editions": {
+      "description": "General-purpose workflow editions.",
+      "license": "LICENSE.jskills"
+    },
+    "jskills": {
+      "description": "Purpose-specific development workflows authored for jskills.",
+      "license": "LICENSE.jskills"
+    }
+  },
+  "modifications": "Canonical public workflows; upstream adaptations are identified per skill. Category and compatibility packages are generated from this tree.",
+  "skills": [
+    {
+      "name": "macos-audio-app",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "c456e26d3f646964de3d866aee43be86adbd31d5a7510a9f87895aee67c6646a"
+      }
+    },
+    {
+      "name": "audio-validation",
+      "origin": "jskills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "8c47ddab5524374333f74a0af92f66c8856f420ed9838aeaaa45f629dde94418",
+        "references/validation-matrix.md": "cf1a47cc2bbc84b3d9a430fce53dbe20057f6f9940889bf74c3e68bad8837547"
+      }
+    }
+  ],
+  "licenses": {
+    "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+    "LICENSE.jskills": "bc894ecab39778d810abcdb96d272a0835758c168e1fd65458207e5af99759c0"
+  },
+  "executable_files": []
+}

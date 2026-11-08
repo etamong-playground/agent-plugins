@@ -6,7 +6,9 @@ Install Python requirements in a virtual environment and use the client versions
 
 ## Edit the shared package
 
-Edit the canonical folder under `plugins/<plugin>/skills/<name>/`.
+For Onul workflows, edit only `plugins/onul/skills/<name>/`; service plugins keep their own canonical skills.
+`catalog.json` assigns each Onul skill to exactly one category.
+Run the generator to materialize category and compatibility packages; never edit those generated folders.
 Both clients use that folder; do not add provider-specific copies.
 Keep `name` in the frontmatter equal to its directory name and make the description state when to use the skill.
 Preserve supporting documents, scripts, licenses and notices when importing an original skill.
@@ -21,7 +23,7 @@ A text-pattern scan supports review but does not establish that a workflow is sa
 
 ## Update metadata and verify
 
-After reviewing changes, update each edited skill's file hashes in `plugins/jskills/sources.json`.
+After reviewing changes, update each edited skill's file hashes in `plugins/onul/sources.json`.
 For a new skill, add an entry to `skills` there with `name`, `origin`, `license`, and a `sha256` object mapping every resource's relative path to its SHA-256 digest.
 Use an existing applicable origin or add a verified public origin under `origins`; add `modifications` for an adapted edition.
 For example, a new standalone edition using the package's workflow license has this shape (replace the digest with the reviewed file's actual SHA-256):
@@ -44,7 +46,7 @@ Review hash changes against the diff; do not use a hash refresh to accept an unr
 python3 scripts/generate.py
 python3 scripts/validate.py
 python3 -m unittest discover -s tests -p '*_test.py' -v
-python3 scripts/build_jskills.py --output .tmp/review-site
+python3 scripts/build_onul.py --output .tmp/review-site
 python3 scripts/client_smoke.py
 ```
 

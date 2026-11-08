@@ -1,0 +1,90 @@
+{
+  "origins": {
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
+      "license": "LICENSE"
+    },
+    "shared-local-skills": {
+      "description": "Development workflow skills.",
+      "license": "LICENSE.jskills"
+    },
+    "portable-editions": {
+      "description": "General-purpose workflow editions.",
+      "license": "LICENSE.jskills"
+    },
+    "jskills": {
+      "description": "Purpose-specific development workflows authored for jskills.",
+      "license": "LICENSE.jskills"
+    }
+  },
+  "modifications": "Canonical public workflows; upstream adaptations are identified per skill. Category and compatibility packages are generated from this tree.",
+  "skills": [
+    {
+      "name": "korean-prose",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "General-purpose workflow and client-neutral tool references. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy.",
+      "sha256": {
+        "SKILL.md": "767e48962e227beb7c2e7c775988e668c7f9b7a6aeaa954668f448b5ee626b42",
+        "references/technical-writing.md": "a3c4464f945053564c4418e7790b860810577a17f62a9b8b84507de8a1d2d9af"
+      }
+    },
+    {
+      "name": "audience-review",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "e91e459a1675f0118628559af8206ca81a2de96a5661b4c3bbfb83442527e0bc"
+      }
+    },
+    {
+      "name": "explain-code-change",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "LICENSE.oh-my-agent": "beeda13ca6ab2ffa092ca01cc6e07e6ac004e41f5003c43ecd3011b693425a78",
+        "SKILL.md": "bb498ea16306822489b18273d142a393a7a77a45c52e52f5a86f023693682c7f",
+        "scripts/validate_html.py": "915bcfa61bbf87f2cc9ad5a29da72dae197cd510162a7fa6dc747a62be2695f7"
+      },
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "curate-links",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "e151c81cb25bc3adebe5f3e06b804d8a3ea4e5e7c7ce932f900c82c0bf0cc5b8"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "github-permalink",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "579c6dbd6b1b459a34cead12db3965e0de4ed0e712f8e1e2c9d341d1d7458edc"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "teach",
+      "path": "skills/productivity/teach",
+      "sha256": {
+        "MISSION-FORMAT.md": "8da6d3ac84eb2eb19f17c260b6acf01c560d3ac7a4501c415eea0e985602f4d7",
+        "RESOURCES-FORMAT.md": "2bc634a64b0d0daa10904f9222e7aa0d361420dfacabbf092fbe3a72222edc08",
+        "LEARNING-RECORD-FORMAT.md": "855f81017625256584bbf62bd5edb9b0c86605c4cc1139c56acc36b802595d17",
+        "GLOSSARY-FORMAT.md": "d177def491519d97873291f2e860d8f1d60ead78feecb82eee022177958069c6",
+        "SKILL.md": "f21b0fa050e725cb422a3fab41866aeceec143cc3961f8a6702df5f40e58fa98"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    }
+  ],
+  "licenses": {
+    "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+    "LICENSE.jskills": "bc894ecab39778d810abcdb96d272a0835758c168e1fd65458207e5af99759c0"
+  },
+  "executable_files": []
+}

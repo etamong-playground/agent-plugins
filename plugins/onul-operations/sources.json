@@ -1,0 +1,83 @@
+{
+  "origins": {
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
+      "license": "LICENSE"
+    },
+    "shared-local-skills": {
+      "description": "Development workflow skills.",
+      "license": "LICENSE.jskills"
+    },
+    "portable-editions": {
+      "description": "General-purpose workflow editions.",
+      "license": "LICENSE.jskills"
+    },
+    "jskills": {
+      "description": "Purpose-specific development workflows authored for jskills.",
+      "license": "LICENSE.jskills"
+    }
+  },
+  "modifications": "Canonical public workflows; upstream adaptations are identified per skill. Category and compatibility packages are generated from this tree.",
+  "skills": [
+    {
+      "name": "adopt-dependency",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "26dc280ec349cfe98b6f258c362ceebaa1e54ce5b6e01c6f3f7d2a0cda500d23"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "commit-cleanup",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "170e9cfb0a29ef30bd89e627bbe8b4af14e5d4bb6be4fc40159d267b0bb22da7"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "cleanup-orphan-worktrees",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "6647723e160c19fb6c91ac1ee325ba8e4616bfe052bab4e742ceb99fd9a75efa"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "bump-selfhosted-app",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "0549186736aef088ca17a32a590f944e63ef0a88904e0fc27283e21cf92025c3"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "incident-triage",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "15be705b4bd5fc0b105cb983de81406047a15ec3b834e0f9f7cf1724f01b1615"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "observability-onboarding",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "8b133f4b3d1e62bd906fe29419fe5dee75959ad9e87a4c13e41e17781a3d498a"
+      },
+      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    }
+  ],
+  "licenses": {
+    "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+    "LICENSE.jskills": "bc894ecab39778d810abcdb96d272a0835758c168e1fd65458207e5af99759c0"
+  },
+  "executable_files": []
+}

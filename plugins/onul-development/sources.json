@@ -1,0 +1,112 @@
+{
+  "origins": {
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
+      "license": "LICENSE"
+    },
+    "shared-local-skills": {
+      "description": "Development workflow skills.",
+      "license": "LICENSE.jskills"
+    },
+    "portable-editions": {
+      "description": "General-purpose workflow editions.",
+      "license": "LICENSE.jskills"
+    },
+    "jskills": {
+      "description": "Purpose-specific development workflows authored for jskills.",
+      "license": "LICENSE.jskills"
+    }
+  },
+  "modifications": "Canonical public workflows; upstream adaptations are identified per skill. Category and compatibility packages are generated from this tree.",
+  "skills": [
+    {
+      "name": "prototype",
+      "path": "skills/engineering/prototype",
+      "sha256": {
+        "SKILL.md": "863611f7fb65b78265188466cacdb365cbad129d36844ec57603c708d2026b50",
+        "LOGIC.md": "f0f49aa1120eb81152d024f20a3eee051ca9109e0f9a60cf214ed0080e6baf21",
+        "UI.md": "37b54fb91b50a23f0bc2810ed3409e6cdc2a9ca882c11bb7c1b87f7b1a973833"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "tdd",
+      "path": "skills/engineering/tdd",
+      "sha256": {
+        "mocking.md": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef",
+        "tests.md": "e12182f5c4c6a844b7c6ab4b8d2623b642aaaae5460fe58ed087efd4f3d5fb8a",
+        "SKILL.md": "7f3830316fe2f00037f637e2139e9f6cd809488c152ed162726373eed11f7959",
+        "refactoring.md": "54fced22dd1911b7094c3fe7979b7c1a40d40be307482c4adf7dc0588f27d6cc"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "diagnosing-bugs",
+      "path": "skills/engineering/diagnosing-bugs",
+      "sha256": {
+        "SKILL.md": "3dc4f72aef876e61c01d7ac6e085556204dc3cdf4aa7c2cdc44acf39075f8401",
+        "scripts/hitl-loop.template.sh": "b2932630950e5210075bcd6f850e5accf30c101c5367b29eac3a29b4dd8084c8"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "codebase-design",
+      "path": "skills/engineering/codebase-design",
+      "sha256": {
+        "DESIGN-IT-TWICE.md": "0da19a7556f3618caf272759077b7c007c74789faa38f4c8bfa8c9db8c012dbe",
+        "SKILL.md": "a8d50abac5a4018f60e1d911d4b6f4e36454ca14d6c390c0695a578c7de65dad",
+        "DEEPENING.md": "16c9a92402588527901bb9fb87a3bd66f64a13b7f5b50fd810386136e4a7413d"
+      },
+      "origin": "mattpocock-skills",
+      "license": "LICENSE",
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "compare-spike",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "6408bf1fb674a265e10ddd95728fcf9572abc37b5d851aea018fee3d095057ed"
+      },
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "refactor-safely",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "LICENSE.oh-my-agent": "beeda13ca6ab2ffa092ca01cc6e07e6ac004e41f5003c43ecd3011b693425a78",
+        "SKILL.md": "d12557e570727885ac87eb0bd3fb6153418d0461fdbd535969b3f0ea040c453b"
+      }
+    },
+    {
+      "name": "prune-comments",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "ba6eae974e3f6066e7a050284961763326e9c71f1a3c383c6f45599d1d70eabe"
+      },
+      "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "optimize-memory",
+      "origin": "shared-local-skills",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "a63320b2b7a1b3761420da9a05ac0987e53d5bfd86395226d0faf1b4ce6f4a73"
+      }
+    }
+  ],
+  "licenses": {
+    "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+    "LICENSE.jskills": "bc894ecab39778d810abcdb96d272a0835758c168e1fd65458207e5af99759c0"
+  },
+  "executable_files": []
+}

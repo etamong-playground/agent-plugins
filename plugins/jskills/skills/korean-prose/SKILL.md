@@ -20,7 +20,7 @@ Give each paragraph one purpose and put information in the order the reader need
 State prerequisites before commands and expected results after them.
 Use headings for distinct topics, lists for parallel facts, and tables for comparisons.
 A connective should express an actual relationship; do not add one to disguise unrelated sentences.
-Use one sentence per source line rather than wrapping paragraphs at a fixed column.
+Follow the project's source-formatting convention; when none exists, keep sentences on separate source lines for readable diffs.
 
 ## Sentences and register
 
@@ -47,14 +47,14 @@ Preserve relevant failure states and limits rather than removing them for brevit
 ## Titles and fragments
 
 Use a short noun phrase for a document heading.
-For a Korean change title, use the repository's established action noun, such as 추가, 변경, 수정, or 제거.
+For a Korean change title, follow the repository's established wording, whether an action noun such as 추가 or a complete sentence.
 Give one claim per title; put secondary details in the body.
 Use fragments in a list only when the artifact's established format calls for them.
 
 ## Punctuation
 
-Use ASCII hyphens, and avoid em dashes, en dashes, ellipses characters, and middle-dot list separators in Korean prose.
-Separate a long list with commas or restructure it instead of chaining conjunctions.
+Follow the publication's punctuation and typography conventions.
+Choose separators that make relationships clear; do not impose a personal punctuation ban on quoted text, UI copy or an established house style.
 Use bold for meaningful emphasis, not as a substitute for a heading or an introductory sentence.
 
 ## Final pass

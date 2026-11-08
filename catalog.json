@@ -29,13 +29,149 @@
       }
     },
     {
+      "name": "onul",
+      "kind": "skills",
+      "displayName": "Onul Skills",
+      "version": "0.7.0",
+      "description": "Portable development, debugging and operations skills for requirements-driven macOS apps and software products.",
+      "license": "MIT"
+    },
+    {
+      "name": "onul-planning",
+      "kind": "skills",
+      "displayName": "Onul planning",
+      "version": "0.7.0",
+      "description": "Portable planning workflows from Onul Skills.",
+      "license": "MIT"
+    },
+    {
+      "name": "onul-development",
+      "kind": "skills",
+      "displayName": "Onul development",
+      "version": "0.7.0",
+      "description": "Portable development workflows from Onul Skills.",
+      "license": "MIT"
+    },
+    {
+      "name": "onul-verification",
+      "kind": "skills",
+      "displayName": "Onul verification",
+      "version": "0.7.0",
+      "description": "Portable verification workflows from Onul Skills.",
+      "license": "MIT"
+    },
+    {
+      "name": "onul-writing",
+      "kind": "skills",
+      "displayName": "Onul writing",
+      "version": "0.7.0",
+      "description": "Portable writing workflows from Onul Skills.",
+      "license": "MIT"
+    },
+    {
+      "name": "onul-agent-tools",
+      "kind": "skills",
+      "displayName": "Onul agent-tools",
+      "version": "0.7.0",
+      "description": "Portable agent-tools workflows from Onul Skills.",
+      "license": "MIT"
+    },
+    {
+      "name": "onul-operations",
+      "kind": "skills",
+      "displayName": "Onul operations",
+      "version": "0.7.0",
+      "description": "Portable operations workflows from Onul Skills.",
+      "license": "MIT"
+    },
+    {
+      "name": "onul-macos",
+      "kind": "skills",
+      "displayName": "Onul macos",
+      "version": "0.7.0",
+      "description": "Portable macos workflows from Onul Skills.",
+      "license": "MIT"
+    },
+    {
+      "name": "onul-audio",
+      "kind": "skills",
+      "displayName": "Onul audio",
+      "version": "0.7.0",
+      "description": "Portable audio workflows from Onul Skills.",
+      "license": "MIT"
+    },
+    {
       "name": "jskills",
       "kind": "skills",
-      "displayName": "jskills",
-      "version": "0.6.1",
-      "description": "Portable development, debugging and operations skills for requirements-driven macOS apps and software products.",
+      "displayName": "jskills (compatibility)",
+      "version": "0.7.0",
+      "description": "Compatibility package for existing jskills users. Choose onul or category plugins for new installs.",
       "license": "MIT"
     }
   ],
-  "description": "Authenticated service connections and workflows for Onul services."
+  "description": "Authenticated service connections and workflows for Onul services.",
+  "skillPackages": {
+    "canonical": "onul",
+    "categories": {
+      "onul-planning": [
+        "grilling",
+        "domain-modeling",
+        "planning",
+        "platform-plan-doc",
+        "requirements-feedback"
+      ],
+      "onul-development": [
+        "prototype",
+        "tdd",
+        "diagnosing-bugs",
+        "codebase-design",
+        "compare-spike",
+        "refactor-safely",
+        "prune-comments",
+        "optimize-memory"
+      ],
+      "onul-verification": [
+        "adversarial-review",
+        "convention-review",
+        "console-ux",
+        "frontend-rum-privacy",
+        "nextjs-playwright-e2e",
+        "repo-ci-baseline"
+      ],
+      "onul-writing": [
+        "korean-prose",
+        "audience-review",
+        "explain-code-change",
+        "curate-links",
+        "github-permalink",
+        "teach"
+      ],
+      "onul-agent-tools": [
+        "memory-maintenance",
+        "update-agent-guidance",
+        "writing-great-skills"
+      ],
+      "onul-operations": [
+        "adopt-dependency",
+        "commit-cleanup",
+        "cleanup-orphan-worktrees",
+        "bump-selfhosted-app",
+        "incident-triage",
+        "observability-onboarding"
+      ],
+      "onul-macos": [
+        "macos-app-development",
+        "macos-ui-review"
+      ],
+      "onul-audio": [
+        "macos-audio-app",
+        "audio-validation"
+      ]
+    },
+    "legacy": {
+      "jskills": {
+        "planning": "feature-planning"
+      }
+    }
+  }
 }

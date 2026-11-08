@@ -14,21 +14,15 @@ _Avoid_: consistency, reliability, robustness, output-determinism
 
 ### Model-Invoked
 
-A skill that keeps its **description** field, so the agent can see it and fire it autonomously — and the human can still type its name, so model-invocation always *includes* user reach. There is no model-only state: a description only ever *adds* agent discovery, never removes the human's. Pays a permanent **context load** on every turn in exchange for that discoverability. Reachable by other skills, because the description that makes it agent-discoverable makes it invocable. A model-invoked skill whose content is all **reference** is also one home for shared reference: another skill can invoke it, so reference needed by several skills lives in one place. Pick model-invocation only when the agent must reach the skill on its own; if it never fires except by hand, drop the description and pay no context load.
-
-_Avoid_: ability, tool, capability
+A skill the active client may select automatically when its trigger applies. Automatic discovery, visibility and cross-skill access depend on supported client policy, not simply the presence of a description. Keep required metadata and verify the intended behavior in the target client.
 
 ### User-Invoked
 
-A skill with its **description** stripped — invisible to the agent and reachable only by the human typing its name (user-*only*, where **model-invoked** is user-*and-agent*). Trades agent-discoverability for zero **context load**. Because it has no description, nothing but the human can reach it: no other skill can fire it.
-
-_Avoid_: procedure, workflow, command
+A skill whose automatic invocation is disabled through a supported client policy while the user can still request it explicitly. Exact visibility and control fields depend on the client and version; required descriptions remain present.
 
 ### Description
 
-The skill's machine-readable trigger, and the one **context pointer** a **model-invoked** skill is forced to keep loaded at all times. Its mere presence *is* the invocation axis: keep it and the skill is model-invoked (and reachable by other skills); delete it and the skill is **user-invoked**, reachable only by the human. The source of a model-invoked skill's **context load**.
-
-_Avoid_: frontmatter, summary
+Machine-readable purpose and trigger metadata. Its discovery, context cost and invocation effects depend on the client; do not infer that removing it creates a valid explicit-only skill.
 
 ### Context Pointer
 
@@ -38,7 +32,7 @@ _Avoid_: link, reference, import
 
 ### Context Load
 
-The cost a **model-invoked** skill imposes on the agent's context window — its **description**, always loaded, spending both tokens and attention. What **user-invoked** skills escape by having no description, and the brake on splitting into more model-invoked skills.
+The context occupied by skill discovery metadata and loaded instructions. The amount and timing depend on the client; measure them rather than assuming an explicit-only skill has no description or zero context cost.
 
 _Avoid_: token cost, context bloat
 

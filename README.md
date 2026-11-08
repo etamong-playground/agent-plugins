@@ -59,31 +59,43 @@ Codex's compatibility manifest selects `.mcp.codex.json` explicitly, while Claud
 Do not add a portable root manifest that would override the native OAuth adapter.
 Keep credentials and privileged fleet administration workflows outside these packages.
 
-## jskills
+## Onul Skills
 
-Skills and practical guidance for macOS apps and software products: requirements interviews and feedback, TDD, UI review, debugging, memory optimization and service operations. Domain workflows such as audio processing are optional and follow explicit requirements.
-The [Korean guide](https://pages.onul.me/jskills/) starts with a requirements-driven Mac app workflow and separates general product development and shared installation into purpose tabs. It includes worked prompts, verification boundaries, downloads and update instructions.
-Its header shows the version of the bundled jskills package.
-Source origins, portable-edition notes, licenses and file hashes live in [sources.json](plugins/jskills/sources.json); the package preserves its [MIT notice](plugins/jskills/LICENSE).
+Portable skills for requirements, development, verification, writing, agent workflows, operations and macOS apps.
+The [Korean guide](https://pages.onul.me/jskills/) includes worked requests, verification boundaries, category downloads and migration instructions; its header shows the bundled version.
+Audio development is an optional category and follows explicit requirements.
+
+Install the full package **or** selected categories, with no overlap:
 
 ```sh
 codex plugin marketplace add etamong-playground/agent-plugins
-codex plugin add jskills@onul-services
+codex plugin add onul@onul-services
 claude plugin marketplace add etamong-playground/agent-plugins
-claude plugin install jskills@onul-services
+claude plugin install onul@onul-services
 ```
 
-Build the static guide and complete/individual ZIP downloads into a new output directory:
+For example, replace the full package with `onul-planning@onul-services` and `onul-development@onul-services` to install only those categories.
+Other categories are `onul-verification`, `onul-writing`, `onul-agent-tools`, `onul-operations`, `onul-macos` and `onul-audio`.
+Claude's full-package planning command is `/onul:planning`; the category command is `/onul-planning:planning`.
+Use the discovered skill names in Codex rather than assuming Claude's slash-command syntax applies.
+
+Existing `jskills` users can keep receiving its generated compatibility edition, which retains `feature-planning`.
+To switch, remove it first with `codex plugin remove jskills@onul-services` or `claude plugin uninstall jskills@onul-services`, then install `onul` or selected categories and open a fresh session.
+Do not install the full, compatibility and category editions together: they contain equivalent workflows under different plugin namespaces.
+Changing packages does not remove separately copied standalone skills; inspect those before installing an equivalent package.
+
+`plugins/onul/skills/` is the canonical authored tree.
+Category and compatibility folders are generated self-contained distributions, not separate editing locations.
+Reviewed origins, modification notices, licenses and resource hashes live in [sources.json](plugins/onul/sources.json).
+See [Contributing](CONTRIBUTING.md) for generation, review and qualification.
 
 ```sh
 python3 -m venv .tmp/venv
 .tmp/venv/bin/pip install -r requirements.txt
-.tmp/venv/bin/python scripts/build_jskills.py --output .tmp/jskills-site
+.tmp/venv/bin/python scripts/build_onul.py --output .tmp/onul-site
 ```
 
-The builder refuses to overwrite an existing output directory and rejects changed or missing original files before creating downloads.
-Use a fresh output directory for each build.
-Skill-only catalog entries use `kind: skills` and carry no MCP or authentication configuration.
-See [Contributing](CONTRIBUTING.md) to edit skills, review imports and validate both client packages using this repository alone.
+The build refuses an existing output directory and rejects resource or generated-package drift before creating full, category, compatibility and individual ZIPs.
+Skill-only packages configure no MCP server or authentication.
 
 PR titles and bodies are written in English; the repository owner reviews changes.

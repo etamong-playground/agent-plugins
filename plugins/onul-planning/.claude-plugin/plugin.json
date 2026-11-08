@@ -1,0 +1,9 @@
+{
+  "name": "onul-planning",
+  "version": "0.7.0",
+  "description": "Portable planning workflows from Onul Skills.",
+  "author": {
+    "name": "Onul"
+  },
+  "license": "MIT"
+}

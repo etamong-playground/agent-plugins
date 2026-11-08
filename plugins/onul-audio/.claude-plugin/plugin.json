@@ -1,0 +1,9 @@
+{
+  "name": "onul-audio",
+  "version": "0.7.0",
+  "description": "Portable audio workflows from Onul Skills.",
+  "author": {
+    "name": "Onul"
+  },
+  "license": "MIT"
+}
