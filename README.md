@@ -61,7 +61,7 @@ Keep credentials and privileged fleet administration workflows outside these pac
 
 ## jskills
 
-Skills and practical guidance for macOS apps and AI product development: requirements interviews and feedback, TDD, UI review, debugging, writing, and memory optimization. Domain workflows such as audio processing are optional and follow explicit requirements.
+Skills and practical guidance for macOS apps and software products: requirements interviews and feedback, TDD, UI review, debugging, memory optimization and service operations. Domain workflows such as audio processing are optional and follow explicit requirements.
 The [Korean guide](https://pages.onul.me/jskills/) starts with a requirements-driven Mac app workflow and separates general product development and shared installation into purpose tabs. It includes worked prompts, verification boundaries, downloads and update instructions.
 Source origins, portable-edition notes, licenses and file hashes live in [sources.json](plugins/jskills/sources.json); the package preserves its [MIT notice](plugins/jskills/LICENSE).
 
@@ -83,5 +83,6 @@ python3 -m venv .tmp/venv
 The builder refuses to overwrite an existing output directory and rejects changed or missing original files before creating downloads.
 Use a fresh output directory for each build.
 Skill-only catalog entries use `kind: skills` and carry no MCP or authentication configuration.
+See [Contributing](CONTRIBUTING.md) to edit skills, review imports and validate both client packages using this repository alone.
 
 PR titles and bodies are written in English; the repository owner reviews changes.
