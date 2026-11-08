@@ -32,8 +32,8 @@
       "name": "jskills",
       "kind": "skills",
       "displayName": "jskills",
-      "version": "0.5.0",
-      "description": "Portable skills for requirements-driven macOS app and AI product development, with planning, TDD, UI review and optional domain workflows.",
+      "version": "0.6.0",
+      "description": "Portable development, debugging and operations skills for requirements-driven macOS apps and software products.",
       "license": "MIT"
     }
   ],

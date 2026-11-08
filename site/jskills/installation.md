@@ -13,6 +13,37 @@ Codex 또는 Claude Code를 설치하고, 본인 계정으로 로그인한 상�
 모델 이용권, API key, Python, Node.js, Playwright 같은 실행 도구는 별도로 준비해야 합니다.
 사용할 도구와 데이터의 이용 범위를 확인하고, 예제에는 공개 데이터나 가상 데이터를 사용합니다.
 
+## 개발과 운영에서 고르기
+
+작업에 맞는 스킬을 이름으로 지정합니다.
+운영 스킬을 설치해도 서비스나 계정에 접근할 권한이 생기지는 않습니다.
+조사, 변경 준비, 실제 배포 중 어디까지 요청하는지 함께 알려 줍니다.
+
+| 작업 | 사용할 스킬 |
+| --- | --- |
+| 의존성 업데이트와 CI 점검 | `adopt-dependency`, `repo-ci-baseline` |
+| 브라우저 테스트와 개인정보 기록 점검 | `nextjs-playwright-e2e`, `frontend-rum-privacy` |
+| 장애 조사와 관측 도구 연결 | `incident-triage`, `observability-onboarding` |
+| 서비스 버전 업데이트 준비 | `bump-selfhosted-app` |
+| 커밋과 worktree 정리 | `commit-cleanup`, `cleanup-orphan-worktrees` |
+| 작성 규칙과 참고 자료 확인 | `convention-review`, `curate-links`, `github-permalink` |
+
+예를 들어 대화창에서 다음처럼 요청합니다.
+
+```text
+jskills의 incident-triage로 오늘 09:00 UTC부터 늘어난 5xx 오류를 조사해 줘.
+조회만 하고, 서비스 재시작이나 설정 변경은 하지 마.
+직접 확인한 사실과 가설, 추가로 필요한 확인을 나눠서 설명해 줘.
+```
+
+```text
+jskills의 bump-selfhosted-app으로 현재 버전에서 목표 버전까지 변경 사항을 확인하고 업데이트 PR을 준비해 줘.
+데이터 마이그레이션, 백업과 복구 조건을 정리하되 실제 서비스에는 배포하지 마.
+```
+
+`frontend-rum-privacy`는 기록 대상과 환경별 보호 설정을 먼저 제안합니다.
+`cleanup-orphan-worktrees`는 삭제 후보와 남아 있는 작업을 확인한 뒤 삭제 범위를 확인합니다.
+
 ## 플러그인으로 설치
 
 ### Codex
