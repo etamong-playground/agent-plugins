@@ -11,16 +11,21 @@ Start read-only and preserve existing item-scoped approval across resumptions.
 ## Inventory and review
 
 Read `git worktree list --porcelain` for every repository in the requested scope.
-Identify primary and client-managed checkouts from actual paths and Git metadata, never from branch-name conventions.
+Identify primary and client-managed checkouts from repository guidance, Git metadata and the client's actual records.
+A directory named `.worktrees` or a branch prefix does not establish client management; inspect the repository's creation/removal helper before classifying it.
 Report primary checkouts, existing linked directories and missing registrations separately; `git worktree prune` does not remove existing directories.
 Account for every linked worktree, using a machine-readable manifest for large batches and a grouped summary for the user.
+Count distinct PRs separately from worktrees matched to PRs, and state the repository scope of each count.
 
 For each candidate, inspect ownership, current HEAD and branch, tracked changes, untracked and ignored files, unpushed commits, PR state, active processes and task/session references.
 Verify that the merged PR's head matches the local HEAD; squash merges need not make the branch an ancestor of the default branch.
 Keep primary, locked, active, dirty and ambiguous worktrees.
+Interpret plan and session references: a path mentioned in an old plan is a lead to investigate, not proof of current ownership.
+Distinguish a live dependency on that directory from retained evidence that can move with its path mapping; do not discard the plan itself.
 Keep open-PR worktrees unless their disposition is separately established; an open PR alone does not establish active ownership.
 A missing PR may be unpublished work, and a closed PR may still contain wanted changes.
 Record a concrete retention reason rather than treating an old branch or a directory named `.tmp` as abandoned.
+A recovery-related name requires preserving its data and checking its consumers, rather than automatically retaining every merged source checkout.
 
 ## Approve a batch
 
@@ -45,10 +50,13 @@ Keep an execution ledger with completed removals and retained-path mappings so a
 
 For a client-managed checkout, use the supported archive interface and its confirmed identity.
 If the current client cannot archive it, report the limitation; do not delete it through the filesystem.
-For a manual checkout, use `git worktree remove <path>` without force.
+For a manual checkout, use the repository's removal helper when it preserves the approved scope, or `git worktree remove <path>` without force.
+Check the helper's target against the actual registered path; a naming mismatch requires using the verified path, not deleting a guessed directory.
 A dirty-state refusal stops that entry; forced removal needs separate informed authorization.
 After any failure, inspect both the directory and registration before retrying: Git may have removed the registration while leaving files behind.
 Preserve private data and record partial results rather than assuming rollback succeeded.
+If a process is the only blocker, identify its executable, PID, data directory and endpoints, then seek explicit stop authority unless already granted.
+After an approved orderly stop, verify the process exited before moving its data or removing the checkout; do not infer stop authority from worktree deletion approval.
 
 Delete a local branch only after successful worktree removal, confirmation that no remaining worktree uses it, and explicit branch-deletion authority.
 A branch deletion refusal requires investigation, not automatic `-D`.

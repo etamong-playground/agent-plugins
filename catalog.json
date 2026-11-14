@@ -32,7 +32,7 @@
       "name": "onul",
       "kind": "skills",
       "displayName": "Onul Skills",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "description": "Portable development, debugging and operations skills for requirements-driven macOS apps and software products.",
       "license": "MIT"
     },
@@ -40,7 +40,7 @@
       "name": "onul-planning",
       "kind": "skills",
       "displayName": "Onul planning",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "description": "Portable planning workflows from Onul Skills.",
       "license": "MIT"
     },
@@ -48,7 +48,7 @@
       "name": "onul-development",
       "kind": "skills",
       "displayName": "Onul development",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "description": "Portable development workflows from Onul Skills.",
       "license": "MIT"
     },
@@ -56,7 +56,7 @@
       "name": "onul-verification",
       "kind": "skills",
       "displayName": "Onul verification",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "description": "Portable verification workflows from Onul Skills.",
       "license": "MIT"
     },
@@ -64,7 +64,7 @@
       "name": "onul-writing",
       "kind": "skills",
       "displayName": "Onul writing",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "description": "Portable writing workflows from Onul Skills.",
       "license": "MIT"
     },
@@ -72,7 +72,7 @@
       "name": "onul-agent-tools",
       "kind": "skills",
       "displayName": "Onul agent-tools",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "description": "Portable agent-tools workflows from Onul Skills.",
       "license": "MIT"
     },
@@ -80,7 +80,7 @@
       "name": "onul-operations",
       "kind": "skills",
       "displayName": "Onul operations",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "description": "Portable operations workflows from Onul Skills.",
       "license": "MIT"
     },
@@ -88,7 +88,7 @@
       "name": "onul-macos",
       "kind": "skills",
       "displayName": "Onul macos",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "description": "Portable macos workflows from Onul Skills.",
       "license": "MIT"
     },
@@ -96,7 +96,7 @@
       "name": "onul-audio",
       "kind": "skills",
       "displayName": "Onul audio",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "description": "Portable audio workflows from Onul Skills.",
       "license": "MIT"
     },
@@ -104,7 +104,7 @@
       "name": "jskills",
       "kind": "skills",
       "displayName": "jskills (compatibility)",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "description": "Compatibility package for existing jskills users. Choose onul or category plugins for new installs.",
       "license": "MIT"
     }

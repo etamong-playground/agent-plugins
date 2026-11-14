@@ -43,7 +43,7 @@
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
       "sha256": {
-        "SKILL.md": "f860049d751a1f398fc0faa0aa2214f7b46aa5287cb191a90bd4559263233b75"
+        "SKILL.md": "741deabce45e640f81eeeb1d3aeae2893fbb9536604553d85009a0b01ce3f317"
       },
       "modifications": "Reviewed public edition: complete batch inventory, item-scoped approval, ignored-file retention, resumable removal and measured verification."
     },
