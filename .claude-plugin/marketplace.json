@@ -16,61 +16,61 @@
     {
       "name": "onul",
       "source": "./plugins/onul",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "description": "Portable development, debugging and operations skills for requirements-driven macOS apps and software products."
     },
     {
       "name": "onul-planning",
       "source": "./plugins/onul-planning",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "description": "Portable planning workflows from Onul Skills."
     },
     {
       "name": "onul-development",
       "source": "./plugins/onul-development",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "description": "Portable development workflows from Onul Skills."
     },
     {
       "name": "onul-verification",
       "source": "./plugins/onul-verification",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "description": "Portable verification workflows from Onul Skills."
     },
     {
       "name": "onul-writing",
       "source": "./plugins/onul-writing",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "description": "Portable writing workflows from Onul Skills."
     },
     {
       "name": "onul-agent-tools",
       "source": "./plugins/onul-agent-tools",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "description": "Portable agent-tools workflows from Onul Skills."
     },
     {
       "name": "onul-operations",
       "source": "./plugins/onul-operations",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "description": "Portable operations workflows from Onul Skills."
     },
     {
       "name": "onul-macos",
       "source": "./plugins/onul-macos",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "description": "Portable macos workflows from Onul Skills."
     },
     {
       "name": "onul-audio",
       "source": "./plugins/onul-audio",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "description": "Portable audio workflows from Onul Skills."
     },
     {
       "name": "jskills",
       "source": "./plugins/jskills",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "description": "Compatibility package for existing jskills users. Choose onul or category plugins for new installs."
     }
   ]

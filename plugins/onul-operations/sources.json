@@ -43,9 +43,9 @@
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
       "sha256": {
-        "SKILL.md": "6647723e160c19fb6c91ac1ee325ba8e4616bfe052bab4e742ceb99fd9a75efa"
+        "SKILL.md": "f860049d751a1f398fc0faa0aa2214f7b46aa5287cb191a90bd4559263233b75"
       },
-      "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+      "modifications": "Reviewed public edition: complete batch inventory, item-scoped approval, ignored-file retention, resumable removal and measured verification."
     },
     {
       "name": "bump-selfhosted-app",
