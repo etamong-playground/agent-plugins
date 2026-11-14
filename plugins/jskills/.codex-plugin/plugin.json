@@ -1,6 +1,6 @@
 {
   "name": "jskills",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Compatibility package for existing jskills users. Choose onul or category plugins for new installs.",
   "author": {
     "name": "Onul"
