@@ -44,7 +44,7 @@
       "license": "LICENSE.jskills",
       "modifications": "General-purpose workflow and client-neutral tool references. Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy.",
       "sha256": {
-        "SKILL.md": "7086485205508337b7addb0d7c092ce4af8c76f2b8c3a07e5d5f610f90ec9112"
+        "SKILL.md": "13f2ef6519aa8c059e76af58bfb15eabd6bb95bc38d2fe84471edcf9fadee872"
       }
     },
     {

@@ -119,7 +119,8 @@ with tempfile.TemporaryDirectory(prefix='client-smoke-', dir=root / '.tmp') as w
                 assert expected.issubset({s['name'] for s in discovered}), 'Missing discovered plugin skills'
             if client == 'claude':
                 details = run('claude', ['plugin', 'details', 'onul@' + catalog['name']])
-                assert 'planning' in details and 'Skills (38)' in details
+                expected_count = len(list((source / 'plugins/onul/skills').iterdir()))
+                assert 'planning' in details and f'Skills ({expected_count})' in details
             print(client + (' upgrade' if upgrading else ' installation') + ' verified')
     skill_packages = [p for p in catalog['plugins'] if p.get('kind') == 'skills']
     active = {p['name'] for p in skill_packages}

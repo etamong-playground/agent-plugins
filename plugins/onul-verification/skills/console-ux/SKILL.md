@@ -22,8 +22,17 @@ Follow the target repository's UI contracts and component conventions.
 - Show an inline graph when a row represents a measured series and the trend helps the comparison.
 - Keep the author or committer next to its commit hash, with a useful profile link.
 - Prefer visible tabs for a small fixed choice such as daily, weekly, or monthly; use a dropdown for a long list.
+- Use a switch for an on/off setting saved immediately; use a checkbox for selection or values submitted with a form.
+  Align the switch with its title, place supporting text below the title, and preserve keyboard focus while saving.
+- Let wide tables scroll horizontally and expose remaining columns through an edge shadow or equivalent affordance instead of forcing unreadable wrapping.
+- Keep selection-dependent actions visible but disabled until their prerequisites hold, with an accessible explanation.
 - Mark editable values with a recognizable edit affordance.
 - Support free-form metadata keys and values; suggested keys should not restrict the domain unless the product contract requires it.
+
+## Navigation
+
+- Label a visible unfinished feature in the interface's established language and guard it with the product's existing feature-gate mechanism; do not expose a dead route as working navigation.
+- Separate account-owned views from organization-dependent views. Use an explicit organization selection and bind actions to that selection.
 
 ## Forms and inherited values
 
