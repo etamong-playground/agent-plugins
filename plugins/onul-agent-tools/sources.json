@@ -47,6 +47,44 @@
       "origin": "mattpocock-skills",
       "license": "LICENSE",
       "modifications": "Reviewed public edition: client-neutral discovery, task authority, resource closure and audience-appropriate policy."
+    },
+    {
+      "name": "agent-session",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "Standalone workflow with explicit runtime authority, resource closure and bounded metadata-only discovery.",
+      "sha256": {
+        "SKILL.md": "6d8ba8cdf60e2e437dfcbcd208f61acc3a55ae03b1d7626385e964d8c66b509d",
+        "references/provider-routes.md": "db0484c72f48e395c4ea9378baa3cee56390c1e6a3f553c74370320c6fc2faf1"
+      }
+    },
+    {
+      "name": "fan-out-sessions",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "Standalone workflow with explicit runtime authority, resource closure and bounded metadata-only discovery.",
+      "sha256": {
+        "SKILL.md": "8d46e32a8c963a84e314f5573033f99f52900bb2b6065d1548cdb61fecf40897"
+      }
+    },
+    {
+      "name": "fan-in-sessions",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "Standalone workflow with explicit runtime authority, resource closure and bounded metadata-only discovery.",
+      "sha256": {
+        "SKILL.md": "5b89529390c6ca0e77a09c82fdc9bff23cef2f995c907949a814f459cf1e1278"
+      }
+    },
+    {
+      "name": "distill-session-history",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "modifications": "Standalone workflow with explicit runtime authority, resource closure and bounded metadata-only discovery.",
+      "sha256": {
+        "SKILL.md": "70321314ba10fd19889717e8891aa75b40826ec90acf377a765e91d07dc8192e",
+        "scripts/inventory.py": "33feee4c61bf1aebbc6ee5cbca64ee31c40335f49c3b81619713cf75e4a3fce6"
+      }
     }
   ],
   "licenses": {
