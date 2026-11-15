@@ -161,7 +161,8 @@
         "cleanup-orphan-worktrees",
         "bump-selfhosted-app",
         "incident-triage",
-        "observability-onboarding"
+        "observability-onboarding",
+        "estimate-service-costs"
       ],
       "onul-macos": [
         "macos-app-development",

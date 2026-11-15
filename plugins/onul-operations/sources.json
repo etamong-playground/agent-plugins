@@ -73,6 +73,16 @@
         "SKILL.md": "8b133f4b3d1e62bd906fe29419fe5dee75959ad9e87a4c13e41e17781a3d498a"
       },
       "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
+    },
+    {
+      "name": "estimate-service-costs",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "b6d3fe80d4c5133d2b93b87227f8644934bf33a207ed5751cd593c3ae305cfed",
+        "references/worked-estimate.md": "4509900bcf6e1690617efdfcec4e644952ffa1254fbbd84a749aee7feda5ceda"
+      },
+      "modifications": "Standalone workflow for code-grounded hosting cost estimates and workload sensitivity analysis."
     }
   ],
   "licenses": {
