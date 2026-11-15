@@ -417,6 +417,16 @@
         "SKILL.md": "70321314ba10fd19889717e8891aa75b40826ec90acf377a765e91d07dc8192e",
         "scripts/inventory.py": "33feee4c61bf1aebbc6ee5cbca64ee31c40335f49c3b81619713cf75e4a3fce6"
       }
+    },
+    {
+      "name": "estimate-service-costs",
+      "origin": "portable-editions",
+      "license": "LICENSE.jskills",
+      "sha256": {
+        "SKILL.md": "b6d3fe80d4c5133d2b93b87227f8644934bf33a207ed5751cd593c3ae305cfed",
+        "references/worked-estimate.md": "4509900bcf6e1690617efdfcec4e644952ffa1254fbbd84a749aee7feda5ceda"
+      },
+      "modifications": "Standalone workflow for code-grounded hosting cost estimates and workload sensitivity analysis."
     }
   ],
   "licenses": {
