@@ -47,6 +47,8 @@ Do not remove a superseded session while another runner uses its worktree.
 
 Keep unmerged worktrees/branches even when pushed, unless disposal was explicitly authorized.
 Clean up only confirmed-merged, task-owned work through its provider's mechanism; Codex app-managed worktrees use `archive_worktree` from their owning chat.
+Retire accepted, merged task-owned executors through `agent-session` as each slice completes, preserving pending drafts and local recovery artifacts.
+Archiving a conversation and removing a worktree are separate outcomes; report both.
 Never use `claude rm` as a synonym for stop or delete remote branches.
 Recheck the exact managed identities after closure; report any still active or unconfirmed.
 

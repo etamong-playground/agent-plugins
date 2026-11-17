@@ -1,6 +1,6 @@
 ---
 name: agent-session
-description: Open, message, monitor, resume or stop Claude Code and Codex work sessions when a separate session is needed or requested. Use for cross-provider coordination and session lifecycle, not routine work that can stay in the current session.
+description: Open, message, monitor, resume, stop or retire Claude Code and Codex work sessions when a separate session is needed or requested. Use for cross-provider coordination and session lifecycle, not routine work that can stay in the current session.
 ---
 
 # Agent sessions
@@ -91,6 +91,30 @@ Separate stopping execution, pausing a goal, archiving a conversation and removi
 Preserve unmerged worktrees and branches by default, even when pushed.
 Use the owning provider's cleanup mechanism only after a confirmed merge and ownership check, or explicit disposal authorization; never delete remote branches.
 Report any unsupported stop operation as still unconfirmed, and preserve the session identity for the user.
+
+## Retire accepted executors
+
+After a task-owned executor's result is accepted and its PR merges, retire it before starting the next slice when cleanup authority is already established.
+Use the session table's exact identities; unrelated sessions and bulk retirement need the user's explicit scope and approval.
+Do not inspect unrelated transcripts to infer ownership.
+
+Classify each recorded executor before changing anything:
+
+- Retire: its checkpoint is preserved, execution is stopped, and no work can be lost; any remaining worktree is clean, fully pushed and merged at the verified PR head or included in the default branch.
+- Keep: it is working or blocked, has an open PR, shares its worktree with a live session, or has a pending draft or local artifact still needed for recovery.
+- Review with the user: dirty, unpushed, closed-unmerged, missing-PR or uncertain state; never override a refusal with force or discard flags.
+
+Check ignored files and local artifacts as well as tracked changes before removing a worktree.
+Recheck the branch HEAD, merge evidence, occupants and working-tree state immediately before each retirement.
+Stop at the first refusal and preserve the checkpoint; a prior classification is not permission to discard new work.
+A session's current directory being the primary checkout does not prove it left no other worktree behind.
+Use the project's orphan-worktree workflow for uncertain associations rather than guessing.
+
+Use the provider route to stop execution, remove only confirmed disposable work through its owning mechanism, and archive the exact session.
+Codex app-managed worktrees use their supported archive operation, not manual Git removal.
+Never delete remote branches as part of retirement.
+Recheck the managed identities and report retired, retained and review-needed sessions with full PR URLs.
+Retire the coordinator last, after its checkpoint and any required journal entry are verified.
 
 ## Worked request and completion evidence
 
