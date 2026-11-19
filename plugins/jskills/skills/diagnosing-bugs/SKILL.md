@@ -9,6 +9,27 @@ A discipline for hard bugs. Skip phases only when explicitly justified.
 
 When exploring the codebase, read `CONTEXT.md` (if it exists) to get a clear mental model of the relevant modules, and check ADRs in the area you're touching.
 
+## Live performance incidents
+
+For a live incident, start with bounded read-only observations and the user's affected operation, time window and impact.
+Do not reproduce an outage by adding production load, injecting faults or restarting services without operational authorization.
+Use the available incident workflow when installed; otherwise establish impact, evidence and recovery authority directly.
+An unavailable reproducer limits causal confidence; it does not prevent safe incident triage or an authorized recovery.
+
+For slow or failing requests, compare traffic, error rates and latency distributions with a healthy baseline under comparable load.
+Keep successful and failed request latency separate, check sample volume and collection gaps, and inspect affected routes, instances or versions before relying on an aggregate.
+Fast failures or excluded timeouts can improve a latency graph while user experience worsens.
+
+Treat resource patterns as hypotheses, not diagnoses:
+
+- Low CPU with rising latency: inspect dependency duration, lock or pool wait and queue age; low utilization does not rule out a blocked service.
+- High CPU with rising latency: compare traffic and recent changes, then inspect profiles, per-process utilization and container throttling where applicable.
+- Pool exhaustion: test why work holds resources longer before proposing a larger pool; extra concurrency can overload the dependency.
+
+For each hypothesis, name the predicted observation and the measurement that would distinguish it from alternatives.
+Use existing telemetry first; record unavailable evidence and verify the mechanism before claiming a cause.
+After recovery, reproduce safely outside production where feasible and use the phases below to verify a lasting fix.
+
 ## Phase 1 — Build a feedback loop
 
 **This is the skill.** Everything else is mechanical. If you have a **tight** pass/fail signal for the bug — one that goes red on _this_ bug — you will find the cause; bisection, hypothesis-testing, and instrumentation all just consume it. If you don't have one, no amount of staring at code will save you.
@@ -129,6 +150,6 @@ Required before declaring done:
 - [ ] Regression test passes (or absence of seam is documented)
 - [ ] All `[DEBUG-...]` instrumentation removed (`grep` the prefix)
 - [ ] Throwaway prototypes deleted (or moved to a clearly-marked debug location)
-- [ ] The hypothesis that turned out correct is stated in the commit / PR message — so the next debugger learns
+- [ ] The PR or incident record states the verified mechanism, supporting evidence and remaining uncertainty; a successful mitigation alone does not establish the cause
 
 **Then ask: what would have prevented this bug?** If the answer involves architectural change (no good test seam, tangled callers, hidden coupling) record the specific architectural follow-up. Use relevant installed architecture guidance if available, or analyze the seam directly; do not assume another skill exists or start that follow-up without authorization. Make the recommendation **after** the fix is in, not before — you have more information now than when you started.

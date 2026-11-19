@@ -49,7 +49,7 @@
       "name": "diagnosing-bugs",
       "path": "skills/engineering/diagnosing-bugs",
       "sha256": {
-        "SKILL.md": "3dc4f72aef876e61c01d7ac6e085556204dc3cdf4aa7c2cdc44acf39075f8401",
+        "SKILL.md": "7d3b707b80e65ca584e6dfe7667ca9762156903e5d6025fbdb30df5a59f40fe9",
         "scripts/hitl-loop.template.sh": "b2932630950e5210075bcd6f850e5accf30c101c5367b29eac3a29b4dd8084c8"
       },
       "origin": "mattpocock-skills",
