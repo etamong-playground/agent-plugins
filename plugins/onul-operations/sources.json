@@ -61,7 +61,7 @@
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
       "sha256": {
-        "SKILL.md": "15be705b4bd5fc0b105cb983de81406047a15ec3b834e0f9f7cf1724f01b1615"
+        "SKILL.md": "cd726d787f62d88a7494c397f9f9ed85f478b79cfbe45f5768186a911ae0379f"
       },
       "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
     },
@@ -70,7 +70,7 @@
       "origin": "portable-editions",
       "license": "LICENSE.jskills",
       "sha256": {
-        "SKILL.md": "8b133f4b3d1e62bd906fe29419fe5dee75959ad9e87a4c13e41e17781a3d498a"
+        "SKILL.md": "379d97d972136cf9a354e4aee0e7e473892ceced032d922279f9b6d46adfaf24"
       },
       "modifications": "Standalone workflow edition with project-specific configuration and provider assumptions removed."
     },
