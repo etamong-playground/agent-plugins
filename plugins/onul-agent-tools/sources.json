@@ -54,7 +54,7 @@
       "license": "LICENSE.jskills",
       "modifications": "Standalone workflow with explicit runtime authority, resource closure and bounded metadata-only discovery.",
       "sha256": {
-        "SKILL.md": "e4abcb97198b6634347a8d35c50cd68db58a3e8e130f096a729dc586cdb906e0",
+        "SKILL.md": "0bc6402f708805102d13524bbf77bba2eeab6a507e00266faeef60642e1066c5",
         "references/provider-routes.md": "db0484c72f48e395c4ea9378baa3cee56390c1e6a3f553c74370320c6fc2faf1"
       }
     },

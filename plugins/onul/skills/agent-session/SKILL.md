@@ -71,14 +71,33 @@ If the destination lacks goal support, report that limitation instead of emulati
 Distinguish launch accepted, receipt acknowledged, running, waiting/blocked and completed with evidence.
 Queue acceptance proves only submission; silence proves neither success nor failure.
 Relay decisions to affected executors and verify acknowledgement before work that depends on them.
-Report only meaningful changes, blockers and completion; use bounded waits through the available monitor and keep user input responsive.
+An executor reports completion or a new waiting state immediately through its authorized reply route, with evidence, the blocker and the next owner.
+If that route is unavailable, return those details for the coordinator to collect; do not claim delivery.
+Route questions and proposed approval requests through the coordinator with options, a recommendation and the exact action or draft awaiting approval.
+Hold dependent work while continuing independent authorized work; this routing never replaces runtime permission prompts or lets the coordinator manufacture user authorization.
+Use bounded waits through the available monitor and keep user input responsive.
+When a wait returns without an actionable update, report the last verified state and return control rather than immediately starting another wait loop, unless an explicit monitoring instruction requires continued waiting.
 Authentication or approval prompts remain with the user: do not answer them as the user or widen permissions to unblock a session.
 
 The coordinator closing or losing its connection does not itself cancel executor work or complete a goal.
 Checkpoint the session table before a planned disconnect, including the next observer and any permitted continuation.
 After reconnecting, inspect existing identities and goal state before resuming or launching replacements.
+After a shared usage limit or provider interruption, inspect the affected sessions together and recover pending requests, approvals and next actions before resuming existing identities.
+Report any session that still requires user intervention without starting a replacement implicitly.
 A pause/cancel request needs confirmation from the target's supported mechanism; sending a message, interrupting a process and pausing a goal are different operations.
 Never claim a goal paused or complete without observing that state.
+
+## Coordinator status
+
+Preserve the coordinator role, scope, session table, pending worker requests and approval limits across compaction or reconnects.
+Verify current worker state through the supported provider interface before reporting; identify unverifiable state explicitly.
+An idle worker may be complete, awaiting internal work or externally blocked, so inspect its latest authorized result before assigning a status.
+
+Separate work with an internal next owner from external waits, verified completions and decisions requiring the user.
+Name the next action and owner, link relevant PRs and state the condition that resumes blocked work.
+Batch user decisions as numbered options with recommendations and their effects; do not send the user to another session to answer a request the coordinator owns.
+Write the report in the user's language even when an inter-session message triggered it.
+Do not turn a status check into additional implementation or session-management authority.
 
 ## Finish without losing work
 
@@ -121,3 +140,7 @@ Retire the coordinator last, after its checkpoint and any required journal entry
 For “split documentation and an independent test fixture update between two sessions”, verify that the slices do not share files, record each host/repository/session identity and return route, and preserve the requested approval boundaries.
 Completion requires each slice's evidence and the coordinator's integration check, not merely accepted launch requests.
 If the runtime requires an explicit request for new chats, obtain it before launching; installing this skill grants none.
+
+For a worker that becomes idle while awaiting approval, verify its result, report the exact pending action as a user decision and retain its identity and worktree.
+If a bounded wait returns no update, return the last verified state unless continued monitoring was explicitly requested.
+Neither scenario counts as completion or authorizes approval, retirement or a replacement worker.
